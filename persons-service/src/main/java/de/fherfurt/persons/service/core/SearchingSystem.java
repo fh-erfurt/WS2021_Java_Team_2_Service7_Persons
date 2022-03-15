@@ -1,6 +1,8 @@
 package de.fherfurt.persons.service.core;
 import de.fherfurt.persons.client.PersonsClient;
 import de.fherfurt.persons.service.persistence.PersonAvatarRepository;
+import de.fherfurt.persons.service.persistence.PersonRepository;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -18,37 +20,20 @@ import static java.util.stream.Collectors.toList;
  */
 public class SearchingSystem implements PersonsClient
 {
-
     private ArrayList<String> SearchInputData = new ArrayList<>();
-    private List<Person> PersonStorage = new ArrayList<>();
-    private int pos = 0;
 
     /**
      * set ArrayList with the Inputdata of the User from the class Inputfield
      * @param searchInputData ArrayList from class Inpufield, which includes the the User Search Parameters
-     */
-    public void setSearchInputData(ArrayList searchInputData)
-    {
-        SearchInputData = searchInputData;
+     *
+     * */
+    public void setSearchInputData(ArrayList<String> searchInputData) {
+        this.SearchInputData = searchInputData;
     }
 
-
-    public void setStorageBy(List<Person> PersonStorage)
-    {
-        this.PersonStorage = PersonStorage;
-    }
-
-
-    public ArrayList<String> getSearchInputData()
-    {
+    public ArrayList<String> getSearchInputData() {
         return SearchInputData;
     }
-
-    public List<Person> getPersonStorage()
-    {
-        return PersonStorage;
-    }
-
 
     /**
      * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the PersonID with an Iterator
@@ -57,9 +42,11 @@ public class SearchingSystem implements PersonsClient
      */
     @Override
     public Optional<Person> findPersonUsingIteratorBy(int PersonID) {
-                return PersonStorage.stream()
-                .filter(person -> Objects.equals(person.getPersonID(), PersonID))
-                .findAny();
+
+        PersonRepository PersonStorage = new PersonRepository();
+        return PersonStorage.getPersonList().stream().
+                filter(person -> Objects.equals(person.getPersonID(), PersonID)).
+                findAny();
     }
 
 
@@ -70,21 +57,13 @@ public class SearchingSystem implements PersonsClient
      * @param Major
      * @return a Person with all his/her Attributes in a Form of an Array
      */
-    public Person findPersonUsingIteratorBy(String FirstName, String LastName, String Major)
-    {
-
-        return (Person) PersonStorage.stream()
-                .filter(str -> Objects.equals(Person.builder().getFirstname() , FirstName) && Objects.equals(Person.builder().getLastname(), LastName ) && Objects.equals(Person.builder().getMajor(), Major) )
-                .collect(toList());
-
-        /*
-        return  PersonStorage.stream()
-                .filter(str -> str.equals(this.SearchInputData))
-                .findAny()
-                .orElse(null);
-
-        return WantedPerson;
-        */
+    public  List<Person>  findPersonUsingIteratorBy(String FirstName, String LastName, String Major) {
+        PersonRepository PersonStorage = new PersonRepository();
+        return  PersonStorage.getPersonList().stream()
+                .filter(person -> Objects.equals(person.getFirstName() , FirstName)
+                        || Objects.equals(person.getLastname() , LastName )
+                        || Objects.equals(person.getMajor(), Major))
+                        .collect(toList());
     }
 
 
@@ -94,8 +73,7 @@ public class SearchingSystem implements PersonsClient
      * @return returns a byte Array of an Image of a Person
      */
     @Override
-    public byte[] findPersonAvatarBy(int PersonID)
-    {
+    public byte[] findPersonAvatarBy(int PersonID) {
         PersonAvatarRepository Repo = PersonAvatarRepository.getInstance();
         return Repo.getAvatarStorageBy(PersonID);
     }
@@ -103,12 +81,10 @@ public class SearchingSystem implements PersonsClient
     /**
      * The "convertByteArrayIntoAvatarImage"-Methode convert a Byte-Array back to an Image
      * @param PersonID unique Key-Value to find in certain Avator of a Person
-     * @return Image of a Person
+     * return Image of a Person
      */
-    @Override
-    public void convertByteArrayIntoAvatarImage(int PersonID) throws IOException
-    {
-        BufferedImage img = ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(PersonID)));
+    public BufferedImage convertByteArrayIntoAvatarImage(int PersonID) throws IOException {
+        return ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(PersonID)));
     }
 
 }
