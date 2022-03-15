@@ -13,8 +13,8 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <modules>
-        <module>persons-service</module>
         <module>persons-client</module>
+        <module>persons-service</module>
     </modules>
 
     <dependencyManagement>
