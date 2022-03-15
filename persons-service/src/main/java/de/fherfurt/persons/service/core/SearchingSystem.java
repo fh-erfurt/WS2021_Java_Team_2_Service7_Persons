@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+
 import static java.util.stream.Collectors.toList;
 /**
  * @author Tran Anh Hoang
@@ -37,12 +39,6 @@ public class SearchingSystem implements PersonsClient
     }
 
 
-    public Person getPersonDataBy(int PersonID)
-    {
-        return findPersonUsingIteratorBy(PersonID);
-    }
-
-
     public ArrayList<String> getSearchInputData()
     {
         return SearchInputData;
@@ -59,12 +55,11 @@ public class SearchingSystem implements PersonsClient
      * @param PersonID Unique Key-Value to find a certain Person from the ArrayList
      * @return Person with all her/his values
      */
-    public Person findPersonUsingIteratorBy(int PersonID) {
-
-        return PersonStorage.stream()
-                .filter(str -> Objects.equals(Person.builder().getPersonID(), PersonID))
-                .findAny()
-                .orElse(null);
+    @Override
+    public Optional<Person> findPersonUsingIteratorBy(int PersonID) {
+                return PersonStorage.stream()
+                .filter(person -> Objects.equals(person.getPersonID(), PersonID))
+                .findAny();
     }
 
 

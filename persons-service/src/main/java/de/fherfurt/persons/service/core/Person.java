@@ -2,23 +2,23 @@ package de.fherfurt.persons.service.core;
 
 public class Person
 {
-    private static int PersonID;
-    private static String firstname;
-    private static String lastname;
-    private static String address;
-    private static String email;
-    private static String phonenumber;
-    private static String title;
-    private static String hireDate;
-    private static Enum faculty;
-    private static Boolean teachingFlag;
-    private static String room;
-    private static String major;
-    private static String immatriculationDate;
-    private static String exmatriculationDate;
-    private static Boolean tutorFlag;
-    private static Boolean scientificWorkerFlag;
-    private static String jobTitle;
+    private  String address;
+    private  int PersonID;
+    private  String firstname;
+    private  String lastname;
+    private  String email;
+    private  String phonenumber;
+    private  String title;
+    private  String hireDate;
+    private  Enum faculty;
+    private  Boolean teachingFlag;
+    private  String room;
+    private  String major;
+    private  String immatriculationDate;
+    private  String exmatriculationDate;
+    private  Boolean tutorFlag;
+    private  Boolean scientificWorkerFlag;
+    private  String jobTitle;
 
     private Person(int PersonID, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
                    Enum faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
@@ -297,20 +297,20 @@ public class Person
     /**
      * @author Tran Anh Hoang
      */
-    public static int getPersonID()
+    public int getPersonID()
     {
-        return Person.PersonID;
+        return this.PersonID;
     }
-    public static String getFirstName()
+    public  String getFirstName()
     {
-        return Person.firstname;
+        return this.firstname;
     }
-    public static String getLastname()
+    public  String getLastname()
     {
-        return Person.lastname;
+        return this.lastname;
     }
-    public static String getMajor()
+    public  String getMajor()
     {
-        return Person.major;
+        return this.major;
     }
 }

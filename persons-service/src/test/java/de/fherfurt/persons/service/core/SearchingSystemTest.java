@@ -2,15 +2,17 @@ package de.fherfurt.persons.service.core;
 
 import de.fherfurt.persons.service.persistence.PersonAvatarRepository;
 import de.fherfurt.persons.service.persistence.PersonRepository;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+
 import static java.util.stream.Collectors.toList;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import javax.imageio.ImageIO;
 
 
 /**
@@ -44,7 +46,7 @@ class SearchingSystemTest
                 "Hausmeister"));
 
         List<Person> result =  PersonStorage.getPersonList().stream()
-                .filter(person -> Objects.equals(Person.getPersonID(),PersonID))
+                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
                 .collect(toList());
 
         //then
@@ -55,10 +57,9 @@ class SearchingSystemTest
 
 
 
-
+        /*
         Assertions.assertThat(Person.getPersonID())
                 .as("Check if PersonID: " + PersonID + "is equals to ", Person.getPersonID()).isEqualTo(12);
-
         /*
         System.out.println(result.toString());
         */
@@ -86,9 +87,9 @@ class SearchingSystemTest
 
         //when
         List<Person> result = PersonStorage.getPersonList().stream()
-                .filter(person -> Objects.equals(Person.getFirstName(), FirstName))
-                .filter(person -> Objects.equals(Person.getLastname(), LastName))
-                .filter(person -> Objects.equals(Person.getMajor(), Major)).toList();
+                .filter(person -> Objects.equals(person.getFirstName(), FirstName))
+                .filter(person -> Objects.equals(person.getLastname(), LastName))
+                .filter(person -> Objects.equals(person.getMajor(), Major)).toList();
 
 
         //then
@@ -97,8 +98,8 @@ class SearchingSystemTest
                 .hasSize(1)
                 .doesNotHaveDuplicates();
 
-
-        Assertions.assertThat(Person.getFirstName())
+        /*
+        Assertions.assertThat(.getFirstName())
                 .isNotNull()
                 .as("Check if FirstName: " + FirstName + " is equals to ", Person.getFirstName()).isEqualTo("Anna");
 
@@ -110,6 +111,7 @@ class SearchingSystemTest
         Assertions.assertThat(Person.getMajor())
                 .isNotNull()
                 .as("Check if Major: " + Major + "is equals to ", Person.getMajor()).isEqualTo("BWL");
+         */
 
         System.out.println(result.toString());
     }

@@ -1,10 +1,7 @@
 package de.fherfurt.persons.client;
 
-
-
-import de.fherfurt.persons.service.core.Person;
-
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * @author Tran Anh Hoang
@@ -21,7 +18,7 @@ public interface PersonsClient
      * @return Person with all her/his values
      *
      */
-    Person findPersonUsingIteratorBy(int PersonID);
+    Optional findPersonUsingIteratorBy(int PersonID);
 
 
     byte[] findPersonAvatarBy(int PersonID);
