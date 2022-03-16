@@ -1,6 +1,4 @@
 package de.fherfurt.persons.client;
-
-import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -19,15 +17,6 @@ public interface PersonsClient
      *
      */
     Optional findPersonUsingIteratorBy(int PersonID);
-
-
     byte[] findPersonAvatarBy(int PersonID);
 
-
-    /**
-     * This Methode can be used to get an Image of a Person
-     * @param PersonID - this Parameter is needed for the Searching for an Image/avara of a Person
-     * @throws IOException
-     */
-    void convertByteArrayIntoAvatarImage(int PersonID) throws IOException;
 }

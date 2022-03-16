@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,8 +25,7 @@ class SearchingSystemTest
 {
 
     @Test
-    void shouldPersonUsingIteratorByPersonID()
-    {
+    void shouldPersonUsingIteratorByPersonID() {
         //given
         int PersonID = 36;
         PersonRepository PersonStorage = new PersonRepository();
@@ -35,40 +35,36 @@ class SearchingSystemTest
         PersonStorage.persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false));
-        /*
+
         PersonStorage.persist(Person.student(12,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false));
 
-         */
-
-        PersonStorage.persist(Person.otherEmployee(36,"Franz", "Rheinhard", "Anna@abc.de",
+        PersonStorage.persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
                 "Hausmeister"));
 
-        List<Person> result =  PersonStorage.getPersonList().stream()
+        Optional<Person> result =  PersonStorage.getPersonList().stream()
                 .filter(person -> Objects.equals(person.getPersonID(),PersonID))
-                .collect(toList());
+                .findAny();
+
 
         //then
+        Assertions.assertThat(result.get())
+                .isEqualTo(PersonStorage.getPersonList().get(2));
+        /*
         Assertions.assertThat(result)
                 .isNotEmpty()
-                .hasSize(2)
+                .hasSize(1)
                 .doesNotHaveDuplicates();
-
-
-
         /*
         Assertions.assertThat(Person.getPersonID())
                 .as("Check if PersonID: " + PersonID + "is equals to ", Person.getPersonID()).isEqualTo(12);
-        /*
-        System.out.println(result.toString());
         */
+        System.out.println(result.get());
     }
 
     @Test
-    void testFindPersonUsingIteratorByFirstNamLastNameMajor()
-    {
-
+    void testFindPersonUsingIteratorByFirstNamLastNameMajor() {
         //given
         String FirstName = "Anna";
         String LastName = "Rheinhard";
@@ -91,29 +87,15 @@ class SearchingSystemTest
                 .filter(person -> Objects.equals(person.getLastname(), LastName))
                 .filter(person -> Objects.equals(person.getMajor(), Major)).toList();
 
-
         //then
         Assertions.assertThat(result)
                 .isNotEmpty()
                 .hasSize(1)
                 .doesNotHaveDuplicates();
 
-        /*
-        Assertions.assertThat(.getFirstName())
-                .isNotNull()
-                .as("Check if FirstName: " + FirstName + " is equals to ", Person.getFirstName()).isEqualTo("Anna");
-
-        Assertions.assertThat(Person.getLastname())
-                .isNotNull()
-                .as("Check if LastName: " + LastName + "is equals to ", Person.getLastname()).isEqualTo("Rheinhard");
-
-
-        Assertions.assertThat(Person.getMajor())
-                .isNotNull()
-                .as("Check if Major: " + Major + "is equals to ", Person.getMajor()).isEqualTo("BWL");
-         */
-
-        System.out.println(result.toString());
+        //für ein Eingiff auf die Datensätze
+        System.out.println(result.get(0).getFirstName());
+        //System.out.println(result.toString());
     }
 
     @Test
@@ -127,7 +109,7 @@ class SearchingSystemTest
     void shouldConvertByteArrayIntoAvatarImage() throws IOException
     {
         //given
-        String ImagePath =  "/home/hoang/Desktop/WS2021_Java_Team_2_Service_Persons_local_new/Meme_Macron.png";
+        String ImagePath = "/home/hoang/Desktop/WS2021_Java_Team_2_Service_Persons_local_new/Meme_Macron.png";
         int PersonID = 1;
 
         //when
@@ -138,4 +120,5 @@ class SearchingSystemTest
         //then
         BufferedImage img = ImageIO.read(new ByteArrayInputStream(shouldFindPersonAvatarBy(PersonID)));
     }
+
 }
