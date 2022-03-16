@@ -9,5 +9,5 @@
 - (Joshua Mainzer)
 
 ## Person Service - Concept 
-The main goal of this project is to realize an updated business - logic of the *__FHE-App__*. <br>
-For more details of our project please read in the wiki.
+The main goal of this project is to realize a updated business - logic of the *__FHE-App__*. <br>
+For more details of our project please read For more details of our project please read the <a href="https://github.com/fh-erfurt/WS2021_Java_Team_2_Service7_Persons/wiki"> WIKI OF TEAM 2 SERVICE 7 PERSONS </a>
