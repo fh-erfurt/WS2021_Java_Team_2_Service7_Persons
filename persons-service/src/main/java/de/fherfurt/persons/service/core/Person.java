@@ -267,13 +267,14 @@ public class Person
     /**
      * @author Tran Anh Hoang
      */
+
     @Override
     public String toString()
     {
         return "Person: {" +
                 "PersonID='" + PersonID + '\'' +
                 " ,firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\''
+                ", lastname='" + lastname + '\'';
                 /*
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -290,27 +291,146 @@ public class Person
                 ", scientificWorkerFlag=" + scientificWorkerFlag +
                 ", jobTitle='" + jobTitle + '\'' +
                 */
-                + "}"
-                ;
     }
 
     /**
      * @author Tran Anh Hoang
      */
-    public int getPersonID()
-    {
-        return this.PersonID;
+    public String getAddress() {
+        return address;
     }
-    public  String getFirstName()
-    {
-        return this.firstname;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
-    public  String getLastname()
-    {
-        return this.lastname;
+
+    public int getPersonID() {
+        return PersonID;
     }
-    public  String getMajor()
-    {
-        return this.major;
+
+    public void setPersonID(int personID) {
+        PersonID = personID;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public Enum getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Enum faculty) {
+        this.faculty = faculty;
+    }
+
+    public Boolean getTeachingFlag() {
+        return teachingFlag;
+    }
+
+    public void setTeachingFlag(Boolean teachingFlag) {
+        this.teachingFlag = teachingFlag;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public String getImmatriculationDate() {
+        return immatriculationDate;
+    }
+
+    public void setImmatriculationDate(String immatriculationDate) {
+        this.immatriculationDate = immatriculationDate;
+    }
+
+    public String getExmatriculationDate() {
+        return exmatriculationDate;
+    }
+
+    public void setExmatriculationDate(String exmatriculationDate) {
+        this.exmatriculationDate = exmatriculationDate;
+    }
+
+    public Boolean getTutorFlag() {
+        return tutorFlag;
+    }
+
+    public void setTutorFlag(Boolean tutorFlag) {
+        this.tutorFlag = tutorFlag;
+    }
+
+    public Boolean getScientificWorkerFlag() {
+        return scientificWorkerFlag;
+    }
+
+    public void setScientificWorkerFlag(Boolean scientificWorkerFlag) {
+        this.scientificWorkerFlag = scientificWorkerFlag;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+
 }

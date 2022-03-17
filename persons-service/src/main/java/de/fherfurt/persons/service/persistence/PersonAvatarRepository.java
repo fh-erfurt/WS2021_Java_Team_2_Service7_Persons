@@ -1,7 +1,12 @@
 package de.fherfurt.persons.service.persistence;
 import java.util.HashMap;
-public class PersonAvatarRepository
-{
+
+/**
+ * @author Tran Anh Hoang
+ *
+ */
+
+public class PersonAvatarRepository {
     private static final PersonAvatarRepository AVATAR_REPOSITORY = new PersonAvatarRepository();
     private HashMap<Integer , byte[]> AvatarStorage = new HashMap<>();
 

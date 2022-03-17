@@ -47,7 +47,6 @@ class SearchingSystemTest
                 .filter(person -> Objects.equals(person.getPersonID(),PersonID))
                 .findAny();
 
-
         //then
         Assertions.assertThat(result.get())
                 .isEqualTo(PersonStorage.getPersonList().get(2));
@@ -83,7 +82,7 @@ class SearchingSystemTest
 
         //when
         List<Person> result = PersonStorage.getPersonList().stream()
-                .filter(person -> Objects.equals(person.getFirstName(), FirstName))
+                .filter(person -> Objects.equals(person.getFirstname(), FirstName))
                 .filter(person -> Objects.equals(person.getLastname(), LastName))
                 .filter(person -> Objects.equals(person.getMajor(), Major)).toList();
 
@@ -94,7 +93,7 @@ class SearchingSystemTest
                 .doesNotHaveDuplicates();
 
         //für ein Eingiff auf die Datensätze
-        System.out.println(result.get(0).getFirstName());
+        System.out.println(result.get(0).getFirstname());
         //System.out.println(result.toString());
     }
 
