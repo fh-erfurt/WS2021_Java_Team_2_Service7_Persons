@@ -60,7 +60,7 @@ public class SearchingSystem implements PersonsClient
     public  List<Person>  findPersonUsingIteratorBy(String FirstName, String LastName, String Major) {
         PersonRepository PersonStorage = new PersonRepository();
         return  PersonStorage.getPersonList().stream()
-                .filter(person -> Objects.equals(person.getFirstName() , FirstName)
+                .filter(person -> Objects.equals(person.getFirstname() , FirstName)
                         || Objects.equals(person.getLastname() , LastName )
                         || Objects.equals(person.getMajor(), Major))
                         .collect(toList());
