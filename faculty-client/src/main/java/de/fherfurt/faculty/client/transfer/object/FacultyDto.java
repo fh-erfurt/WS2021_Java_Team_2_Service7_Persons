@@ -6,7 +6,8 @@ public enum FacultyDto{
     BKR("Bauingenieurwesen und Konservierung Restaurierung"),
     GTI("Gebaeudetechnik und Informatik"),
     LGF("Landschaftsarchitektur Gartenbau und Forst"),
-    WLV("Wirtschaft Logistik Verkehr");
+    WLV("Wirtschaft Logistik Verkehr"),
+    NULL(null);
 
     FacultyDto(String s)
     {
