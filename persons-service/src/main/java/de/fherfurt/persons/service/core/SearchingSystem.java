@@ -42,9 +42,7 @@ public class SearchingSystem implements PersonsClient
      */
     @Override
     public Optional<Person> findPersonUsingIteratorBy(int PersonID) {
-
-        PersonRepository PersonStorage = new PersonRepository();
-        return PersonStorage.getPersonList().stream().
+        return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getPersonID(), PersonID)).
                 findAny();
     }
@@ -58,8 +56,7 @@ public class SearchingSystem implements PersonsClient
      * @return a Person with all his/her Attributes in a Form of an Array
      */
     public  List<Person> findPersonUsingIteratorBy(String FirstName, String LastName, String Major) {
-        PersonRepository PersonStorage = new PersonRepository();
-        return  PersonStorage.getPersonList().stream()
+        return  PersonRepository.getInstance().getPersonList().stream()
                 .filter(person -> Objects.equals(person.getFirstname() , FirstName)
                         || Objects.equals(person.getLastname() , LastName )
                         || Objects.equals(person.getMajor(), Major))

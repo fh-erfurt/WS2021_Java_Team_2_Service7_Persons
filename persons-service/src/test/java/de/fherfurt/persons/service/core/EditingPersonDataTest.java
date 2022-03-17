@@ -15,36 +15,30 @@ public class EditingPersonDataTest  {
         int PersonID = 12;
 
         //given
-        PersonRepository PersonStorage = new PersonRepository();
         SearchingSystem Search = new SearchingSystem();
 
 
         //when
-        PersonStorage.persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
+        PersonRepository.getInstance().persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false));
 
-        PersonStorage.persist(Person.student(12,"Anna", "Rheinhard", "Anna@abc.de",
+        PersonRepository.getInstance().persist(Person.student(12,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false));
 
-        PersonStorage.persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
+        PersonRepository.getInstance().persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
                 "Hausmeister"));
 
 
-        Optional<Person> wantedPerson = PersonStorage.getPersonList().stream().
-                filter(person -> Objects.equals(person.getPersonID(), PersonID)).
-                findAny();
+        Search.findPersonUsingIteratorBy(PersonID).get().setFirstname("Henriette");
 
-        wantedPerson.get().setFirstname("Henriette");
-        System.out.println(wantedPerson.toString());
 
         //then
-        String PersonNewFirstName = wantedPerson.get().getFirstname();
-        Assertions.assertThat(PersonNewFirstName)
+        Assertions.assertThat(Search.findPersonUsingIteratorBy(PersonID).get().getFirstname())
                 .isEqualTo("Henriette");
 
-        System.out.println(PersonNewFirstName);
+        System.out.println(Search.findPersonUsingIteratorBy(PersonID).get().getFirstname());
     }
 
     @Test
