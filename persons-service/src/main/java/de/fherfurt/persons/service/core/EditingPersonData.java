@@ -14,7 +14,6 @@ public class EditingPersonData {
 
     public void editLastNameOfPersonBy(int PersonID, String lastname) {
         SearchingSystem Search = new SearchingSystem();
-        Search.findPersonUsingIteratorBy(PersonID).get().setFirstname(lastname);;
-
+        Search.findPersonUsingIteratorBy(PersonID).get().setFirstname(lastname);
     }
 }
