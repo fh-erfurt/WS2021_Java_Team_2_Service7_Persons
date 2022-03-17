@@ -32,34 +32,29 @@ class SearchingSystemTest
 
 
         //when
-        PersonStorage.persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
+        PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false));
 
-        PersonStorage.persist(Person.student(12,"Anna", "Rheinhard", "Anna@abc.de",
+        PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false));
 
-        PersonStorage.persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
+        PersonRepository.getInstance().persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
                 "Hausmeister"));
 
-        Optional<Person> result =  PersonStorage.getPersonList().stream()
+        Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
                 .filter(person -> Objects.equals(person.getPersonID(),PersonID))
                 .findAny();
 
 
         //then
-        Assertions.assertThat(result.get())
-                .isEqualTo(PersonStorage.getPersonList().get(2));
-        /*
-        Assertions.assertThat(result)
-                .isNotEmpty()
-                .hasSize(1)
-                .doesNotHaveDuplicates();
-        /*
-        Assertions.assertThat(Person.getPersonID())
-                .as("Check if PersonID: " + PersonID + "is equals to ", Person.getPersonID()).isEqualTo(12);
-        */
+        Assertions.assertThat(result.orElseThrow())
+                .isEqualTo(PersonRepository.getInstance().getPersonList().get(2));
+
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
+                .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(36);
+
         System.out.println(result.get());
     }
 
@@ -70,19 +65,19 @@ class SearchingSystemTest
         String LastName = "Rheinhard";
         String Major = "BWL";
 
-        PersonRepository PersonStorage = new PersonRepository();
-        PersonStorage.persist(Person.student(12,"Anna", "Rheinhard", "Anna@abc.de",
+
+        PersonRepository.getInstance().persist(Person.student(1,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false));
 
 
-        PersonStorage.persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
+        PersonRepository.getInstance().persist(Person.student(2,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                  false, false));
 
 
         //when
-        List<Person> result = PersonStorage.getPersonList().stream()
+        List<Person> result = PersonRepository.getInstance().getPersonList().stream()
                 .filter(person -> Objects.equals(person.getFirstname(), FirstName))
                 .filter(person -> Objects.equals(person.getLastname(), LastName))
                 .filter(person -> Objects.equals(person.getMajor(), Major)).toList();
@@ -95,7 +90,7 @@ class SearchingSystemTest
 
         //für ein Eingiff auf die Datensätze
         System.out.println(result.get(0).getFirstname());
-        //System.out.println(result.toString());
+
     }
 
     @Test
