@@ -51,17 +51,19 @@ public class SearchingSystem implements PersonsClient
 
     /**
      * This Methode will find a Person from FirstName, LastName and Major
-     * @param FirstName
-     * @param LastName
-     * @param Major
+     * @param firstname
+     * @param lastname
+     * @param major
+     * @param faculty
      * @return a Person with all his/her Attributes in a Form of an Array
      */
-    public  List<Person>  findPersonUsingIteratorBy(String FirstName, String LastName, String Major) {
+    public List<Person> findPersonUsingIteratorBy(String firstname, String lastname, String major, String faculty ) {
 
         return PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getFirstname() , FirstName)
-                        || Objects.equals(person.getLastname() , LastName )
-                        || Objects.equals(person.getMajor(), Major))
+                .filter(person -> Objects.equals(person.getFirstname() , firstname)
+                        || Objects.equals(person.getLastname() , lastname )
+                        || Objects.equals(person.getMajor(), major)
+                        || Objects.equals(person.getFaculty(), faculty))
                         .collect(toList());
     }
 

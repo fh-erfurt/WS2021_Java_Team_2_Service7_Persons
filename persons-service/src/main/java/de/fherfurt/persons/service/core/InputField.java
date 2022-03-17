@@ -52,7 +52,7 @@ public class InputField implements FacultyClient
             PersonInputData.add(this.inFirstName);
             PersonInputData.add(this.inLastName);
             PersonInputData.add(this.inModul);
-            PersonInputData.add(checkInputEqualsEnums(inFaculty)); // Enum wurde geprüft und passender String wird in die Liste eingetragen
+            PersonInputData.add(getFacultyByName(inFaculty).toString()); // Enum wurde geprüft und passender String wird in die Liste eingetragen
         }
         else
         {
@@ -102,6 +102,7 @@ public class InputField implements FacultyClient
         return true;
     }
 
+
     @Override
     public FacultyDto getFacultyByName(String facultyName)
     {
@@ -119,6 +120,8 @@ public class InputField implements FacultyClient
         return result;
     }
 
+
+    /*
     public String checkInputEqualsEnums(String inFaculty)
     {
         if (getFacultyByName(inFaculty) == FacultyDto.GTI || getFacultyByName(inFaculty) == FacultyDto.LGF || getFacultyByName(inFaculty) == FacultyDto.WLV || getFacultyByName(inFaculty) == FacultyDto.ASP || getFacultyByName(inFaculty) == FacultyDto.ASW) {
@@ -128,6 +131,14 @@ public class InputField implements FacultyClient
             return null;
         }
     }
+    */
+
+    public void triggerFindPersonUsingIteratorBy(){
+        SearchingSystem Search = new SearchingSystem();
+        Search.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inModul, this.inFaculty );
+    }
+
+
 }
 
 

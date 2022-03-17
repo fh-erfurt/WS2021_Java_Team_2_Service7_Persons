@@ -1,5 +1,10 @@
 package de.fherfurt.persons.service.core;
 
+import de.fherfurt.faculty.client.FacultyClient;
+import de.fherfurt.faculty.client.transfer.object.FacultyDto;
+
+import java.util.stream.Stream;
+
 /**
  * @author Luisa Oswald
  */
@@ -13,7 +18,7 @@ public class Person
     private  String phonenumber;
     private  String title;
     private  String hireDate;
-    private  Enum faculty;
+    private  String faculty;
     private  Boolean teachingFlag;
     private  String room;
     private  String major;
@@ -22,10 +27,10 @@ public class Person
     private  Boolean tutorFlag;
     private  Boolean scientificWorkerFlag;
     private  String jobTitle;
-    private Boolean deletedFlag;
+    private  Boolean deletedFlag;
 
     private Person(int PersonID, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
-                   Enum faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
+                   String faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
                    String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
         this.PersonID = PersonID;
         this.firstname = firstname;
@@ -52,6 +57,8 @@ public class Person
         return new Builder();
     }
 
+
+
     public static class Builder {
 
         private int PersonID;
@@ -62,7 +69,7 @@ public class Person
         private String phonenumber;
         private String title;
         private String hireDate;
-        private Enum faculty;
+        private String faculty;
         private Boolean teachingFlag;
         private String room;
         private String major;
@@ -122,7 +129,7 @@ public class Person
             return this;
         }
 
-        public Builder setFaculty(Enum faculty) {
+        public Builder setFaculty(String faculty) {
             this.faculty = faculty;
             return this;
         }
@@ -213,7 +220,7 @@ public class Person
             return hireDate;
         }
 
-        public Enum getFaculty()
+        public String getFaculty()
         {
             return faculty;
         }
@@ -271,7 +278,7 @@ public class Person
     }
 
     //only needed for lecturers
-    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, Enum faculty, Boolean teachingFlag, String room){
+    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room){
         return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setTeachingFlag(teachingFlag).setRoom(room).build();
     }
 
@@ -377,12 +384,8 @@ public class Person
         this.hireDate = hireDate;
     }
 
-    public Enum getFaculty() {
+    public String getFaculty() {
         return faculty;
-    }
-
-    public void setFaculty(Enum faculty) {
-        this.faculty = faculty;
     }
 
     public Boolean getTeachingFlag() {
@@ -453,5 +456,18 @@ public class Person
         this.jobTitle = jobTitle;
     }
 
-
+    public void setFacultyByName(String facultyName) {
+        String result;
+        switch (facultyName)
+        {
+            case "Gebaeudetechnik und Informatik" -> result = FacultyDto.GTI.toString();
+            case "Landschaftsarchitektur, Gartenbau und Forst" -> result = FacultyDto.LGF.toString();
+            case "Wirtschaft-Logistik-Verkehr" -> result = FacultyDto.WLV.toString();
+            case "Bauingenieurwesen und Konservierung/Restaurierung" -> result = FacultyDto.BKR.toString();
+            case "Architektur und Stadtplanung" -> result = FacultyDto.ASP.toString();
+            case "Angewandte Sozialwissenschaften" -> result = FacultyDto.ASW.toString();
+            default -> result = FacultyDto.NULL.toString();
+        }
+        this.faculty = result;
+    }
 }
