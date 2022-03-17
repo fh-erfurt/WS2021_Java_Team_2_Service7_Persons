@@ -1,5 +1,8 @@
 package de.fherfurt.persons.service.core;
 
+/**
+ * @author Luisa Oswald
+ */
 public class Person
 {
     private  String address;
@@ -19,10 +22,11 @@ public class Person
     private  Boolean tutorFlag;
     private  Boolean scientificWorkerFlag;
     private  String jobTitle;
+    private Boolean deletedFlag;
 
     private Person(int PersonID, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
                    Enum faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
-                   String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle) {
+                   String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
         this.PersonID = PersonID;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -40,6 +44,7 @@ public class Person
         this.tutorFlag = tutorFlag;
         this.scientificWorkerFlag = scientificWorkerFlag;
         this.jobTitle = jobTitle;
+        this.deletedFlag = deletedFlag;
     }
 
     //Singleton
@@ -66,13 +71,14 @@ public class Person
         private Boolean tutorFlag;
         private Boolean scientificWorkerFlag;
         private String jobTitle;
+        private Boolean deletedFlag;
 
         private Builder() {
         }
 
         public Person build() {
             return new Person(PersonID, firstname, lastname, address, email, phonenumber, title, hireDate, faculty, teachingFlag,
-                    room, major, immatriculationDate, exmatriculationDate, tutorFlag, scientificWorkerFlag, jobTitle);
+                    room, major, immatriculationDate, exmatriculationDate, tutorFlag, scientificWorkerFlag, jobTitle, deletedFlag);
         }
 
         public Builder setPersonID(int PersonID)
@@ -160,7 +166,13 @@ public class Person
             this.jobTitle = jobTitle;
             return this;
         }
-        
+
+        public Builder setDeletedFlag(Boolean deletedFlag)
+        {
+            this.deletedFlag = deletedFlag;
+            return this;
+        }
+
         public int getPersonID()
         {
             return PersonID;
@@ -246,6 +258,11 @@ public class Person
             return jobTitle;
         }
 
+        public Boolean getDeletedFlag()
+        {
+            return deletedFlag;
+        }
+
     }
 
     //only needed for other employees
@@ -312,5 +329,9 @@ public class Person
     public  String getMajor()
     {
         return this.major;
+    }
+    public Boolean getDeletedFlag()
+    {
+        return this.deletedFlag;
     }
 }

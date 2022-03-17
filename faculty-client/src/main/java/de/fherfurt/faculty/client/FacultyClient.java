@@ -1,5 +1,7 @@
 package de.fherfurt.faculty.client;
 
+import de.fherfurt.faculty.client.transfer.object.FacultyDto;
+
 public interface FacultyClient {
-    public FacultyDto getFacultyByName (String facultyName);
+     FacultyDto getFacultyByName (String facultyName);
 }

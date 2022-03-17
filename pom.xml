@@ -15,6 +15,7 @@
     <modules>
         <module>persons-client</module>
         <module>persons-service</module>
+        <module>faculty-client</module>
     </modules>
 
     <dependencyManagement>
