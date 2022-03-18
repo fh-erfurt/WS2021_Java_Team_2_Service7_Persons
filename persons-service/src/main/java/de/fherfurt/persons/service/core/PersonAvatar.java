@@ -13,7 +13,6 @@ import java.nio.file.Files;
 public class PersonAvatar
 {
     private byte [] AvatarByteArray;
-    private final PersonAvatarRepository Repo = PersonAvatarRepository.getInstance();
 
     /**
      * @param ImagePath
@@ -29,6 +28,6 @@ public class PersonAvatar
 
     public void setAvatarByteArrayIntoAvatarRepositoryBy(int PersonID)
     {
-        Repo.saveAvatarBy(PersonID, AvatarByteArray);
+        PersonAvatarRepository.getInstance().saveAvatarBy(PersonID, AvatarByteArray);
     }
 }
