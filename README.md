@@ -2,7 +2,7 @@
 [![example workflow](https://github.com/fh-erfurt/WS2021_Java_Team_2_Service7_Persons/actions/workflows/maven.yml/badge.svg)](https://github.com/fh-erfurt/WS2021_Java_Team_2_Service7_Persons/actions)
 
 
-## The Team member are:
+## The Team members are:
 - Luisa Oswald
 - Milena Neumann
 - Tran Anh Hoang
