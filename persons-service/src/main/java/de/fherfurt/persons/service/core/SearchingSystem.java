@@ -49,6 +49,7 @@ public class SearchingSystem implements PersonsClient
     }
 
 
+
     /**
      * This Methode will find a Person from FirstName, LastName and Major
      * @param firstname
@@ -64,9 +65,8 @@ public class SearchingSystem implements PersonsClient
                         || Objects.equals(person.getLastname() , lastname )
                         || Objects.equals(person.getMajor(), major)
                         || Objects.equals(person.getFaculty(), faculty))
-                        .collect(toList());
+                .collect(toList());
     }
-
 
     /**
      * The "findPersonAvatarBy"-Method use the Singleton Pattern to access the class PersonAvatarRepository
@@ -88,4 +88,12 @@ public class SearchingSystem implements PersonsClient
         return ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(PersonID)));
     }
 
+    /**
+     * The "findAllPersonWithDeleteFlag" . will find all Person with a DeleteFlag add them get it into a List
+     * @return List of all Person with a Delete-Flag
+     */
+    public List<Person> findAllPersonWithDeleteFlag() {
+        return PersonRepository.getInstance().getPersonList().stream().
+                filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
+    }
 }

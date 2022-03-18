@@ -20,14 +20,14 @@ public class EditingPersonTest {
         //when
         PersonRepository.getInstance().persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
-                false, false));
+                false, false, false));
 
         PersonRepository.getInstance().persist(Person.student(14,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
-                false, false));
+                false, false, false));
 
         PersonRepository.getInstance().persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
-                "Hausmeister"));
+                "Hausmeister", false));
 
 
         Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(PersonID);

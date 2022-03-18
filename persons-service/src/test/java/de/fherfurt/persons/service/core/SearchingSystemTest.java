@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,14 +36,14 @@ class SearchingSystemTest
         //when
         PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
-                false, false));
+                false, false, false));
 
         PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
-                false, false));
+                false, false, false));
 
         PersonRepository.getInstance().persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
-                "Hausmeister"));
+                "Hausmeister", false));
 
         Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
                 .filter(person -> Objects.equals(person.getPersonID(),PersonID))
@@ -68,12 +70,12 @@ class SearchingSystemTest
 
         PersonRepository.getInstance().persist(Person.student(1,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
-                false, false));
+                false, false, false)  );
 
 
         PersonRepository.getInstance().persist(Person.student(2,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
-                 false, false));
+                 false, false, false));
 
 
         //when
@@ -103,8 +105,10 @@ class SearchingSystemTest
     @Test
     void shouldConvertByteArrayIntoAvatarImage() throws IOException
     {
+        //"/home/hoang/Desktop/WS2021_Java_Team_2_Service_Persons_local_new/Meme_Macron.png"
         //given
-        String ImagePath = "/home/hoang/Desktop/WS2021_Java_Team_2_Service_Persons_local_new/Meme_Macron.png";
+        String ImagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
+        System.out.println(ImagePath);
         int PersonID = 1;
 
         //when
@@ -116,4 +120,32 @@ class SearchingSystemTest
         BufferedImage img = ImageIO.read(new ByteArrayInputStream(shouldFindPersonAvatarBy(PersonID)));
     }
 
+    @Test
+    public void shouldFindAllPersonWithDeleteFlag() {
+        //given
+
+        PersonRepository.getInstance().persist(Person.student(111,"Fritz", "Leonard", "Fritz@abc.de",
+                "BWL", "01.10.2019", "01.10.2023",
+                false, false, true));
+
+
+        PersonRepository.getInstance().persist(Person.student(112,"Hannah", "Ahrens", "Hannah@abc.de",
+                "Angewandte Informatik", "01.10.2020", "01.10.2024",
+                false, false, true));
+
+        //then
+        List<Person> PersonsWithDeleteFlags = PersonRepository.getInstance().getPersonList().stream().
+                filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
+
+        //when
+        Assertions.assertThat(PersonsWithDeleteFlags)
+                .isNotEmpty()
+                .hasSize(2);
+
+        Assertions.assertThat(PersonsWithDeleteFlags.get(0).getDeletedFlag())
+                .isTrue();
+
+        System.out.println(PersonsWithDeleteFlags);
+
+    }
 }
