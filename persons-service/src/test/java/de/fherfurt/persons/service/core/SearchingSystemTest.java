@@ -9,13 +9,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
-import static java.util.stream.Collectors.toList;
 
 
 /**
@@ -27,7 +24,7 @@ class SearchingSystemTest
 {
 
     @Test
-    void shouldPersonUsingIteratorByPersonID() {
+    void shouldFindPersonUsingIteratorByPersonID() {
         //given
         int PersonID = 36;
         PersonRepository PersonStorage = new PersonRepository();
@@ -46,7 +43,7 @@ class SearchingSystemTest
                 "Hausmeister", false));
 
         Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
+                .filter(person -> Objects.equals(person.getPersonId(),PersonID))
                 .findAny();
 
 
@@ -54,14 +51,14 @@ class SearchingSystemTest
         Assertions.assertThat(result.orElseThrow())
                 .isEqualTo(PersonRepository.getInstance().getPersonList().get(2));
 
-        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonId())
                 .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(36);
 
         System.out.println(result.get());
     }
 
     @Test
-    void testFindPersonUsingIteratorByFirstNamLastNameMajor() {
+    void testFindPersonUsingIteratorByFirstNameLastNameMajor() {
         //given
         String FirstName = "Anna";
         String LastName = "Rheinhard";
