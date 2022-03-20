@@ -3,7 +3,7 @@ package de.fherfurt.persons.service.core;
 import java.util.Optional;
 
 public class EditingPerson {
-    public static void editFirstNameOfPersonBy(int personId, String firstName) {
+    public void editFirstNameOfPersonBy(int personId, String firstName) {
         SearchingSystem Search = new SearchingSystem();
         Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
         wantedPerson.orElseThrow().setFirstname(firstName);

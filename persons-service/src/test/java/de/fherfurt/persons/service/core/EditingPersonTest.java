@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public class EditingPersonTest {
 
-
     /**
      * @author Hoang
      */

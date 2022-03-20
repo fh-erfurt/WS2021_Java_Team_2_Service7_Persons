@@ -92,7 +92,7 @@ public class SearchingSystem implements PersonsClient
      * The "findAllPersonWithDeleteFlag" . will find all Person with a DeleteFlag add them get it into a List
      * @return List of all Person with a Delete-Flag
      */
-    public List<Person> findAllPersonWithDeleteFlag() {
+    public List<Person> findAllPersonWithDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
     }

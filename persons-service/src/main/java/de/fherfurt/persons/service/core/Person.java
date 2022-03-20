@@ -295,7 +295,7 @@ public class Person
                 "PersonID='" + personId + '\'' +
                 " ,firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", deletedFlag='" + deletedFlag + '\n'
+                ", deletedFlag='" + deletedFlag + '\n' + '}'
                 ;
                 /*
                 ", address='" + address + '\'' +
