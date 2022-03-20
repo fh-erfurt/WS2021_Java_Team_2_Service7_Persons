@@ -15,19 +15,22 @@ public class PersonAvatar
     private byte [] AvatarByteArray;
 
     /**
-     * @param ImagePath
+     * @param ImagePath - absolute Path to the Image
      * @return Byte-Array of an Image
-     * @throws IOException
+     * @throws IOException -
      */
-    public byte[] convertImageToByteArray(String ImagePath) throws IOException
-    {
-        //  "/home/hoang/Desktop/WS2021_Java_Team_2_Service_persons/Screenshot_20220228_155257.png";
-        File UserAvatar = new File(ImagePath);
-        return this.AvatarByteArray = Files.readAllBytes(UserAvatar.toPath());
+    public byte[] convertImageToByteArray(String ImagePath) throws IOException {
+        try{
+            File UserAvatar = new File(ImagePath);
+            return this.AvatarByteArray = Files.readAllBytes(UserAvatar.toPath());
+        }
+        catch (IOException ioe){
+            System.out.println("Image Error:" + ioe.getMessage());
+            throw ioe;
+        }
     }
 
-    public void setAvatarByteArrayIntoAvatarRepositoryBy(int PersonID)
-    {
+    public void setAvatarByteArrayIntoAvatarRepositoryBy(int PersonID) {
         PersonAvatarRepository.getInstance().saveAvatarBy(PersonID, AvatarByteArray);
     }
 }

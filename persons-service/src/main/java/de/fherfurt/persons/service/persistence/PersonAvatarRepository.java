@@ -1,12 +1,9 @@
 package de.fherfurt.persons.service.persistence;
 import java.util.HashMap;
-public class PersonAvatarRepository
-{
-    private static final PersonAvatarRepository AVATAR_REPOSITORY = new PersonAvatarRepository();
+public class PersonAvatarRepository {
+    private static final PersonAvatarRepository AvatarRepository  = new PersonAvatarRepository();
     private HashMap<Integer , byte[]> AvatarStorage = new HashMap<>();
-
-    private PersonAvatarRepository() {
-    }
+    private PersonAvatarRepository() {}
 
     public void saveAvatarBy(int PersonID, byte [] AvatarByteArray) {
         AvatarStorage.put(PersonID, AvatarByteArray);
@@ -17,6 +14,6 @@ public class PersonAvatarRepository
     }
 
     public static PersonAvatarRepository getInstance(){
-        return AVATAR_REPOSITORY;
+        return AvatarRepository;
     }
 }
