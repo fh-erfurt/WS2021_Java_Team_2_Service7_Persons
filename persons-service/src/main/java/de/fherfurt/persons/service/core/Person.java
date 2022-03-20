@@ -2,6 +2,7 @@ package de.fherfurt.persons.service.core;
 
 import de.fherfurt.faculty.client.FacultyClient;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
+import de.fherfurt.campus.client.DevCampusService;
 
 import java.util.stream.Stream;
 
@@ -130,7 +131,7 @@ public class Person
         }
 
         public Builder setFaculty(String faculty) {
-            this.faculty = faculty;
+            this.faculty = build().checkFacultyIsValid(faculty);
             return this;
         }
 
@@ -278,8 +279,10 @@ public class Person
     }
 
     //only needed for lecturers
-    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room,boolean deletedFlag){
-        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
+    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
+        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).
+                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
+                setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
     }
 
     //only needed for students
@@ -291,14 +294,13 @@ public class Person
     /**
      * @author Tran Anh Hoang
      */
-
     @Override
     public String toString()
     {
         return "Person: {" +
                 "PersonID='" + PersonID + '\'' +
                 " ,firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'';
+                ", lastname='" + lastname + '\'' + '}';
                 /*
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -316,6 +318,7 @@ public class Person
                 ", jobTitle='" + jobTitle + '\'' +
                 */
     }
+
 
     /**
      * @author Tran Anh Hoang
@@ -457,6 +460,10 @@ public class Person
     }
 
     public void setFacultyByName(String facultyName) {
+       this. faculty = checkFacultyIsValid(facultyName);
+    }
+
+    public String checkFacultyIsValid(String facultyName){
         String result;
         switch (facultyName)
         {
@@ -468,6 +475,10 @@ public class Person
             case "Angewandte Sozialwissenschaften" -> result = FacultyDto.ASW.toString();
             default -> result = FacultyDto.NULL.toString();
         }
-        this.faculty = result;
+        return result;
+    }
+
+    public boolean checkIfRoomExist(String Rooms){
+        return DevCampusService.getInstance().checkRoomExist(Rooms);
     }
 }
