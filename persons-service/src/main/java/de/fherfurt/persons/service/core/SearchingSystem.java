@@ -100,9 +100,9 @@ public class SearchingSystem implements PersonsClient
     /**
      * @author Milena Neumann
      * finds all persons without deletedFlag for using
-     * @return List of existing persons
+     * @return List of existing persons without deleted Flag
      */
-    public List<Person> findAllExistingPersonsFlag() {
+    public List<Person> findAllPersonsWithoutDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getDeletedFlag() ,false)).toList();
     }

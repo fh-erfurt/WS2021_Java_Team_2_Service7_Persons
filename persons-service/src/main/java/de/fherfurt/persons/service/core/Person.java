@@ -288,7 +288,6 @@ public class Person
     /**
      * @author Tran Anh Hoang
      */
-
     @Override
     public String toString()
     {
