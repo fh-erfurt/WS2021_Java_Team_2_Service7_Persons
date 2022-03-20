@@ -1,32 +1,111 @@
 package de.fherfurt.persons.service.core;
 
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
+import de.fherfurt.campus.client.DevCampusService;
 
 /**
+ * class to add person data
  * @author Luisa Oswald
  */
+
 public class Person
 {
-    private  String address;
-    private  int personId;
-    private  String firstname;
-    private  String lastname;
-    private  String email;
-    private  String phonenumber;
-    private  String title;
-    private  String hireDate;
-    private  String faculty;
-    private  Boolean teachingFlag;
-    private  String room;
-    private  String major;
+    /**
+     * Persons address
+     */
+    private String address;
+
+    /**
+     * Persons Unique Identifier
+     */
+    private int personID;
+
+    /**
+     * Persons first name
+     */
+    private String firstname;
+
+    /**
+     * Persons last name
+     */
+    private String lastname;
+
+    /**
+     * Persons email
+     */
+    private String email;
+
+    /**
+     * Persons phonenumber
+     */
+    private String phonenumber;
+
+    /**
+     * Persons title
+     */
+    private String title;
+
+    /**
+     * Persons hire date
+     */
+    private String hireDate;
+
+    /**
+     * Persons faculty
+     */
+    private String faculty;
+
+    /**
+     * Flag to determine whether someone is teaching or not
+     */
+    private Boolean teachingFlag;
+
+    /**
+     * Persons room specific
+     */
+    private String room;
+
+    /**
+     * Persons major
+     */
+    private String major;
+
+    /**
+     * Persons immatriculation date
+     */
+>>>>>>> master
     private  String immatriculationDate;
+
+    /**
+     * Persons exmatriculation date
+     */
     private  String exmatriculationDate;
+
+    /**
+     * Flag to determine whether someone is a tutor
+     */
     private  Boolean tutorFlag;
+
+    /**
+     * Flag to determine whether someone is a scientific worker
+     */
     private  Boolean scientificWorkerFlag;
+
+    /**
+     * Persons job title
+     */
     private  String jobTitle;
+
+    /**
+     * Flag to determine if the data will be deleted
+     */
     private  Boolean deletedFlag;
 
+    /**
+     * Constructor
+     */
     private Person(int personId, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
+
                    String faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
                    String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
         this.personId = personId;
@@ -54,8 +133,9 @@ public class Person
         return new Builder();
     }
 
-
-
+    /**
+     * Class using builder pattern that holds all the information for a person
+     */
     public static class Builder {
 
         private int PersonID;
@@ -80,205 +160,258 @@ public class Person
         private Builder() {
         }
 
+        /**
+         * Function that creates a person from the data
+         * @return new person instance
+         */
         public Person build() {
             return new Person(PersonID, firstname, lastname, address, email, phonenumber, title, hireDate, faculty, teachingFlag,
                     room, major, immatriculationDate, exmatriculationDate, tutorFlag, scientificWorkerFlag, jobTitle, deletedFlag);
         }
 
+        /**
+         * Function to set a persons Unique Identifier
+         */
         public Builder setPersonID(int PersonID)
         {
             this.PersonID = PersonID;
             return this;
         }
 
+        /**
+         * Function to set a persons first name
+         */
         public Builder setFirstname(String firstname) {
             this.firstname = firstname;
             return this;
         }
 
+        /**
+         * Function to set a persons last name
+         */
         public Builder setLastname(String lastname) {
             this.lastname = lastname;
             return this;
         }
 
+        /**
+         * Function to set a persons address
+         */
         public Builder setAddress(String address) {
             this.address = address;
             return this;
         }
 
+        /**
+         * Function to set a persons email
+         */
         public Builder setEmail(String email) {
             this.email = email;
             return this;
         }
 
+        /**
+         * Function to set a persons phonenumber
+         */
         public Builder setPhonenumber(String phonenumber) {
             this.phonenumber = phonenumber;
             return this;
         }
 
+        /**
+         * Function to set a persons title
+         */
         public Builder setTitle(String title) {
             this.title = title;
             return this;
         }
 
+        /**
+         * Function to set a persons hire date
+         */
         public Builder setHireDate(String hireDate) {
             this.hireDate = hireDate;
             return this;
         }
 
+        /**
+         * Function to set a persons faculty
+         */
         public Builder setFaculty(String faculty) {
-            this.faculty = faculty;
+            this.faculty = build().checkFacultyIsValid(faculty);
             return this;
         }
 
+        /**
+         * Function to set a person teaching flag
+         */
         public Builder setTeachingFlag(Boolean teachingFlag) {
             this.teachingFlag = teachingFlag;
             return this;
         }
 
+        /**
+         * Function to set a persons room
+         */
         public Builder setRoom(String room) {
             this.room = room;
             return this;
         }
 
+        /**
+         * Function to set a persons major
+         */
         public Builder setMajor(String major) {
             this.major = major;
             return this;
         }
 
+        /**
+         * Function to set a persons immatriculation date
+         */
         public Builder setImmatriculationDate(String immatriculationDate) {
             this.immatriculationDate = immatriculationDate;
             return this;
         }
 
+        /**
+         * Function to set a persons exmatricualtion date
+         */
         public Builder setExmatriculationDate(String exmatriculationDate) {
             this.exmatriculationDate = exmatriculationDate;
             return this;
         }
 
+        /**
+         * Function to set a persons tutor flag
+         */
         public Builder setTutorFlag(Boolean tutorFlag) {
             this.tutorFlag = tutorFlag;
             return this;
         }
 
+        /**
+         * Function to set a persons scientific worker flag
+         */
         public Builder setScientificWorkerFlag(Boolean scientificWorkerFlag) {
             this.scientificWorkerFlag = scientificWorkerFlag;
             return this;
         }
 
+        /**
+         * Function to set a persons job title
+         */
         public Builder setJobTitle(String jobTitle) {
             this.jobTitle = jobTitle;
             return this;
         }
 
-        public Builder setDeletedFlag(Boolean deletedFlag)
-        {
+        /**
+         * Function to set the deleted flag
+         */
+        public Builder setDeletedFlag(Boolean deletedFlag) {
             this.deletedFlag = deletedFlag;
             return this;
         }
 
-        public int getPersonID()
-        {
+        public int getPersonID() {
             return PersonID;
         }
 
-        public String getFirstname()
-        {
+        public String getFirstname() {
             return firstname;
         }
 
-        public String getLastname()
-        {
+        public String getLastname() {
             return lastname;
         }
 
-        public String getAddress()
-        {
+        public String getAddress() {
             return address;
         }
 
-        public String getEmail()
-        {
+        public String getEmail() {
             return email;
         }
 
-        public String getPhonenumber()
-        {
+        public String getPhonenumber() {
             return phonenumber;
         }
 
-        public String getTitle()
-        {
+        public String getTitle() {
             return title;
         }
 
-        public String getHireDate()
-        {
+        public String getHireDate() {
             return hireDate;
         }
 
-        public String getFaculty()
-        {
+        public String getFaculty() {
             return faculty;
         }
 
-        public Boolean getTeachingFlag()
-        {
+        public Boolean getTeachingFlag() {
             return teachingFlag;
         }
 
-        public String getRoom()
-        {
+        public String getRoom() {
             return room;
         }
 
-        public String getMajor()
-        {
+        public String getMajor() {
             return major;
         }
 
-        public String getImmatriculationDate()
-        {
+        public String getImmatriculationDate() {
             return immatriculationDate;
         }
 
-        public String getExmatriculationDate()
-        {
+        public String getExmatriculationDate() {
             return exmatriculationDate;
         }
 
-        public Boolean getTutorFlag()
-        {
+        public Boolean getTutorFlag() {
             return tutorFlag;
         }
 
-        public Boolean getScientificWorkerFlag()
-        {
+        public Boolean getScientificWorkerFlag() {
             return scientificWorkerFlag;
         }
 
-        public String getJobTitle()
-        {
+        public String getJobTitle() {
             return jobTitle;
         }
 
-        public Boolean getDeletedFlag()
-        {
+        public Boolean getDeletedFlag() {
             return deletedFlag;
         }
 
     }
 
+    /**
+     * Function to create an employee with the needed parameters from person
+     * @return a new person instance that only requires the specific parameters for an employee
+     */
     //only needed for other employees
     public static Person otherEmployee(int PersonID, String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
         return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
     }
 
+    /**
+     * Function to create a lecturer with the needed parameters from person
+     * @return a new person instance that only requires the specific parameters for a lecturer
+     */
     //only needed for lecturers
-    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room,boolean deletedFlag){
-        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
+    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
+        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).
+                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
+                setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
     }
 
+    /**
+     * Function to create a student with the needed parameters from person
+     * @return a new person instance that only requires the specific parameter for a student
+     */
     //only needed for students
     public static Person student(int PersonID, String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag){
         return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
@@ -295,8 +428,7 @@ public class Person
                 "PersonID='" + personId + '\'' +
                 " ,firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", deletedFlag='" + deletedFlag + '\n' + '}'
-                ;
+                ", deletedFlag='" + deletedFlag + '\n' + '}';
                 /*
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -315,9 +447,11 @@ public class Person
                 */
     }
 
+
     /**
      * @author Tran Anh Hoang
      */
+
     public String getAddress() {
         return address;
     }
@@ -465,6 +599,10 @@ public class Person
 
 
     public void setFacultyByName(String facultyName) {
+        this. faculty = checkFacultyIsValid(facultyName);
+    }
+
+    public String checkFacultyIsValid(String facultyName){
         String result;
         switch (facultyName)
         {
@@ -476,6 +614,10 @@ public class Person
             case "Angewandte Sozialwissenschaften" -> result = FacultyDto.ASW.toString();
             default -> result = FacultyDto.NULL.toString();
         }
-        this.faculty = result;
+        return result;
+    }
+
+    public boolean checkIfRoomExist(String Rooms){
+        return DevCampusService.getInstance().checkRoomExist(Rooms);
     }
 }
