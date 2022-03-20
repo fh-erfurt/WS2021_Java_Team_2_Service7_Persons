@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
@@ -20,43 +19,7 @@ import static java.util.stream.Collectors.toList;
  * Testing Class for the Core-Class SearchingSystem
  * only include business-methods
  */
-class SearchingSystemTest
-{
-
-    @Test
-    void shouldPersonUsingIteratorByPersonID() {
-        //given
-        int PersonID = 3;
-        PersonRepository PersonStorage = new PersonRepository();
-
-
-        //when
-        PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
-                "Angewandte Informatik", "01.10.2020", "01.10.2024",
-                false, false, false));
-
-        PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
-                "BWL", "01.10.2019", "01.10.2023",
-                false, false, false));
-
-        PersonRepository.getInstance().persist(Person.otherEmployee(5,"Peter", "Franz", "Peter@fherfurt.de",
-                "Hausmeister", false));
-
-        Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
-                .findAny();
-
-
-        //then
-        Assertions.assertThat(result.orElseThrow())
-                .isEqualTo(PersonRepository.getInstance().getPersonList().get(0));
-        /*
-        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
-                .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(3);
-        */
-        System.out.println(result.get());
-    }
-
+class SearchingSystemTest {
     @Test
     void testFindPersonUsingIteratorByFirstNamLastNameMajor() {
         //given
@@ -99,9 +62,7 @@ class SearchingSystemTest
     }
 
     @Test
-    void shouldConvertByteArrayIntoAvatarImage() throws IOException
-    {
-        //"/home/hoang/Desktop/WS2021_Java_Team_2_Service_Persons_local_new/Meme_Macron.png"
+    void shouldConvertByteArrayIntoAvatarImage() throws IOException {
         //given
         String ImagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
         System.out.println(ImagePath);
@@ -117,10 +78,40 @@ class SearchingSystemTest
     }
 
     @Test
+    void shouldPersonUsingIteratorByPersonID() {
+        //given
+        int PersonID = 3;
+        PersonRepository PersonStorage = new PersonRepository();
+
+
+        //when
+        PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
+                "Angewandte Informatik", "01.10.2020", "01.10.2024",
+                false, false, false));
+
+        PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
+                "BWL", "01.10.2019", "01.10.2023",
+                false, false, false));
+
+        PersonRepository.getInstance().persist(Person.otherEmployee(5,"Peter", "Franz", "Peter@fherfurt.de",
+                "Hausmeister", false));
+
+        Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
+                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
+                .findAny();
+
+
+        //then
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
+                .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(3);
+
+        System.out.println(result.orElseThrow());
+    }
+
+
+    @Test
     public void shouldFindAllPersonWithDeleteFlag() {
         //given
-
-
         PersonRepository.getInstance().persist(Person.student(111,"Fritz", "Leonard", "Fritz@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, true));
@@ -134,20 +125,14 @@ class SearchingSystemTest
 
         //then
         List<Person> PersonsWithDeleteFlags = PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getDeletedFlag() ,false)).toList();
-        System.out.println(PersonsWithDeleteFlags);
+                filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
+
         //when
-       /*
         Assertions.assertThat(PersonsWithDeleteFlags)
                 .isNotEmpty()
                 .hasSize(2);
 
         Assertions.assertThat(PersonsWithDeleteFlags.get(0).getDeletedFlag())
                 .isTrue();
-*/
-
-
-
-
     }
 }
