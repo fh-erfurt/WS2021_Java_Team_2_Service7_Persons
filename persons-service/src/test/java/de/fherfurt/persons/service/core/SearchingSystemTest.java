@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import static java.util.stream.Collectors.toList;
-
 /**
  * @author Tran Anh Hoang
  * Testing Class for the Core-Class SearchingSystem
@@ -88,7 +87,7 @@ class SearchingSystemTest {
         PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false));
-
+      
         PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, false));
@@ -97,12 +96,12 @@ class SearchingSystemTest {
                 "Hausmeister", false));
 
         Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getPersonId(),PersonID))
+                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
                 .findAny();
 
 
         //then
-        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonId())
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
                 .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(3);
 
         System.out.println(result.orElseThrow());

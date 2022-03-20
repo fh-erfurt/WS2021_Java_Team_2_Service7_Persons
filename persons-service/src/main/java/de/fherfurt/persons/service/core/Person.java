@@ -73,7 +73,6 @@ public class Person
     /**
      * Persons immatriculation date
      */
->>>>>>> master
     private  String immatriculationDate;
 
     /**
@@ -104,8 +103,8 @@ public class Person
     /**
      * Constructor
      */
-    private Person(int personId, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
 
+    private Person(int personId, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
                    String faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
                    String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
         this.personId = personId;
@@ -599,7 +598,7 @@ public class Person
 
 
     public void setFacultyByName(String facultyName) {
-        this. faculty = checkFacultyIsValid(facultyName);
+       this.faculty = checkFacultyIsValid(facultyName);
     }
 
     public String checkFacultyIsValid(String facultyName){

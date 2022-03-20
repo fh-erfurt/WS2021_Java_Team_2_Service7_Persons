@@ -1,5 +1,7 @@
 package de.fherfurt.persons.service.core;
 
+import de.fherfurt.campus.client.DevCampusService;
+import de.fherfurt.persons.service.persistence.PersonRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
@@ -17,8 +19,7 @@ public class PersonTest {
         String facultyName = "Gebaeudetechnik und Informatik";
 
         //then
-        switch (facultyName)
-        {
+        switch (facultyName) {
             case "Gebaeudetechnik und Informatik" -> result = FacultyDto.GTI.toString();
             case "Landschaftsarchitektur, Gartenbau und Forst" -> result = FacultyDto.LGF.toString();
             case "Wirtschaft-Logistik-Verkehr" -> result = FacultyDto.WLV.toString();
@@ -32,4 +33,30 @@ public class PersonTest {
         Assertions.assertThat(result).isEqualTo("Gebaeudetechnik und Informatik");
 
     }
+
+    @Test
+    public void testCheckIfRoomExist(){
+        //given
+        SearchingSystem Search = new SearchingSystem();
+        String firstRoom = "Audimax";
+        String secondRoom = "5.E.09";
+        String thirdRoom = "5.E.10";
+        String fourthRoom = "5.E.11";
+        String fifthRoom = "5.E.12";
+
+        //then
+        DevCampusService.getInstance().saveRooms(firstRoom);
+        DevCampusService.getInstance().saveRooms(secondRoom);
+        DevCampusService.getInstance().saveRooms(thirdRoom);
+        DevCampusService.getInstance().saveRooms(fourthRoom);
+        DevCampusService.getInstance().saveRooms(fifthRoom);
+        PersonRepository.getInstance().persist(Person.lecturer(41, "Micheal", "Rhöse", "MichealRhöse@fh-erfurt.de",
+                "+49/2561925", "Dozent", "18.08.2021", "Gebaeudetechnik und Informatik", true, "5.E.12", false));
+
+        //when
+        Assertions.assertThat(Search.findPersonUsingIteratorBy(41).orElseThrow().getRoom()).isEqualTo("5.E.12");
+    }
+
+
+
 }

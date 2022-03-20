@@ -1,7 +1,5 @@
 package de.fherfurt.faculty.client.transfer.object;
 
-import java.util.stream.Stream;
-
 /**
  * @author Tran Anh Hoang
  */
