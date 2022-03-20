@@ -10,6 +10,9 @@ public class PersonRepository {
 
     private final List<Person> storage = new ArrayList<>();
 
+    private PersonRepository(){
+    }
+
     public void persist(Person person) {
         storage.add(person);
     }

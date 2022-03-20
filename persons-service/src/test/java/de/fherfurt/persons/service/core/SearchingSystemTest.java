@@ -80,8 +80,6 @@ class SearchingSystemTest {
     void shouldPersonUsingIteratorByPersonID() {
         //given
         int PersonID = 3;
-        PersonRepository PersonStorage = new PersonRepository();
-
 
         //when
         PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",

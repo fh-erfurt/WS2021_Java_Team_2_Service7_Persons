@@ -118,25 +118,20 @@ public class InputField implements FacultyClient
         return result;
     }
 
-
-    /*
-    public String checkInputEqualsEnums(String inFaculty)
-    {
-        if (getFacultyByName(inFaculty) == FacultyDto.GTI || getFacultyByName(inFaculty) == FacultyDto.LGF || getFacultyByName(inFaculty) == FacultyDto.WLV || getFacultyByName(inFaculty) == FacultyDto.ASP || getFacultyByName(inFaculty) == FacultyDto.ASW) {
-            return inFaculty;
-        }
-        else {
-            return null;
-        }
-    }
-    */
-
+    /**
+     * @author Tran Anh Hoang
+     */
     public void triggerFindPersonUsingIteratorBy(){
         SearchingSystem Search = new SearchingSystem();
         Search.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
     }
 
-
+    /**
+     * @author Tran Anh Hoang
+     */
+    public void triggerSearchingHistory(){
+        SearchingHistory.getInstance().setSearchHistoryMap(this.PersonInputData);
+    }
 }
 
 
