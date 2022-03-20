@@ -253,6 +253,7 @@ public class Person
          * Function to set a persons room
          */
         public Builder setRoom(String room) {
+            if(Person.checkIfRoomExist(room))
             this.room = room;
             return this;
         }
@@ -427,7 +428,7 @@ public class Person
                 "PersonID='" + personId + '\'' +
                 " ,firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", deletedFlag='" + deletedFlag + '\n' + '}';
+                ", deletedFlag='" + deletedFlag + '}' + '\n';
                 /*
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -536,7 +537,12 @@ public class Person
     }
 
     public void setRoom(String room) {
-        this.room = room;
+        if (Person.checkIfRoomExist(room)){
+            this.room = room ;
+        }
+        else {
+            this.room = null;
+        }
     }
 
     public String getMajor() {
@@ -616,7 +622,7 @@ public class Person
         return result;
     }
 
-    public boolean checkIfRoomExist(String Rooms){
+    public static boolean checkIfRoomExist(String Rooms){
         return DevCampusService.getInstance().checkRoomExist(Rooms);
     }
 }

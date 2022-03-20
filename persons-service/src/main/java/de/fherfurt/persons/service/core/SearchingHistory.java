@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 public class SearchingHistory
 {
     private final static SearchingHistory UserSearchHistory = new SearchingHistory();
-
+    private SearchingHistory() {}
     private final LinkedHashMap<Integer, ArrayList<String> > SearchHistoryMap = new LinkedHashMap<>();
     private int HashMapKey = 0;
 
@@ -20,18 +20,13 @@ public class SearchingHistory
      * Because of the HashMapKey reset. The First Element of Map the will be overrite by new DisplayName.
      * After that the Methode will go back inti the if-branch and overwrite the second element and so on.
      */
-
     public static SearchingHistory getInstance(){
         return UserSearchHistory;
     }
 
-    /**
-     *
-     * @param PersonInputData
-     */
     public void setSearchHistoryMap(ArrayList<String> PersonInputData ) {
 
-        if(this.HashMapKey < 6) {
+        if(this.HashMapKey < 5) {
             SearchHistoryMap.put(HashMapKey, PersonInputData);
             this.HashMapKey = HashMapKey + 1;
         }
@@ -50,8 +45,7 @@ public class SearchingHistory
     /**
      * Clear entire Map
      */
-    private void clearEntireMap() {
+    public void clearEntireMap() {
         SearchHistoryMap.clear();
     }
-
 }

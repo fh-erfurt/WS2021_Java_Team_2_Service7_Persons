@@ -20,21 +20,6 @@ import static java.util.stream.Collectors.toList;
  */
 public class SearchingSystem implements PersonsClient
 {
-    private ArrayList<String> SearchInputData = new ArrayList<>();
-
-    /**
-     * set ArrayList with the Inputdata of the User from the class Inputfield
-     * @param searchInputData ArrayList from class Inpufield, which includes the the User Search Parameters
-     *
-     * */
-    public void setSearchInputData(ArrayList<String> searchInputData) {
-        this.SearchInputData = searchInputData;
-    }
-
-    public ArrayList<String> getSearchInputData() {
-        return SearchInputData;
-    }
-
     /**
      * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the PersonID with an Iterator
      * @param PersonID Unique Key-Value to find a certain Person from the ArrayList
@@ -48,14 +33,12 @@ public class SearchingSystem implements PersonsClient
                 findAny();
     }
 
-
-
     /**
      * This Methode will find a Person from FirstName, LastName and Major
-     * @param firstname
-     * @param lastname
-     * @param major
-     * @param faculty
+     * @param firstname - Firstname of a Person
+     * @param lastname - Last of a Person
+     * @param major - Major of a Person
+     * @param faculty - attended faculty of a Person
      * @return a Person with all his/her Attributes in a Form of an Array
      */
     public List<Person> findPersonUsingIteratorBy(String firstname, String lastname, String major, String faculty ) {
@@ -90,7 +73,7 @@ public class SearchingSystem implements PersonsClient
 
     /**
      * The "findAllPersonWithDeleteFlag" . will find all Person with a DeleteFlag add them get it into a List
-     * @return List of all Person with a Delete-Flag
+     * @return List of all Person with a deleted-Flag
      */
     public List<Person> findAllPersonWithDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().

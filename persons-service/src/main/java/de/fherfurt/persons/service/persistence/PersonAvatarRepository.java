@@ -5,6 +5,9 @@ public class PersonAvatarRepository
     private static final PersonAvatarRepository AVATAR_REPOSITORY = new PersonAvatarRepository();
     private HashMap<Integer , byte[]> AvatarStorage = new HashMap<>();
 
+    private PersonAvatarRepository() {
+    }
+
     public void saveAvatarBy(int PersonID, byte [] AvatarByteArray) {
         AvatarStorage.put(PersonID, AvatarByteArray);
     }
