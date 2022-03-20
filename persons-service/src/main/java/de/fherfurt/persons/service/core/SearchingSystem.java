@@ -44,10 +44,10 @@ public class SearchingSystem implements PersonsClient
     public List<Person> findPersonUsingIteratorBy(String firstname, String lastname, String major, String faculty ) {
 
         return PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getFirstname() , firstname)
-                        || Objects.equals(person.getLastname() , lastname )
-                        || Objects.equals(person.getMajor(), major)
-                        || Objects.equals(person.getFaculty(), faculty))
+                .filter(person -> Objects.equals(person.getFirstname(),firstname)
+                        || Objects.equals(person.getLastname(),lastname)
+                        || Objects.equals(person.getMajor(),major)
+                        || Objects.equals(person.getFaculty(),faculty))
                 .collect(toList());
     }
 
