@@ -96,12 +96,12 @@ class SearchingSystemTest {
                 "Hausmeister", false));
 
         Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getPersonID(),PersonID))
+                .filter(person -> Objects.equals(person.getPersonId(),PersonID))
                 .findAny();
 
 
         //then
-        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonID())
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonId())
                 .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(3);
 
         System.out.println(result.orElseThrow());

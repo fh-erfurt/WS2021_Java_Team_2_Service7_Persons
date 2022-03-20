@@ -18,7 +18,7 @@ public class Person
     /**
      * Persons Unique Identifier
      */
-    private int personID;
+    private int personId;
 
     /**
      * Persons first name
