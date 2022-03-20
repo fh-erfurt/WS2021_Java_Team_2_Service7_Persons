@@ -219,6 +219,9 @@ public class Person
             return this;
         }
 
+        /**
+         * Function to set a persons title
+         */
         public Builder setTitle(String title) {
             this.title = title;
             return this;
