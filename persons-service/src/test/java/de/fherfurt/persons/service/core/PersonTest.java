@@ -12,7 +12,8 @@ import de.fherfurt.faculty.client.transfer.object.FacultyDto;
 public class PersonTest {
 
     @Test
-    public void testGetFacultyByName()  {
+    public void testGetFacultyByName()
+    {
         //given
         String result;
         String facultyName = "Gebaeudetechnik und Informatik";

@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
 import static java.util.stream.Collectors.toList;
 /**
  * @author Tran Anh Hoang
@@ -21,7 +20,7 @@ import static java.util.stream.Collectors.toList;
  */
 class SearchingSystemTest {
     @Test
-    void testFindPersonUsingIteratorByFirstNamLastNameMajor() {
+    void testFindPersonUsingIteratorByFirstNameLastNameMajor() {
         //given
         String FirstName = "Anna";
         String LastName = "Rheinhard";
@@ -35,7 +34,7 @@ class SearchingSystemTest {
 
         PersonRepository.getInstance().persist(Person.student(2,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
-                 false, false, false));
+                false, false, false));
 
 
         //when
@@ -88,7 +87,7 @@ class SearchingSystemTest {
         PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false));
-
+      
         PersonRepository.getInstance().persist(Person.student(4,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, false));

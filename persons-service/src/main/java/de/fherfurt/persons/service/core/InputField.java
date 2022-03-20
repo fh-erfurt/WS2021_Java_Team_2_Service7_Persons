@@ -9,32 +9,30 @@ import java.util.regex.Pattern;
 
 
 /**
+ * @author Milena Neumann
  * The InputField Class is the place where the Input from the searching user gets
  * checked and put into a list for the Following service
- *
- * @author Milena Neumann
  */
 public class InputField implements FacultyClient
 {
 
     private String inFirstName;
     private String inLastName;
-    private String inModul;
+    private String inMajor;
     private String inFaculty;
     ArrayList<String> PersonInputData = new ArrayList<>();
 
-    public InputField(String inFirstName, String inLastName, String inModul, String inFaculty) // Konstruktor String inFirstName, String inLastName, String inModul, Faculty inFaculty
+    public InputField(String inFirstName, String inLastName, String inMajor, String inFaculty)
     {
         this.inFirstName = inFirstName;
         this.inLastName = inLastName;
-        this.inModul = inModul;
+        this.inMajor = inMajor;
         this.inFaculty = inFaculty;
     }
 
     /**
      * getter for comparing
-     *
-     * @return the data-list of person information
+     * @return the data-list of searched person information from user
      */
     public ArrayList<String> getListSearchInput()
     {
@@ -47,11 +45,11 @@ public class InputField implements FacultyClient
      */
     public void setListSearchInput()
     {
-        if ((checkStringValid(this.inFirstName)) && (checkStringValid(this.inLastName)) && (checkStringValid(this.inModul)))
+        if ((checkStringValid(this.inFirstName)) && (checkStringValid(this.inLastName)) && (checkStringValid(this.inMajor)))
         {
             PersonInputData.add(this.inFirstName);
             PersonInputData.add(this.inLastName);
-            PersonInputData.add(this.inModul);
+            PersonInputData.add(this.inMajor);
             PersonInputData.add(getFacultyByName(inFaculty).toString()); // Enum wurde geprüft und passender String wird in die Liste eingetragen
         }
         else
@@ -135,7 +133,7 @@ public class InputField implements FacultyClient
 
     public void triggerFindPersonUsingIteratorBy(){
         SearchingSystem Search = new SearchingSystem();
-        Search.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inModul, this.inFaculty );
+        Search.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
     }
 
 

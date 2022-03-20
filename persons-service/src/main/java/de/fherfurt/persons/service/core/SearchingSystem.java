@@ -44,7 +44,7 @@ public class SearchingSystem implements PersonsClient
     public Optional<Person> findPersonUsingIteratorBy(int PersonID) {
 
         return PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getPersonID(), PersonID)).
+                filter(person -> Objects.equals(person.getPersonId(), PersonID)).
                 findAny();
     }
 
@@ -92,8 +92,18 @@ public class SearchingSystem implements PersonsClient
      * The "findAllPersonWithDeleteFlag" . will find all Person with a DeleteFlag add them get it into a List
      * @return List of all Person with a Delete-Flag
      */
-    public List<Person> findAllPersonWithDeleteFlag() {
+    public List<Person> findAllPersonWithDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
+    }
+
+    /**
+     * @author Milena Neumann
+     * finds all persons without deletedFlag for using
+     * @return List of existing persons without deleted Flag
+     */
+    public List<Person> findAllPersonsWithoutDeletedFlag() {
+        return PersonRepository.getInstance().getPersonList().stream().
+                filter(person -> Objects.equals(person.getDeletedFlag() ,false)).toList();
     }
 }

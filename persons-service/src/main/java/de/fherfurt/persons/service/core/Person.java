@@ -1,10 +1,7 @@
 package de.fherfurt.persons.service.core;
 
-import de.fherfurt.faculty.client.FacultyClient;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
 import de.fherfurt.campus.client.DevCampusService;
-
-import java.util.stream.Stream;
 
 /**
  * class to add person data
@@ -13,7 +10,6 @@ import java.util.stream.Stream;
 
 public class Person
 {
-
     /**
      * Persons address
      */
@@ -22,7 +18,7 @@ public class Person
     /**
      * Persons Unique Identifier
      */
-    private int PersonID;
+    private int personID;
 
     /**
      * Persons first name
@@ -107,10 +103,11 @@ public class Person
     /**
      * Constructor
      */
-    private Person(int PersonID, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
+
+    private Person(int personId, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
                    String faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
                    String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
-        this.PersonID = PersonID;
+        this.personId = personId;
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
@@ -427,9 +424,10 @@ public class Person
     public String toString()
     {
         return "Person: {" +
-                "PersonID='" + PersonID + '\'' +
+                "PersonID='" + personId + '\'' +
                 " ,firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' + '}';
+                ", lastname='" + lastname + '\'' +
+                ", deletedFlag='" + deletedFlag + '\n' + '}';
                 /*
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -461,12 +459,12 @@ public class Person
         this.address = address;
     }
 
-    public int getPersonID() {
-        return PersonID;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setPersonID(int personID) {
-        PersonID = personID;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getFirstname() {
@@ -521,6 +519,10 @@ public class Person
         return faculty;
     }
 
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
     public Boolean getTeachingFlag() {
         return teachingFlag;
     }
@@ -551,10 +553,6 @@ public class Person
 
     public void setImmatriculationDate(String immatriculationDate) {
         this.immatriculationDate = immatriculationDate;
-    }
-    public Boolean getDeletedFlag()
-    {
-        return this.deletedFlag;
     }
 
     public String getExmatriculationDate() {
@@ -589,8 +587,18 @@ public class Person
         this.jobTitle = jobTitle;
     }
 
+    public Boolean getDeletedFlag() {
+        return deletedFlag;
+    }
+
+    public void setDeletedFlag(Boolean deletedFlag) {
+        this.deletedFlag = deletedFlag;
+    }
+
+
+
     public void setFacultyByName(String facultyName) {
-       this. faculty = checkFacultyIsValid(facultyName);
+       this.faculty = checkFacultyIsValid(facultyName);
     }
 
     public String checkFacultyIsValid(String facultyName){

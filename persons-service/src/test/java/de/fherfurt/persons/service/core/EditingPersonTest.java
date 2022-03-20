@@ -9,41 +9,87 @@ import java.util.Optional;
 
 public class EditingPersonTest {
 
+    /**
+     * @author Hoang
+     */
     @Test
-    public void testEditFirstNameOfPersonBy() {
-        int PersonID = 12;
+    public void testEditFirstNameOfPersonByPersonIdAndFirstname() {
+        int personId = 12;
 
         //given
         SearchingSystem Search = new SearchingSystem();
 
-
-        //when
         PersonRepository.getInstance().persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false));
 
-        PersonRepository.getInstance().persist(Person.student(14,"Anna", "Rheinhard", "Anna@abc.de",
+        PersonRepository.getInstance().persist(Person.student(13,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, false));
 
-        PersonRepository.getInstance().persist(Person.otherEmployee(36,"Peter", "Franz", "Peter@fherfurt.de",
+        PersonRepository.getInstance().persist(Person.otherEmployee(14,"Peter", "Franz", "Peter@fherfurt.de",
                 "Hausmeister", false));
 
-
-        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(PersonID);
-
-        System.out.println(wantedPerson.toString());
-
-        wantedPerson.orElseThrow().setFirstname("Henriette");
-
+        //when
+        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        
         //then
-        Assertions.assertThat(wantedPerson.get().getFirstname())
-                .isEqualTo("Henriette");
-
-        System.out.println(wantedPerson.get().getFirstname());
+        EditingPerson personToEdit =new EditingPerson();
+        personToEdit.editFirstNameOfPersonBy(12, "Mira");
+        Assertions.assertThat(wantedPerson.orElseThrow().getFirstname())
+                .isEqualTo("Mira");
     }
 
+    /**
+     * @author Milena Neumann
+     */
     @Test
-    public void testEditLastNameOfPersonBy() {
+    public void testEditLastNameOfPersonByPersonId() {
+
+        //given
+        int personId = 15;
+        PersonRepository.getInstance().persist(Person.student(15,"Sandy", "Cheeks", "sandycheeks@abc.de",
+                "Angewandte Informatik", "01.11.2020", "01.12.2024",
+                false, false, false));
+
+        PersonRepository.getInstance().persist(Person.student(16,"Frank", "Enstein", "frank@abc.de",
+                "BWL", "01.10.2019", "01.10.2023",
+                false, false, false));
+
+        PersonRepository.getInstance().persist(Person.otherEmployee(17,"Gandalf", "der Weiße", "gandalf@fherfurt.de",
+                "Hausmeister", false));
+
+        SearchingSystem Search = new SearchingSystem();
+
+        //when
+        EditingPerson personToEdit = new EditingPerson();
+        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        personToEdit.editLastNameOfPersonBy(15, "Schlumpfmetzger");
+
+        //then
+        Assertions.assertThat(wantedPerson.orElseThrow().getLastname())
+                .isEqualTo("Schlumpfmetzger");
+    }
+
+    /**
+     * @author Milena Neumann
+     */
+    @Test
+    public void testEditDeletedFlagOfPersonByPersonId() {
+
+        //given
+        int personId = 18;
+        SearchingSystem Search = new SearchingSystem();
+        EditingPerson personToEdit = new EditingPerson();
+
+        PersonRepository.getInstance().persist(Person.otherEmployee(18,"Eugene", "Krabs", "Eugene@fherfurt.de",
+                "Meister der Münze", false));
+        //when
+        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        personToEdit.editDeletedFlagOfPersonBy(18, true);
+
+        //then
+        Assertions.assertThat(wantedPerson.orElseThrow().getDeletedFlag())
+                .isEqualTo(true);
     }
 }
