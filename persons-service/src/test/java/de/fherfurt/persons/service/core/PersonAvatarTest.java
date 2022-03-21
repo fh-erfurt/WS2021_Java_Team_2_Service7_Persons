@@ -13,12 +13,14 @@ import java.nio.file.Paths;
 class PersonAvatarTest {
     @Test
     void convertImageToByteArray() throws IOException {
+
         //given
-        String ImagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
+        String imagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
         byte [] AvatarByteArray;
-        System.out.println(ImagePath);
+        System.out.println(imagePath);
+
         //when
-        File UserAvatar = new File(ImagePath);
+        File UserAvatar = new File(imagePath);
         AvatarByteArray = Files.readAllBytes(UserAvatar.toPath());
 
         //then

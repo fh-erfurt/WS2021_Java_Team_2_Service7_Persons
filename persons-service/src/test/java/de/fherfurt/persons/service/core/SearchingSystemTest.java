@@ -13,73 +13,68 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import static java.util.stream.Collectors.toList;
+
 /**
  * @author Tran Anh Hoang
  * Testing Class for the Core-Class SearchingSystem
  * only include business-methods
  */
 class SearchingSystemTest {
+    
     @Test
     void testFindPersonUsingIteratorByFirstNameLastNameMajor() {
         //given
-        String FirstName = "Anna";
-        String LastName = "Rheinhard";
-        String Major = "BWL";
-
+        String firstName = "Anna";
+        String lastName = "Rheinhard";
+        String major = "BWL";
 
         PersonRepository.getInstance().persist(Person.student(1,"Anna", "Rheinhard", "Anna@abc.de",
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, false)  );
 
-
         PersonRepository.getInstance().persist(Person.student(2,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false));
 
-
         //when
         List<Person> result = PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getFirstname(), FirstName))
-                .filter(person -> Objects.equals(person.getLastname(), LastName))
-                .filter(person -> Objects.equals(person.getMajor(), Major)).toList();
+                .filter(person -> Objects.equals(person.getFirstname(), firstName))
+                .filter(person -> Objects.equals(person.getLastname(), lastName))
+                .filter(person -> Objects.equals(person.getMajor(), major)).toList();
 
         //then
         Assertions.assertThat(result)
                 .isNotEmpty()
                 .doesNotHaveDuplicates();
-
-        //für ein Eingiff auf die Datensätze
-        System.out.println(result.get(0).getFirstname());
-
     }
 
     @Test
-    public byte[] shouldFindPersonAvatarBy(int PersonID)
+    public byte[] shouldFindPersonAvatarBy(int personId)
     {
-        PersonAvatarRepository Repo = PersonAvatarRepository.getInstance();
-        return Repo.getAvatarStorageBy(PersonID);
+        PersonAvatarRepository testRepo = PersonAvatarRepository.getInstance();
+        return testRepo.getAvatarStorageBy(personId);
     }
 
     @Test
     void shouldConvertByteArrayIntoAvatarImage() throws IOException {
         //given
-        String ImagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
-        System.out.println(ImagePath);
-        int PersonID = 1;
+        String imagePath = Paths.get("Meme_Macron.png").toAbsolutePath().toString();
+        System.out.println(imagePath);
+        int personId = 1;
 
         //when
-        PersonAvatar Avatars = new PersonAvatar();
-        Avatars.convertImageToByteArray(ImagePath);
-        Avatars.setAvatarByteArrayIntoAvatarRepositoryBy(PersonID);
+        PersonAvatar testAvatar = new PersonAvatar();
+        testAvatar.convertImageToByteArray(imagePath);
+        testAvatar.setAvatarByteArrayIntoAvatarRepositoryBy(personId);
 
         //then
-        BufferedImage img = ImageIO.read(new ByteArrayInputStream(shouldFindPersonAvatarBy(PersonID)));
+        BufferedImage testImage = ImageIO.read(new ByteArrayInputStream(shouldFindPersonAvatarBy(personId)));
     }
 
     @Test
     void shouldPersonUsingIteratorByPersonID() {
         //given
-        int PersonID = 3;
+        int personId = 3;
 
         //when
         PersonRepository.getInstance().persist(Person.student(3,"Julie", "Moldau", "Julie123@abc.de",
@@ -94,16 +89,14 @@ class SearchingSystemTest {
                 "Hausmeister", false));
 
         Optional<Person> result =  PersonRepository.getInstance().getPersonList().stream()
-                .filter(person -> Objects.equals(person.getPersonId(),PersonID))
+                .filter(person -> Objects.equals(person.getPersonId(),personId))
                 .findAny();
 
 
         //then
         Assertions.assertThat(PersonRepository.getInstance().getPersonList().get(2).getPersonId())
-                .as("Check if PersonID: " + PersonID + " is equals to ").isEqualTo(3);
-
-        System.out.println(result.orElseThrow());
-    }
+                .as("Check if personId: " + personId + " is equals to ").isEqualTo(3);
+        }
 
 
     @Test
@@ -113,23 +106,20 @@ class SearchingSystemTest {
                 "BWL", "01.10.2019", "01.10.2023",
                 false, false, true));
 
-
         PersonRepository.getInstance().persist(Person.student(112,"Hannah", "Ahrens", "Hannah@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, true));
 
-
-
         //then
-        List<Person> PersonsWithDeleteFlags = PersonRepository.getInstance().getPersonList().stream().
+        List<Person> personsWithDeleteFlags = PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
 
         //when
-        Assertions.assertThat(PersonsWithDeleteFlags)
+        Assertions.assertThat(personsWithDeleteFlags)
                 .isNotEmpty()
                 .hasSize(2);
 
-        Assertions.assertThat(PersonsWithDeleteFlags.get(0).getDeletedFlag())
+        Assertions.assertThat(personsWithDeleteFlags.get(0).getDeletedFlag())
                 .isTrue();
     }
 }

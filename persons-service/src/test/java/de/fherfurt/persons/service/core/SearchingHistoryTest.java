@@ -12,66 +12,58 @@ public class SearchingHistoryTest  {
     @Test
     public void testSetSearchHistoryMap() {
         //given
-        InputField UserInputTestObjOne = new InputField("Hannah", "Enfield", "BWL", "Wirtschaft-Logistik-Verkehr");
+        InputField userInputTestObjOne = new InputField("Hannah", "Enfield", "BWL", "Wirtschaft-Logistik-Verkehr");
 
-        ArrayList<String> TestList = new ArrayList<>();
-        TestList.add("Hannah");
-        TestList.add("Enfield");
-        TestList.add("BWL");
-        TestList.add("Wirtschaft Logistik Verkehr");
+        ArrayList<String> testList = new ArrayList<>();
+        testList.add("Hannah");
+        testList.add("Enfield");
+        testList.add("BWL");
+        testList.add("Wirtschaft Logistik Verkehr");
 
-
-        ArrayList<String> TestListTwo = new ArrayList<>();
-        TestListTwo.add("Eren");
-        TestListTwo.add("Jaeger");
-        TestListTwo.add("Informatik");
-        TestListTwo.add("Gebaeudetechnik und Informatik");
+        ArrayList<String> testListTwo = new ArrayList<>();
+        testListTwo.add("Eren");
+        testListTwo.add("Jaeger");
+        testListTwo.add("Informatik");
+        testListTwo.add("Gebaeudetechnik und Informatik");
 
         //when
-        UserInputTestObjOne.setListSearchInput();
-        UserInputTestObjOne.triggerSearchingHistory();
+        userInputTestObjOne.setListSearchInput();
+        userInputTestObjOne.triggerSearchingHistory();
 
         //then
         Assertions.assertThat(SearchingHistory.getInstance().getSearchHistoryMap())
                 .isNotEmpty()
                 .containsKey(0)
-                .containsValue(TestList);
-
-
-        //System.out.println(SearchingHistory.getInstance().getSearchHistoryMap().get(0));
+                .containsValue(testList);
 
         //given
-        InputField  UserInputTestObjTwo = new InputField("Justus", "Fritz", "BWL", "Wirtschaft-Logistik-Verkehr");
-        InputField  UserInputTestObjThree = new InputField("Manfred", "Heinrich", "Informatik", "Gebaeudetechnik und Informatik");
-        InputField  UserInputTestObjFour = new InputField("Alfred", "Gotha", "BWL", "Wirtschaft-Logistik-Verkehr");
-        InputField  UserInputTestObjFive= new InputField("Mikasa", "Ackermann", "Informatik", "Gebaeudetechnik und Informatik");
-        InputField  UserInputTestObjSix = new InputField("Eren", "Jaeger", "Informatik", "Gebaeudetechnik und Informatik");
-
+        InputField userInputTestObjTwo = new InputField("Justus", "Fritz", "BWL", "Wirtschaft-Logistik-Verkehr");
+        InputField userInputTestObjThree = new InputField("Manfred", "Heinrich", "Informatik", "Gebaeudetechnik und Informatik");
+        InputField userInputTestObjFour = new InputField("Alfred", "Gotha", "BWL", "Wirtschaft-Logistik-Verkehr");
+        InputField userInputTestObjFive= new InputField("Mikasa", "Ackermann", "Informatik", "Gebaeudetechnik und Informatik");
+        InputField userInputTestObjSix = new InputField("Eren", "Jaeger", "Informatik", "Gebaeudetechnik und Informatik");
 
         //then
-        UserInputTestObjTwo.setListSearchInput();
-        UserInputTestObjTwo.triggerSearchingHistory();
+        userInputTestObjTwo.setListSearchInput();
+        userInputTestObjTwo.triggerSearchingHistory();
 
-        UserInputTestObjThree.setListSearchInput();
-        UserInputTestObjThree.triggerSearchingHistory();
+        userInputTestObjThree.setListSearchInput();
+        userInputTestObjThree.triggerSearchingHistory();
 
-        UserInputTestObjFour.setListSearchInput();
-        UserInputTestObjFour.triggerSearchingHistory();
+        userInputTestObjFour.setListSearchInput();
+        userInputTestObjFour.triggerSearchingHistory();
 
-        UserInputTestObjFive.setListSearchInput();
-        UserInputTestObjFive.triggerSearchingHistory();
+        userInputTestObjFive.setListSearchInput();
+        userInputTestObjFive.triggerSearchingHistory();
 
-        UserInputTestObjSix.setListSearchInput();
-        UserInputTestObjSix.triggerSearchingHistory();
-
+        userInputTestObjSix.setListSearchInput();
+        userInputTestObjSix.triggerSearchingHistory();
 
         //when
         Assertions.assertThat(SearchingHistory.getInstance().getSearchHistoryMap().get(0))
                 .isNotEmpty()
                 .contains("Eren", "Jaeger", "Informatik","Gebaeudetechnik und Informatik")
-                .isEqualTo(TestListTwo);
-
-        //System.out.println(SearchingHistory.getInstance().getSearchHistoryMap().get(0));
+                .isEqualTo(testListTwo);
     }
 
     @Test
@@ -83,7 +75,5 @@ public class SearchingHistoryTest  {
         //then
         Assertions.assertThat(SearchingHistory.getInstance().getSearchHistoryMap())
                 .isEmpty();
-
-        System.out.println(SearchingHistory.getInstance().getSearchHistoryMap());
    }
 }

@@ -4,9 +4,14 @@ package de.fherfurt.persons.service.persistence;
 import de.fherfurt.persons.service.core.Person;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author Luisa Oswald and Tran Anh Hoang
+ * Repository for all persons
+ */
 public class PersonRepository {
 
-    private static final PersonRepository PersonStorage = new PersonRepository();
+    private static final PersonRepository personStorage = new PersonRepository();
 
     private final List<Person> storage = new ArrayList<>();
 
@@ -28,6 +33,6 @@ public class PersonRepository {
     }
 
     public static PersonRepository getInstance(){
-        return PersonStorage;
+        return personStorage;
     }
 }

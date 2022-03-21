@@ -13,28 +13,29 @@ import java.util.Objects;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
+
 /**
  * @author Tran Anh Hoang
- * The Class SearchingSystem include Iterator Search Methode for a Person (by PersonID or Personinformation)
- * and a search Methode for the Avator of an certain Person
+ * The class SearchingSystem includes iterator search methode for a person (by personId or personinformation)
+ * and a search methode for the Avatar of a certain Person
  */
 public class SearchingSystem implements PersonsClient
 {
     /**
-     * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the PersonID with an Iterator
-     * @param PersonID Unique Key-Value to find a certain Person from the ArrayList
+     * This methode "findPersonUsingIteratorByPersonId" will find a person from the ArrayList by the personId with an iterator
+     * @param personId Unique Key-Value to find a certain Person from the ArrayList
      * @return Person with all her/his values
      */
     @Override
-    public Optional<Person> findPersonUsingIteratorBy(int PersonID) {
+    public Optional<Person> findPersonUsingIteratorBy(int personId) {
 
         return PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getPersonId(), PersonID)).
+                filter(person -> Objects.equals(person.getPersonId(), personId)).
                 findAny();
     }
 
     /**
-     * This Methode will find a Person from FirstName, LastName and Major
+     * This Methode will find a Person from firstName, lastName and major
      * @param firstname - Firstname of a Person
      * @param lastname - Last of a Person
      * @param major - Major of a Person
@@ -53,27 +54,27 @@ public class SearchingSystem implements PersonsClient
 
     /**
      * The "findPersonAvatarBy"-Method use the Singleton Pattern to access the class PersonAvatarRepository
-     * @param PersonID unique Key-Value to find in certain Avator of Person
-     * @return returns a byte Array of an Image of a Person
+     * @param personId unique Key-Value to find in certain avator of a person
+     * @return returns a byte array of an image of a person
      */
     @Override
-    public byte[] findPersonAvatarBy(int PersonID) {
-        PersonAvatarRepository Repo = PersonAvatarRepository.getInstance();
-        return Repo.getAvatarStorageBy(PersonID);
+    public byte[] findPersonAvatarBy(int personId) {
+        PersonAvatarRepository avatarRepo = PersonAvatarRepository.getInstance();
+        return avatarRepo.getAvatarStorageBy(personId);
     }
 
     /**
-     * The "convertByteArrayIntoAvatarImage"-Methode convert a Byte-Array back to an Image
-     * @param PersonID unique Key-Value to find in certain Avator of a Person
-     * return Image of a Person
+     * The "convertByteArrayIntoAvatarImage"-Methode convert a Byte-Array back to an image
+     * @param personId unique Key-Value to find in certain avatar of a Person
+     * return Image of a person
      */
-    public BufferedImage convertByteArrayIntoAvatarImage(int PersonID) throws IOException {
-        return ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(PersonID)));
+    public BufferedImage convertByteArrayIntoAvatarImage(int personId) throws IOException {
+        return ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(personId)));
     }
 
     /**
-     * The "findAllPersonWithDeleteFlag" . will find all Person with a DeleteFlag add them get it into a List
-     * @return List of all Person with a deleted-Flag
+     * The "findAllPersonWithDeleteFlag" will find all Person with a DeleteFlag add them into a list
+     * @return List of all persons with a deleted-Flag
      */
     public List<Person> findAllPersonWithDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().
@@ -82,8 +83,8 @@ public class SearchingSystem implements PersonsClient
 
     /**
      * @author Milena Neumann
-     * finds all persons without deletedFlag for using
-     * @return List of existing persons without deleted Flag
+     * finds all persons without deletedFlag
+     * @return List of persons without deleted Flag
      */
     public List<Person> findAllPersonsWithoutDeletedFlag() {
         return PersonRepository.getInstance().getPersonList().stream().

@@ -31,13 +31,12 @@ public class PersonTest {
 
         //when
         Assertions.assertThat(result).isEqualTo("Gebaeudetechnik und Informatik");
-
     }
 
     @Test
     public void testCheckIfRoomExist(){
         //given
-        SearchingSystem Search = new SearchingSystem();
+        SearchingSystem testSearch = new SearchingSystem();
         String firstRoom = "Audimax";
         String secondRoom = "5.E.09";
         String thirdRoom = "5.E.10";
@@ -54,9 +53,6 @@ public class PersonTest {
                 "+49/2561925", "Dozent", "18.08.2021", "Gebaeudetechnik und Informatik", true, "5.E.12", false));
 
         //when
-        Assertions.assertThat(Search.findPersonUsingIteratorBy(41).orElseThrow().getRoom()).isEqualTo("5.E.12");
+        Assertions.assertThat(testSearch.findPersonUsingIteratorBy(41).orElseThrow().getRoom()).isEqualTo("5.E.12");
     }
-
-
-
 }

@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 /**
  * @author Milena Neumann
- * The InputField Class is the place where the Input from the searching user gets
- * checked and put into a list for the Following service
+ * The InputField Class is the place where the input from the user gets
+ * checked and put into a list for the following service
  */
 public class InputField implements FacultyClient
 {
@@ -20,7 +20,7 @@ public class InputField implements FacultyClient
     private String inLastName;
     private String inMajor;
     private String inFaculty;
-    ArrayList<String> PersonInputData = new ArrayList<>();
+    ArrayList<String> personInputData = new ArrayList<>();
 
     public InputField(String inFirstName, String inLastName, String inMajor, String inFaculty)
     {
@@ -31,26 +31,25 @@ public class InputField implements FacultyClient
     }
 
     /**
-     * getter for comparing
+     * getter for the next service to get the input data for following operations
      * @return the data-list of searched person information from user
      */
     public ArrayList<String> getListSearchInput()
     {
-        return PersonInputData;
+        return personInputData;
     }
 
-
     /**
-     * the checked and edit input from the user is added into the PersonInputDate-List
+     * the checked and edited input from the user is added into the personInputData-List
      */
     public void setListSearchInput()
     {
         if ((checkStringValid(this.inFirstName)) && (checkStringValid(this.inLastName)) && (checkStringValid(this.inMajor)))
         {
-            PersonInputData.add(this.inFirstName);
-            PersonInputData.add(this.inLastName);
-            PersonInputData.add(this.inMajor);
-            PersonInputData.add(getFacultyByName(inFaculty).toString()); // Enum wurde geprüft und passender String wird in die Liste eingetragen
+            personInputData.add(this.inFirstName);
+            personInputData.add(this.inLastName);
+            personInputData.add(this.inMajor);
+            personInputData.add(getFacultyByName(inFaculty).toString());
         }
         else
         {
@@ -59,39 +58,36 @@ public class InputField implements FacultyClient
     }
 
     /**
-     * The function checks if there are some mistakes like not allowed special characters
+     * The method checks if there are some mistakes like not allowed special characters.
+     * if there are mistakes it throws some messages for the user, so he knows what was wrong with the input.
      *
-     * @param StringToCheck the input string which will be checked for different mistakes
-     * @return if the string is appropriate returns true, if there is a problem it returns false
-     * <p>
-     * src https://qastack.com.de/programming/1795402/check-if-a-string-contains-a-special-character
+     * @param stringToCheck the input string which will be checked for different mistakes.
+     * @return if the string is appropriate returns true, if there is a problem it returns false.
      */
-    public static boolean checkStringValid(String StringToCheck)   // public damit auch andere auf die Checkfunktion zugreifen können
+    public static boolean checkStringValid(String stringToCheck)
     {
-        char FirstCharacterOfTheString = StringToCheck.charAt(0);
-
-        if (StringToCheck.length() > 30)
+        char firstCharacterOfTheString = stringToCheck.charAt(0);
+        if (stringToCheck.length() > 30)
         {
             System.out.println("Der eingegebene Name ist zu lang!\nErlaubte Anzahl an Zeichen: 30");
             return false;
         }
 
-        if (FirstCharacterOfTheString == ' ')
+        if (firstCharacterOfTheString == ' ')
         {
             System.out.println("Das erste Zeichen darf kein Leerzeichen sein, bitte prüfen");
             return false;
         }
 
-        if (StringToCheck.trim().isEmpty())
+        if (stringToCheck.trim().isEmpty())
         {
             System.out.println("Die Zeichenkette hat ein falsches Format");
             return false;
         }
 
         Pattern p = Pattern.compile("[^A-Za-z -]");
-        Matcher m = p.matcher(StringToCheck);
+        Matcher m = p.matcher(stringToCheck);
         boolean b = m.find();
-
         if (b)
         {
             System.out.println("Es ist ein nicht erlaubtes Zeichen in der Eingabe\n Erlaubte Zeichen sind: Großbuchstaben, Kleinbuchstaben, Leerzeichen und Bindestrich");
@@ -99,7 +95,6 @@ public class InputField implements FacultyClient
         }
         return true;
     }
-
 
     @Override
     public FacultyDto getFacultyByName(String facultyName)
@@ -120,17 +115,19 @@ public class InputField implements FacultyClient
 
     /**
      * @author Tran Anh Hoang
+     * Triggers the following service
      */
     public void triggerFindPersonUsingIteratorBy(){
-        SearchingSystem Search = new SearchingSystem();
-        Search.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
+        SearchingSystem testSearch = new SearchingSystem();
+        testSearch.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
     }
 
     /**
      * @author Tran Anh Hoang
+     * Triggers the following service
      */
     public void triggerSearchingHistory(){
-        SearchingHistory.getInstance().setSearchHistoryMap(this.PersonInputData);
+        SearchingHistory.getInstance().setSearchHistoryMap(this.personInputData);
     }
 }
 

@@ -7,22 +7,22 @@ import java.nio.file.Files;
 
 /**
  * @author Tran Anh Hoang
- * The Class PersonAvatar has the main goal to convert an Image into an ByteArray
- * and save it into a Avatar-Repository
+ * The Class PersonAvatar has the main goal to convert an image into an ByteArray
+ * and save it into an Avatar-Repository
  */
 public class PersonAvatar
 {
-    private byte [] AvatarByteArray;
+    private byte [] avatarByteArray;
 
     /**
-     * @param ImagePath - absolute Path to the Image
+     * @param imagePath - absolute Path to the Image
      * @return Byte-Array of an Image
      * @throws IOException -
      */
-    public byte[] convertImageToByteArray(String ImagePath) throws IOException {
+    public byte[] convertImageToByteArray(String imagePath) throws IOException {
         try{
-            File UserAvatar = new File(ImagePath);
-            return this.AvatarByteArray = Files.readAllBytes(UserAvatar.toPath());
+            File userAvatar = new File(imagePath);
+            return this.avatarByteArray = Files.readAllBytes(userAvatar.toPath());
         }
         catch (IOException ioe){
             System.out.println("Image Error:" + ioe.getMessage());
@@ -30,7 +30,11 @@ public class PersonAvatar
         }
     }
 
-    public void setAvatarByteArrayIntoAvatarRepositoryBy(int PersonID) {
-        PersonAvatarRepository.getInstance().saveAvatarBy(PersonID, AvatarByteArray);
+    /**
+     * puts the avatar into AvatarRepository
+     * @param personId identification of a person
+     */
+    public void setAvatarByteArrayIntoAvatarRepositoryBy(int personId) {
+        PersonAvatarRepository.getInstance().saveAvatarBy(personId, avatarByteArray);
     }
 }
