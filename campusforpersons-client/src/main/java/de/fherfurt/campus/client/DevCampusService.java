@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 public class DevCampusService implements CampusForPersonsClient {
 
-        static final private DevCampusService Campus = new DevCampusService();
+        static final private DevCampusService campus = new DevCampusService();
         private DevCampusService(){
         }
 
-        private final ArrayList<String> ListOfRooms = new ArrayList<>();
+        private final ArrayList<String> listOfRooms = new ArrayList<>();
 
-        public void saveRooms(String Rooms){
-                this.ListOfRooms.add(Rooms);
+        public void saveRooms(String room){
+                this.listOfRooms.add(room);
         }
 
         public ArrayList<String> getListOfRooms() {
-                return ListOfRooms;
+                return listOfRooms;
         }
 
         public static DevCampusService getInstance(){
-                return Campus;
+                return campus;
         }
 
 
         @Override
-        public boolean checkRoomExist(String Room) {
-                return getListOfRooms().stream().allMatch(result -> result.equals(Room));
+        public boolean checkRoomExist(String room) {
+                return getListOfRooms().stream().anyMatch(result -> result.equals(room));
         }
 }
 

@@ -4,10 +4,10 @@ import de.fherfurt.faculty.client.transfer.object.FacultyDto;
 import de.fherfurt.campus.client.DevCampusService;
 
 /**
- * class to add person data
  * @author Luisa Oswald
+ * class to add person data
+ * class to represent and create persons with builder-pattern and puts them into the PersonRepository.
  */
-
 public class Person
 {
     /**
@@ -103,7 +103,6 @@ public class Person
     /**
      * Constructor
      */
-
     private Person(int personId, String firstname, String lastname, String address, String email, String phonenumber, String title, String hireDate,
                    String faculty, Boolean teachingFlag, String room, String major, String immatriculationDate,
                    String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, String jobTitle, Boolean deletedFlag) {
@@ -133,11 +132,11 @@ public class Person
     }
 
     /**
-     * Class using builder pattern that holds all the information for a person
+     * Class using builder pattern that holds all the information of a person
      */
     public static class Builder {
 
-        private int PersonID;
+        private int personId;
         private String firstname;
         private String lastname;
         private String address;
@@ -164,16 +163,16 @@ public class Person
          * @return new person instance
          */
         public Person build() {
-            return new Person(PersonID, firstname, lastname, address, email, phonenumber, title, hireDate, faculty, teachingFlag,
+            return new Person(personId, firstname, lastname, address, email, phonenumber, title, hireDate, faculty, teachingFlag,
                     room, major, immatriculationDate, exmatriculationDate, tutorFlag, scientificWorkerFlag, jobTitle, deletedFlag);
         }
 
         /**
-         * Function to set a persons Unique Identifier
+         * Function to set a persons unique Identifier
          */
-        public Builder setPersonID(int PersonID)
+        public Builder setPersonID(int personId)
         {
-            this.PersonID = PersonID;
+            this.personId = personId;
             return this;
         }
 
@@ -250,7 +249,7 @@ public class Person
         }
 
         /**
-         * Function to set a persons room
+         * Function to set a persons room after checking
          */
         public Builder setRoom(String room) {
             if(Person.checkIfRoomExist(room))
@@ -314,8 +313,13 @@ public class Person
             return this;
         }
 
+
+        /**
+         * getters for all attributes
+         */
+
         public int getPersonID() {
-            return PersonID;
+            return personId;
         }
 
         public String getFirstname() {
@@ -393,8 +397,8 @@ public class Person
      * @return a new person instance that only requires the specific parameters for an employee
      */
     //only needed for other employees
-    public static Person otherEmployee(int PersonID, String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
-        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
+    public static Person otherEmployee(int personId, String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
+        return builder().setPersonID(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
     }
 
     /**
@@ -402,8 +406,8 @@ public class Person
      * @return a new person instance that only requires the specific parameters for a lecturer
      */
     //only needed for lecturers
-    public static Person lecturer(int PersonID, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
-        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).
+    public static Person lecturer(int personId, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
+        return builder().setPersonID(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).
                 setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
                 setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
     }
@@ -413,19 +417,20 @@ public class Person
      * @return a new person instance that only requires the specific parameter for a student
      */
     //only needed for students
-    public static Person student(int PersonID, String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag){
-        return builder().setPersonID(PersonID).setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
+    public static Person student(int personId, String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag){
+        return builder().setPersonID(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
     }
 
 
     /**
      * @author Tran Anh Hoang
+     * overrided toString-method. The strings are easier to oparate with and to debug
      */
     @Override
     public String toString()
     {
         return "Person: {" +
-                "PersonID='" + personId + '\'' +
+                "personId='" + personId + '\'' +
                 " ,firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", deletedFlag='" + deletedFlag + '}' + '\n';
@@ -450,8 +455,8 @@ public class Person
 
     /**
      * @author Tran Anh Hoang
+     * all getters and setters for Person
      */
-
     public String getAddress() {
         return address;
     }
@@ -601,12 +606,16 @@ public class Person
         this.deletedFlag = deletedFlag;
     }
 
-
-
     public void setFacultyByName(String facultyName) {
        this.faculty = checkFacultyIsValid(facultyName);
     }
 
+    /**
+     * @author Tran Anh Hoang
+     * Overrided method from FacultyClient, to check the faculty input
+     * @param facultyName faculty from person
+     * @return checked faculty string
+     */
     public String checkFacultyIsValid(String facultyName){
         String result;
         switch (facultyName)
@@ -622,7 +631,12 @@ public class Person
         return result;
     }
 
-    public static boolean checkIfRoomExist(String Rooms){
-        return DevCampusService.getInstance().checkRoomExist(Rooms);
+    /**
+     * @author Tran Anh Hoang
+     * @param room the room of the person
+     * @return returns boolean if the room exists or not
+     */
+    public static boolean checkIfRoomExist(String room){
+        return DevCampusService.getInstance().checkRoomExist(room);
     }
 }

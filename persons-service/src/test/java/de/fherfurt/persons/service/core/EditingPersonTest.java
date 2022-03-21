@@ -17,7 +17,7 @@ public class EditingPersonTest {
         int personId = 12;
 
         //given
-        SearchingSystem Search = new SearchingSystem();
+        SearchingSystem testSearch = new SearchingSystem();
 
         PersonRepository.getInstance().persist(Person.student(12,"Julie", "Moldau", "Julie123@abc.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
@@ -31,10 +31,10 @@ public class EditingPersonTest {
                 "Hausmeister", false));
 
         //when
-        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
         
         //then
-        EditingPerson personToEdit =new EditingPerson();
+        EditingPerson personToEdit = new EditingPerson();
         personToEdit.editFirstNameOfPersonBy(12, "Mira");
         Assertions.assertThat(wantedPerson.orElseThrow().getFirstname())
                 .isEqualTo("Mira");
@@ -59,11 +59,11 @@ public class EditingPersonTest {
         PersonRepository.getInstance().persist(Person.otherEmployee(17,"Gandalf", "der Weiße", "gandalf@fherfurt.de",
                 "Hausmeister", false));
 
-        SearchingSystem Search = new SearchingSystem();
+        SearchingSystem testSearch = new SearchingSystem();
 
         //when
         EditingPerson personToEdit = new EditingPerson();
-        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
         personToEdit.editLastNameOfPersonBy(15, "Schlumpfmetzger");
 
         //then
@@ -79,13 +79,13 @@ public class EditingPersonTest {
 
         //given
         int personId = 18;
-        SearchingSystem Search = new SearchingSystem();
+        SearchingSystem testSearch = new SearchingSystem();
         EditingPerson personToEdit = new EditingPerson();
 
         PersonRepository.getInstance().persist(Person.otherEmployee(18,"Eugene", "Krabs", "Eugene@fherfurt.de",
                 "Meister der Münze", false));
         //when
-        Optional<Person> wantedPerson = Search.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
         personToEdit.editDeletedFlagOfPersonBy(18, true);
 
         //then

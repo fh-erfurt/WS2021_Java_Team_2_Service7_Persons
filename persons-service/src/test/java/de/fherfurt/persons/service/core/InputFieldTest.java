@@ -18,18 +18,20 @@ class InputFieldTest
     void getListSearchInput()
     {
         //given
-        InputField TestInputField = new InputField("Frank", "Schneider", "Mathematik", "Gebaeudetechnik und Informatik");  //warum muss ich faculty davor schreiben wenn im construktor der Typ ist`?
-        ArrayList<String> ListToCompare = new ArrayList<>();
-        ListToCompare.add("Frank");
-        ListToCompare.add("Schneider");
-        ListToCompare.add("Mathematik");
-        ListToCompare.add("Gebaeudetechnik und Informatik");
+        InputField testInputField = new InputField("Frank", "Schneider", "Mathematik", "Gebaeudetechnik und Informatik");  //warum muss ich faculty davor schreiben wenn im construktor der Typ ist`?
+        ArrayList<String> listToCompare = new ArrayList<>();
+        listToCompare.add("Frank");
+        listToCompare.add("Schneider");
+        listToCompare.add("Mathematik");
+        listToCompare.add("Gebaeudetechnik und Informatik");
+
         //when
-        TestInputField.setListSearchInput();
+        testInputField.setListSearchInput();
+
         //then
-        System.out.println(TestInputField.getListSearchInput());
-        Assertions.assertThat(TestInputField.getListSearchInput())
-                .isEqualTo(ListToCompare)
+        System.out.println(testInputField.getListSearchInput());
+        Assertions.assertThat(testInputField.getListSearchInput())
+                .isEqualTo(listToCompare)
                 .isNotNull()
                 .isNotEqualTo("3");
     }
@@ -37,17 +39,19 @@ class InputFieldTest
 
     /**
      * @author Milena Neumann
-     * This testszenario should print aut some errormessges because we test if the error control is functioning.
+     * This testszenario should print aut some errormessages because I test if the error control is functioning.
      * in this case it behaves like expected
+     * the consoltext comes from the classes itself, not from the test
      */
     @Test
     void checkStringValid()
     {
-                //given
+        //given
         String testStringA = "HelloIAmAVeryLongStringAndIAmVerySorryForThat";
         String testStringB = " FirstLetterIsASpace";
         String testStringC = "!?!";
         String testStringD = "Anna-Maria Elisabeth";
+
         //when
 
         //then
