@@ -15,9 +15,9 @@ public class PersonAvatar
     private byte [] avatarByteArray;
 
     /**
-     * @param imagePath - absolute Path to the Image
+     * @param imagePath absolute Path to the Image
      * @return Byte-Array of an Image
-     * @throws IOException -
+     * @throws IOException - throw an error if Image can't be converted.
      */
     public byte[] convertImageToByteArray(String imagePath) throws IOException {
         try{
@@ -31,7 +31,7 @@ public class PersonAvatar
     }
 
     /**
-     * puts the avatar into AvatarRepository
+     * Puts the personId and avatar into AvatarRepository
      * @param personId identification of a person
      */
     public void setAvatarByteArrayIntoAvatarRepositoryBy(int personId) {

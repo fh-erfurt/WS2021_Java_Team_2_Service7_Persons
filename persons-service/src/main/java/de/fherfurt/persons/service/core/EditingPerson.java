@@ -2,7 +2,6 @@ package de.fherfurt.persons.service.core;
 
 import java.util.Optional;
 
-
 /**
  * @author Milena Neumann
  * methods to find a person and change attributes
