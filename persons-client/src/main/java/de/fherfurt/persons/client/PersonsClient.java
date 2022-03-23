@@ -8,21 +8,17 @@ import java.util.Optional;
  * It should be used by other services.
  */
 public interface PersonsClient {
-
     /**
-     * This Methode "findPersonUsingIteratorByPersonID" will
-     * find a Person from the ArrayList by
-     * the personId with an Iterator.
+     * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the personId with an Iterator.
      * @param personId - this Parameter is needed for the Searching.
      * @return Optional (Person) with all her/his values
      */
     Optional findPersonUsingIteratorBy(int personId);
 
     /**
-     * This methode "findPersonAvatarBy" will find a Person Avatar from a HashMap
-     * through a personId - Key.
-     * @param personId Id of a person
-     * @return byte Code which
+     * This methode "findPersonAvatarBy" will find a Person Avatar from a HashMap through a personId - Key.
+     * @param personId unique key of a person
+     * @return byte Code which return a byte Array of a Person Avatar
      */
     byte[] findPersonAvatarBy(int personId);
 }

@@ -12,16 +12,16 @@ class PersonRepositoryTest {
     @Test
     void shouldPersist() {
         //given
-        Person TestPerson1 =  Person.student(121,"Anne", "Ludwid", "AnneLudwig@gmail.de",
+        Person testPerson1 =  Person.student(121,"Anne", "Ludwid", "AnneLudwig@gmail.de",
                 "BWL", "01.10.2020", "01.10.2024",
                 false, false, false);
 
 
         //then
-        PersonRepository.getInstance().persist(TestPerson1);
+        PersonRepository.getInstance().persist(testPerson1);
 
         //when
-        Assertions.assertThat(PersonRepository.getInstance().getPersonList().contains(TestPerson1))
+        Assertions.assertThat(PersonRepository.getInstance().getPersonList().contains(testPerson1))
                 .isNotNull()
                 .isTrue();
 
@@ -32,24 +32,24 @@ class PersonRepositoryTest {
     void shouldCheckIfPersonIdAlreadyExistBy() {
 
         //given
-        Person TestPerson2 =  Person.student(1,"Marie", "Curie", "MarieCurie@Nobelpreis.de",
+        Person testPerson2 =  Person.student(1,"Marie", "Curie", "MarieCurie@Nobelpreis.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false);
 
-        Person TestPerson3 =  Person.student(1,"Marie", "Curie", "MarieCurie@Nobelpreis.de",
+        Person testPerson3 =  Person.student(1,"Marie", "Curie", "MarieCurie@Nobelpreis.de",
                 "Angewandte Informatik", "01.10.2020", "01.10.2024",
                 false, false, false);
 
-        Person TestPerson4 =  Person.student(2,"Andre", "Dorfstein", "Andre@Dorfstein.de",
+        Person testPerson4 =  Person.student(2,"Andre", "Dorfstein", "Andre@Dorfstein.de",
                 "BWL", "01.10.2020", "01.10.2024",
                 false, false, false);
 
         //then
-        PersonRepository.getInstance().persist(TestPerson2);
+        PersonRepository.getInstance().persist(testPerson2);
 
         //when
-        Assertions.assertThat(PersonRepository.getInstance().checkIfPersonIdAlreadyExistBy(TestPerson3.getPersonId())).isTrue();
-        Assertions.assertThat(PersonRepository.getInstance().checkIfPersonIdAlreadyExistBy(TestPerson4.getPersonId())).isFalse();
+        Assertions.assertThat(PersonRepository.getInstance().checkIfPersonIdAlreadyExistBy(testPerson3.getPersonId())).isTrue();
+        Assertions.assertThat(PersonRepository.getInstance().checkIfPersonIdAlreadyExistBy(testPerson4.getPersonId())).isFalse();
 
     }
 }

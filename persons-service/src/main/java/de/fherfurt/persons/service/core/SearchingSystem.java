@@ -52,8 +52,8 @@ public class SearchingSystem implements PersonsClient
     }
 
     /**
-     * The "findPersonAvatarBy"-Method use the Singleton Pattern to access the class PersonAvatarRepository
-     * @param personId unique Key-Value to find in certain avator of a person
+     * The "findPersonAvatarBy"- method use the Singleton Pattern to access the class PersonAvatarRepository
+     * @param personId unique Key-Value to find in certain avatar of a person
      * @return returns a byte array of an image of a person
      */
     @Override
@@ -63,7 +63,7 @@ public class SearchingSystem implements PersonsClient
     }
 
     /**
-     * The "convertByteArrayIntoAvatarImage"-Methode convert a Byte-Array back to an image
+     * The "convertByteArrayIntoAvatarImage"-method convert a Byte-Array back to an image
      * @param personId unique Key-Value to find in certain avatar of a Person
      * return Image of a person
      */

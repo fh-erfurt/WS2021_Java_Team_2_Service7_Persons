@@ -15,18 +15,18 @@ public class SearchingHistory
     private final LinkedHashMap<Integer, ArrayList<String> > searchHistoryMap = new LinkedHashMap<>();
     private int HashMapKey = 0;
 
+
+    public static SearchingHistory getInstance(){
+        return userSearchHistory;
+    }
+
     /**
      * The methode sets a HashMapKey and the DisplayName into a LinkedHashMap.
      * After using a HashMapKey which reaches the number 5. The methode will be using the else-branch and the HashMapKey reset to 0.
      * Because of the HashMapKey reset, the first element of map will be overwritten by the new DisplayName.
      * After that the methode will go back into the if-branch and overwrite the second element and so on.
-     * @return userSearchHistory
      */
-    public static SearchingHistory getInstance(){
-        return userSearchHistory;
-    }
-
-    public void setSearchHistoryMap(ArrayList<String> PersonInputData ) {
+    public void setSearchHistoryMap(ArrayList<String> PersonInputData) {
 
         if(this.HashMapKey < 5) {
             searchHistoryMap.put(HashMapKey, PersonInputData);
@@ -40,7 +40,7 @@ public class SearchingHistory
 
     }
 
-    public LinkedHashMap<Integer, ArrayList<String> > getSearchHistoryMap() {
+    public LinkedHashMap<Integer, ArrayList<String>> getSearchHistoryMap() {
         return searchHistoryMap;
     }
 
