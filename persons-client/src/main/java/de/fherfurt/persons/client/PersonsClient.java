@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface PersonsClient {
     /**
      * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the personId with an Iterator.
-     * @param personId - this Parameter is needed for the Searching.
+     * @param personId this Parameter is needed for the Searching
      * @return Optional (Person) with all her/his values
      */
     Optional findPersonUsingIteratorBy(int personId);
