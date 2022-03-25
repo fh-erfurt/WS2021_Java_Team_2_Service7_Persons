@@ -22,7 +22,12 @@ public class PersonAvatar
     public byte[] convertImageToByteArray(String imagePath) throws IOException {
         try{
             File userAvatar = new File(imagePath);
-            return this.avatarByteArray = Files.readAllBytes(userAvatar.toPath());
+            if(userAvatar.length() == 0){
+                throw new IOException();
+            }
+            else{
+                return this.avatarByteArray = Files.readAllBytes(userAvatar.toPath());
+            }
         }
         catch (IOException ioe){
             System.out.println("Image Error:" + ioe.getMessage());
