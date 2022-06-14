@@ -1,18 +1,13 @@
-package de.fherfurt.persons.service.core;
+package de.fherfurt.persons.service.model;
 
-import de.fherfurt.persons.service.persistence.PersonAvatarRepository;
 import de.fherfurt.persons.service.persistence.PersonRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import static java.util.stream.Collectors.toList;
 
 /**
  * @author Tran Anh Hoang

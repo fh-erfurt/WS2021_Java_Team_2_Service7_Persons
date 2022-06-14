@@ -1,4 +1,4 @@
-package de.fherfurt.persons.service.core;
+package de.fherfurt.persons.service.model;
 import de.fherfurt.faculty.client.FacultyClient;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
 

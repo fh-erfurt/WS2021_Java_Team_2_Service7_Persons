@@ -1,4 +1,4 @@
-package de.fherfurt.persons.service.core;
+package de.fherfurt.persons.service.model;
 
 import de.fherfurt.persons.service.persistence.PersonRepository;
 import org.assertj.core.api.Assertions;

@@ -1,4 +1,4 @@
-package de.fherfurt.persons.service.core;
+package de.fherfurt.persons.service.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

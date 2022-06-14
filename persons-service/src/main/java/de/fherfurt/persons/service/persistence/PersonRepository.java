@@ -1,7 +1,7 @@
 package de.fherfurt.persons.service.persistence;
 
 
-import de.fherfurt.persons.service.core.Person;
+import de.fherfurt.persons.service.model.Person;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
