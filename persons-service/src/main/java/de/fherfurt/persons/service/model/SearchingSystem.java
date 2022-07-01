@@ -1,7 +1,7 @@
 package de.fherfurt.persons.service.model;
 import de.fherfurt.persons.client.PersonsClient;
-import de.fherfurt.persons.service.persistence.PersonAvatarRepository;
-import de.fherfurt.persons.service.persistence.PersonRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -26,7 +26,7 @@ public class SearchingSystem implements PersonsClient
      * @return Person with all her/his values
      */
     @Override
-    public Optional<Person> findPersonUsingIteratorBy(int personId) {
+    public Optional<Person> findPersonBy(int personId) {
 
         return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getPersonId(), personId)).
@@ -41,7 +41,7 @@ public class SearchingSystem implements PersonsClient
      * @param faculty - attended faculty of a Person
      * @return a Person with all his/her Attributes in a Form of an Array
      */
-    public List<Person> findPersonUsingIteratorBy(String firstname, String lastname, String major, String faculty ) {
+    public List<Person> findPersonBy(String firstname, String lastname, String major, String faculty ) {
 
         return PersonRepository.getInstance().getPersonList().stream()
                 .filter(person -> Objects.equals(person.getFirstname(),firstname)

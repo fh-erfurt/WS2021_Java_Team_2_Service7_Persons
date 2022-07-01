@@ -45,6 +45,21 @@
             <version>LATEST</version>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- JPA Provider -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.6.8.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
     </dependencies>
 
 

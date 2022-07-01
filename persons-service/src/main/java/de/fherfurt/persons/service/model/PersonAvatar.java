@@ -1,6 +1,6 @@
 package de.fherfurt.persons.service.model;
 
-import de.fherfurt.persons.service.persistence.PersonAvatarRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

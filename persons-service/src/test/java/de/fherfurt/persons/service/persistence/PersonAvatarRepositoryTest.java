@@ -1,6 +1,7 @@
 package de.fherfurt.persons.service.persistence;
 
 import de.fherfurt.persons.service.model.PersonAvatar;
+import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;

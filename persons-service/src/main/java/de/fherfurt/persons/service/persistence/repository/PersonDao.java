@@ -1,13 +1,11 @@
-package de.fherfurt.persons.client;
+package de.fherfurt.persons.service.persistence.repository;
+
+import de.fherfurt.persons.service.model.Person;
+
+import java.util.List;
 import java.util.Optional;
 
-/**
- * @author Tran Anh Hoang
- * @version 1.0.0.0
- * This Interface defines the provided functionality for Person Service.
- * It should be used by other services.
- */
-public interface PersonsClient {
+public interface PersonDao{
     /**
      * This Methode "findPersonUsingIteratorByPersonID" will find a Person from the ArrayList by the personId with an Iterator.
      * @param personId this Parameter is needed for the Searching
@@ -21,4 +19,6 @@ public interface PersonsClient {
      * @return byte Code which return a byte Array of a Person Avatar
      */
     byte[] findPersonAvatarBy(int personId);
+
+    List<Person> findAllPersonWithDeletedFlag();
 }

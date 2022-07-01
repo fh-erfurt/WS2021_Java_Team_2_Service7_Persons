@@ -1,7 +1,7 @@
 package de.fherfurt.persons.service.model;
 
 import de.fherfurt.campus.client.DevCampusService;
-import de.fherfurt.persons.service.persistence.PersonRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
@@ -53,6 +53,6 @@ public class PersonTest {
                 "+49/2561925", "Dozent", "18.08.2021", "Gebaeudetechnik und Informatik", true, "5.E.12", false));
 
         //when
-        Assertions.assertThat(testSearch.findPersonUsingIteratorBy(41).orElseThrow().getRoom()).isEqualTo("5.E.12");
+        Assertions.assertThat(testSearch.findPersonBy(41).orElseThrow().getRoom()).isEqualTo("5.E.12");
     }
 }

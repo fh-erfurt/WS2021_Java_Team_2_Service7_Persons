@@ -1,4 +1,4 @@
-package de.fherfurt.persons.service.persistence;
+package de.fherfurt.persons.service.persistence.repository;
 import java.util.HashMap;
 
 /**

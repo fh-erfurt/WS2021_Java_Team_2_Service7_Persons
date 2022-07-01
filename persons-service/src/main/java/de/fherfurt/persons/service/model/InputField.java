@@ -119,7 +119,7 @@ public class InputField implements FacultyClient
      */
     public void triggerFindPersonUsingIteratorBy(){
         SearchingSystem testSearch = new SearchingSystem();
-        testSearch.findPersonUsingIteratorBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
+        testSearch.findPersonBy(this.inFirstName, this.inLastName , this.inMajor, this.inFaculty );
     }
 
     /**

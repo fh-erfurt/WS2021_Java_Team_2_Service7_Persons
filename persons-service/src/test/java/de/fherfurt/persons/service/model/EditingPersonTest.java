@@ -1,6 +1,6 @@
 package de.fherfurt.persons.service.model;
 
-import de.fherfurt.persons.service.persistence.PersonRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ public class EditingPersonTest {
                 "Hausmeister", false));
 
         //when
-        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonBy(personId);
         
         //then
         EditingPerson personToEdit = new EditingPerson();
@@ -63,7 +63,7 @@ public class EditingPersonTest {
 
         //when
         EditingPerson personToEdit = new EditingPerson();
-        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonBy(personId);
         personToEdit.editLastNameOfPersonBy(15, "Schlumpfmetzger");
 
         //then
@@ -85,7 +85,7 @@ public class EditingPersonTest {
         PersonRepository.getInstance().persist(Person.otherEmployee(18,"Eugene", "Krabs", "Eugene@fherfurt.de",
                 "Meister der Münze", false));
         //when
-        Optional<Person> wantedPerson = testSearch.findPersonUsingIteratorBy(personId);
+        Optional<Person> wantedPerson = testSearch.findPersonBy(personId);
         personToEdit.editDeletedFlagOfPersonBy(18, true);
 
         //then

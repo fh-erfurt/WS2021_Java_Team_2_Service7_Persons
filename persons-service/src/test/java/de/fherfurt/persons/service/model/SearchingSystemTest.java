@@ -1,6 +1,6 @@
 package de.fherfurt.persons.service.model;
 
-import de.fherfurt.persons.service.persistence.PersonRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +37,7 @@ class SearchingSystemTest {
         SearchingSystem personsSearch = new SearchingSystem();
 
         //when
-        List<Person> result = personsSearch.findPersonUsingIteratorBy(firstName, lastName, major, modul);
+        List<Person> result = personsSearch.findPersonBy(firstName, lastName, major, modul);
 
         //then
         Assertions.assertThat(result)
@@ -84,7 +84,7 @@ class SearchingSystemTest {
         PersonRepository.getInstance().persist(Person.otherEmployee(5,"Peter", "Franz", "Peter@fherfurt.de",
                 "Hausmeister", false));
 
-        Optional<Person> result = personsSearch.findPersonUsingIteratorBy(personId);
+        Optional<Person> result = personsSearch.findPersonBy(personId);
 
         //then
         Assertions.assertThat(result.equals(testPerson1));
