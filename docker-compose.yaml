@@ -1,0 +1,43 @@
+##TODO: Checking Later in Folders for specifics Dockerfile
+version: '3.8'
+volumes:
+  db-data:
+  pgadmin-data:
+
+services:
+  db_container:
+    container_name: Postgres_Container
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+    environment:
+      - POSTGRES_DB=personDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: PgAdmin_Container
+    image: 'dpage/pgadmin4:6.9'
+    restart: always
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@localhost.de
+      - PGADMIN_DEFAULT_PASSWORD=localhost123#
+      - PGADMIN_LISTEN_PORT=80
+
+    ports:
+      - '5050:80'
+
+    #um DB in container über den Host ohne IP zu verwenden
+    links:
+      - 'db_container:pgsql-server'
+
+
+
