@@ -1,6 +1,9 @@
-package de.fherfurt.persons.service.model;
+package de.fherfurt.persons.service.resources;
 import de.fherfurt.persons.client.PersonsClient;
+import de.fherfurt.persons.service.model.Person;
+import de.fherfurt.persons.service.persistence.repository.JpaGenericsDao;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
+import de.fherfurt.persons.service.persistence.repository.PersonDao;
 import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 
 import javax.imageio.ImageIO;
@@ -18,16 +21,14 @@ import static java.util.stream.Collectors.toList;
  * The class SearchingSystem includes iterator search methode for a person (by personId or personinformation)
  * and a search methode for the Avatar of a certain Person
  */
-public class SearchingSystem implements PersonsClient
+public class SearchingSystem
 {
     /**
      * This methode "findPersonUsingIteratorByPersonId" will find a person from the ArrayList by the personId with an iterator
      * @param personId Unique Key-Value to find a certain Person from the ArrayList
      * @return Person with all her/his values
      */
-    @Override
-    public Optional<Person> findPersonBy(int personId) {
-
+    Optional<Person> findPersonBy(long personId) {
         return PersonRepository.getInstance().getPersonList().stream().
                 filter(person -> Objects.equals(person.getPersonId(), personId)).
                 findAny();
@@ -56,7 +57,6 @@ public class SearchingSystem implements PersonsClient
      * @param personId unique Key-Value to find in certain avatar of a person
      * @return returns a byte array of an image of a person
      */
-    @Override
     public byte[] findPersonAvatarBy(int personId) {
         PersonAvatarRepository avatarRepo = PersonAvatarRepository.getInstance();
         return avatarRepo.getAvatarStorageBy(personId);

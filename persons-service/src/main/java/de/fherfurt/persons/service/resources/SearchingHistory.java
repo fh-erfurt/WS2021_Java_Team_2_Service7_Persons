@@ -1,4 +1,4 @@
-package de.fherfurt.persons.service.model;
+package de.fherfurt.persons.service.resources;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

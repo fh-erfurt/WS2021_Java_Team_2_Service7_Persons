@@ -1,6 +1,8 @@
-package de.fherfurt.persons.service.model;
+package de.fherfurt.persons.service.resources;
 import de.fherfurt.faculty.client.FacultyClient;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;
+import de.fherfurt.persons.service.resources.SearchingHistory;
+import de.fherfurt.persons.service.resources.SearchingSystem;
 
 
 import java.util.ArrayList;

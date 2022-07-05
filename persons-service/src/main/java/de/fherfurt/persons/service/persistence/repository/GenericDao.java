@@ -10,14 +10,11 @@ import java.util.Optional;
  * isolate the application/business layer from the persistence layer (
  */
 public interface GenericDao<T extends AbstractDatabaseEntity> {
-    Optional<T> findById(long id);
+    T findBy(long id);
     Collection<T> findAll();
-
-
 
     boolean create( T entity );
     boolean createAll( Collection<T> newEntities );
-
 
     Optional<T> update( T entity );
 

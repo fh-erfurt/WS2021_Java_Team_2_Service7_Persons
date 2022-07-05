@@ -33,11 +33,32 @@ services:
       - PGADMIN_LISTEN_PORT=80
 
     ports:
-      - '5050:80'
+      - "5050:80"
 
     #um DB in container über den Host ohne IP zu verwenden
     links:
       - 'db_container:pgsql-server'
+
+    depends_on:
+      - db_container
+
+
+  webapp:
+    # Will use the Dockerfile in current directory to build and run your app
+    build: .
+
+    environment:
+      # Environment parameter used by our application
+      - RUN_MODE=production
+
+    # Port Mapping
+    ports:
+      - "8080:8080"
+
+    # Needs 'app_db' service above
+    depends_on:
+      - db_container
+
 
 
 

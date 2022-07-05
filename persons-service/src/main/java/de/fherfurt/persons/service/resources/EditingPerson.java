@@ -1,4 +1,7 @@
-package de.fherfurt.persons.service.model;
+package de.fherfurt.persons.service.resources;
+
+import de.fherfurt.persons.service.model.Person;
+import de.fherfurt.persons.service.resources.SearchingSystem;
 
 import java.util.Optional;
 

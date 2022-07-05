@@ -2,6 +2,7 @@ package de.fherfurt.persons.service.model;
 
 import de.fherfurt.campus.client.DevCampusService;
 import de.fherfurt.persons.service.persistence.repository.PersonRepository;
+import de.fherfurt.persons.service.resources.SearchingSystem;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import de.fherfurt.faculty.client.transfer.object.FacultyDto;

@@ -1,5 +1,7 @@
 package de.fherfurt.persons.service.model;
 
+import de.fherfurt.persons.service.resources.InputField;
+import de.fherfurt.persons.service.resources.SearchingHistory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

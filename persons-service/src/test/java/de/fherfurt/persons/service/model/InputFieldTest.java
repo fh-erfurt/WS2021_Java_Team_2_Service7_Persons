@@ -1,5 +1,6 @@
 package de.fherfurt.persons.service.model;
 
+import de.fherfurt.persons.service.resources.InputField;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
