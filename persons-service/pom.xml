@@ -18,16 +18,6 @@
             <version>1.0.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>de.fherfurt</groupId>
-            <artifactId>Faculty-Client</artifactId>
-            <version>1.0.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>de.fherfurt</groupId>
-            <artifactId>CampusForPersonsClient</artifactId>
-            <version>1.0.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
@@ -47,11 +37,38 @@
         </dependency>
 
 
+        <!-- Postgres JDBC Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.6</version>
+        </dependency>
+
         <!-- JPA Provider -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.6.8.Final</version>
+            <version>5.6.9.Final</version>
+        </dependency>
+
+        <!-- Hibernate’s implementation of JSR-303. -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>7.0.4.Final</version>
+        </dependency>
+
+        <!-- The JSR-303 Bean Validation API library. -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
         </dependency>
 
 

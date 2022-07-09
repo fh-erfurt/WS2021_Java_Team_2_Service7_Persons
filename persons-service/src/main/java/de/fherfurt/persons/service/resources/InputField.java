@@ -1,6 +1,4 @@
 package de.fherfurt.persons.service.resources;
-import de.fherfurt.faculty.client.FacultyClient;
-import de.fherfurt.faculty.client.transfer.object.FacultyDto;
 import de.fherfurt.persons.service.resources.SearchingHistory;
 import de.fherfurt.persons.service.resources.SearchingSystem;
 
@@ -15,7 +13,7 @@ import java.util.regex.Pattern;
  * The InputField Class is the place where the input from the user gets
  * checked and put into a list for the following service
  */
-public class InputField implements FacultyClient
+public class InputField
 {
 
     private String inFirstName;
@@ -51,7 +49,7 @@ public class InputField implements FacultyClient
             personInputData.add(this.inFirstName);
             personInputData.add(this.inLastName);
             personInputData.add(this.inMajor);
-            personInputData.add(getFacultyByName(inFaculty).toString());
+            //personInputData.add(getFacultyByName(inFaculty).toString());
         }
         else
         {
@@ -98,6 +96,7 @@ public class InputField implements FacultyClient
         return true;
     }
 
+    /*
     @Override
     public FacultyDto getFacultyByName(String facultyName)
     {
@@ -114,6 +113,9 @@ public class InputField implements FacultyClient
         }
         return result;
     }
+
+
+     */
 
     /**
      * @author Tran Anh Hoang

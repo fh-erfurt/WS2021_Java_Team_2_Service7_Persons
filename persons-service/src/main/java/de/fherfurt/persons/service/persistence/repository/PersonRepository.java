@@ -24,7 +24,7 @@ public class PersonRepository {
      * @param person Person object from class Person
      */
     public void persist(Person person) {
-        if (!checkIfPersonIdAlreadyExistBy(person.getPersonId())) {
+        if (!checkIfPersonIdAlreadyExistBy(person.getId())) {
             storage.add(person);
         }
         else {
@@ -53,8 +53,8 @@ public class PersonRepository {
      * @param personId unique key value for a person
      * @return true -> personId exist, false -> personId don't exist
      */
-    public boolean checkIfPersonIdAlreadyExistBy(int personId){
+    public boolean checkIfPersonIdAlreadyExistBy(long personId){
         return PersonRepository.getInstance().getPersonList().stream().
-                anyMatch(personResult -> Objects.equals(personResult.getPersonId(), personId));
+                anyMatch(personResult -> Objects.equals(personResult.getId(), personId));
     }
 }

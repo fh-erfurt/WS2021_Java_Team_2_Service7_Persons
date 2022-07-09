@@ -30,7 +30,7 @@ public class SearchingSystem
      */
     Optional<Person> findPersonBy(long personId) {
         return PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getPersonId(), personId)).
+                filter(person -> Objects.equals(person.getId(), personId)).
                 findAny();
     }
 

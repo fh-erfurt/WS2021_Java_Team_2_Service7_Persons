@@ -15,15 +15,15 @@ import javax.persistence.*;
  */
 
 @Entity
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @Builder(access = AccessLevel.PRIVATE, setterPrefix = "set")
 @Data
 @ToString
 @EqualsAndHashCode(callSuper=false)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Person extends AbstractDatabaseEntity {
 
-    @Id
-    @Column(name = "personId", nullable = false)
-    private int personId;
+
     private String firstname;
     private String lastname;
     private String email;
@@ -47,10 +47,12 @@ public class Person extends AbstractDatabaseEntity {
     @OneToOne
     private PersonAvatar avatar;
 
+    protected Person() {}
+
 
     //TODO: Nachfragen warum hier ein Standard Constructor gesetzt werden muss
     //TODO: Ist ein Hashcode wirklich erforderlich?
-    public Person() {}
+
 
 
     /**
@@ -58,8 +60,8 @@ public class Person extends AbstractDatabaseEntity {
      * @return a new person instance that only requires the specific parameters for an employee
      */
     //only needed for other employees
-    public static Person otherEmployee(int personId, String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
-        return builder().setPersonId(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
+    public static Person otherEmployee( String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
     }
 
     /**
@@ -68,7 +70,7 @@ public class Person extends AbstractDatabaseEntity {
      */
     //only needed for lecturers
     public static Person lecturer(int personId, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
-        return builder().setPersonId(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).
                 setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
                 setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
     }
@@ -79,7 +81,7 @@ public class Person extends AbstractDatabaseEntity {
      */
     //only needed for students
     public static Person student(int personId, String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag){
-        return builder().setPersonId(personId).setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
     }
 
 }

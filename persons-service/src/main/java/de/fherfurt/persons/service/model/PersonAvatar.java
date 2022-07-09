@@ -1,5 +1,6 @@
 package de.fherfurt.persons.service.model;
 
+import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,7 @@ import java.nio.file.Files;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class PersonAvatar
-{
-    @Id
-    @Column(name = "personAvatar", nullable = false)
-    private long personAvatarId;
+public class PersonAvatar extends AbstractDatabaseEntity {
     private byte [] avatarByteArray;
 
 
