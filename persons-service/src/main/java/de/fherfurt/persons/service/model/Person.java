@@ -49,12 +49,6 @@ public class Person extends AbstractDatabaseEntity {
 
     protected Person() {}
 
-
-    //TODO: Nachfragen warum hier ein Standard Constructor gesetzt werden muss
-    //TODO: Ist ein Hashcode wirklich erforderlich?
-
-
-
     /**
      * Function to create an employee with the needed parameters from person
      * @return a new person instance that only requires the specific parameters for an employee

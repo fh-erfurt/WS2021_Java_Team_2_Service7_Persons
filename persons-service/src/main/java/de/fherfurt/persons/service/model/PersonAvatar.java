@@ -24,8 +24,6 @@ import java.nio.file.Files;
 public class PersonAvatar extends AbstractDatabaseEntity {
     private byte [] avatarByteArray;
 
-
-
     /**
      * @param imagePath absolute Path to the Image
      * @return Byte-Array of an Image
