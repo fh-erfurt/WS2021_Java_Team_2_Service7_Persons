@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
     public JpaPersonDao( EntityManager em ){
-        //TODO: Need Some Help --> VERSTEHE ICH NICHT
         super( Person.class, em );
     }
 
