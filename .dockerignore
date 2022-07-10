@@ -1,0 +1,6 @@
+# Ignore everything in current folder...
+*
+
+# ... but include src and pom.xml
+!src
+!pom.xml
