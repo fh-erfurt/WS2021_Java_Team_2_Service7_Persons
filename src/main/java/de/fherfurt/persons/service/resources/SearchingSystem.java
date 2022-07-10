@@ -1,5 +1,5 @@
 package de.fherfurt.persons.service.resources;
-import de.fherfurt.persons.client.PersonsClient;
+
 import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.persistence.repository.JpaGenericsDao;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
