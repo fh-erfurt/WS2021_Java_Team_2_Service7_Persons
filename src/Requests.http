@@ -1,0 +1,48 @@
+
+### Get Greeting from Server
+GET http://localhost:8080/api/
+Accept: text/plain
+
+### Get full Addressbook
+GET http://localhost:8080/api/persons
+Accept: application/json
+
+### Get persons with address with ID = 2
+GET http://localhost:8080/api/persons?addressId=2
+Accept: application/json
+
+### Get persons sorted by mail ascending
+GET http://localhost:8080/api/persons?sortOrder=MAIL_ASC
+Accept: application/json
+
+### Get Person with ID 11
+GET http://localhost:8080/api/persons/12
+Accept: application/json
+
+### Delete Person with ID 5
+DELETE http://localhost:8080/api/persons/12
+Accept: application/json
+
+### Create Person
+POST http://localhost:8080/api/persons
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Horst",
+  "lastName": "Mayer",
+  "mail": "h.m@mayer.com",
+  "address": {
+    "street": "Postgasse 2",
+    "city": "Weimar",
+    "zipCode": "99424"
+  }
+}
+
+### Get all addresses
+GET http://localhost:8080/api/addresses
+Accept: application/json
+
+### Get address with id 2
+GET http://localhost:8080/api/addresses/2
+Accept: application/json

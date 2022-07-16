@@ -17,10 +17,9 @@ import javax.persistence.*;
 @Entity
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @Builder(access = AccessLevel.PRIVATE, setterPrefix = "set")
-@Data
 @ToString
-@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class Person extends AbstractDatabaseEntity {
 
 
@@ -44,10 +43,16 @@ public class Person extends AbstractDatabaseEntity {
     @ManyToOne( cascade = CascadeType.PERSIST )
     private Address address;
 
+    /*
     @OneToOne
     private PersonAvatar avatar;
 
     protected Person() {}
+    */
+
+    @OneToOne
+    private Faculty facultyName;
+
 
     /**
      * Function to create an employee with the needed parameters from person
@@ -74,8 +79,8 @@ public class Person extends AbstractDatabaseEntity {
      * @return a new person instance that only requires the specific parameter for a student
      */
     //only needed for students
-    public static Person student(int personId, String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag){
-        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).build();
+    public static Person student(String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address){
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).setAddress(address).build();
     }
 
 }
