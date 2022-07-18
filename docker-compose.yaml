@@ -43,22 +43,20 @@ services:
       - db_container
 
 
-#  webapp:
-#    # Will use the Dockerfile in current directory to build and run your app
-#    build: .
-#
-#    environment:
-#      # Environment parameter used by our application
-#      - RUN_MODE=production
-#
-#    # Port Mapping
-#    ports:
-#      - "8080:8080"
-#
-#    # Needs 'app_db' service above
-#    depends_on:
-#      - db_container
-#
+  webapp:
+    # Will use the Dockerfile in current directory to build and run your app
+    build: .
+
+    environment:
+      # Environment parameter used by the application
+      - RUN_MODE=develop
+    ports:
+      - "8080:8080"
+
+    # Needs 'app_db' service above
+    depends_on:
+      - db_container
+
 
 
 
