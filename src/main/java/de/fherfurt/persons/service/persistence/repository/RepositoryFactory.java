@@ -1,6 +1,7 @@
 package de.fherfurt.persons.service.persistence.repository;
 
 import de.fherfurt.persons.service.model.Address;
+import de.fherfurt.persons.service.util.DataProvider;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -36,11 +37,10 @@ public class RepositoryFactory
         LOGGER.info( "Create RepositoryImpl" );
         this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() );
 
-        // Create Test Data
-        /*
+        // Create Test Data and Test Person
+        // Data is a list with Persons-Objects
         LOGGER.info( "Create Test Data" );
         DataProvider.createTestData().forEach( this.repository::createPerson );
-        */
     }
 
     private EntityManagerFactory prepareEntityManagerFactory()
@@ -50,7 +50,7 @@ public class RepositoryFactory
         String runMode = System.getenv("RUN_MODE");
         LOGGER.info( "RUN_MODE: " +  runMode );
 
-        if( runMode.equalsIgnoreCase( "production" ) )
+        if( runMode.equalsIgnoreCase( "develop" ) )
             return Persistence.createEntityManagerFactory( DEVELOP_PERSISTENCE_UNIT_NAME );
         else
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
@@ -62,17 +62,17 @@ public class RepositoryFactory
     }
     */
 
-    public RepositoryImp getAddressRepository()
-    {
+    public RepositoryImp getAddressRepository() {
         return this.repository;
     }
 
-    private PersonDao getPersonDao()
-    {
+    private PersonDao getPersonDao() {
         return new JpaPersonDao( this.entityManagerFactory.createEntityManager() );
     }
-    private GenericDao<Address> getAddressDao()
-    {
+
+
+
+    private GenericDao<Address> getAddressDao() {
         return new JpaGenericsDao<>( Address.class, this.entityManagerFactory.createEntityManager() );
     }
 
