@@ -21,7 +21,7 @@ public class Faculty extends AbstractDatabaseEntity {
     }
 
     public String checkFacultyName(String facultyName){
-        String result = facultyName;
+        String result;
         switch (facultyName) {
             case "Gebaeudetechnik und Informatik", "GTI" -> result = "GTI";
             case "Landschaftsarchitektur, Gartenbau und Forst", "LGF" -> result = "LGF";
