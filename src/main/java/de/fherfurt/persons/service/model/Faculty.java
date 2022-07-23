@@ -1,9 +1,8 @@
 package de.fherfurt.persons.service.model;
 
-//TODO @Milena: Erweitere checkFacultyName Abkürzungen
-//TODO @Milena: Erstelle Repo Interfaces
-//TODO @Milena: Überschreibe Methoden für die Interfaces
 
+//TODO @Milena: Erstelle Repo Interfaces - Fertig
+//TODO @Milena: Überschreibe Methoden für die Interfaces - Fertig?
 
 import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import lombok.Getter;
@@ -24,12 +23,12 @@ public class Faculty extends AbstractDatabaseEntity {
     public String checkFacultyName(String facultyName){
         String result = facultyName;
         switch (facultyName) {
-            case "Gebaeudetechnik und Informatik" -> result = "GTI";
-            case "Landschaftsarchitektur, Gartenbau und Forst" -> result = "LGF";
-            case "Wirtschaft-Logistik-Verkehr" -> result = "WLV";
-            case "Bauingenieurwesen und Konservierung/Restaurierung" -> result = "BKR";
-            case "Architektur und Stadtplanung" -> result = "ASP";
-            case "Angewandte Sozialwissenschaften" -> result = "ASW";
+            case "Gebaeudetechnik und Informatik", "GTI" -> result = "GTI";
+            case "Landschaftsarchitektur, Gartenbau und Forst", "LGF" -> result = "LGF";
+            case "Wirtschaft-Logistik-Verkehr", "WLV" -> result = "WLV";
+            case "Bauingenieurwesen und Konservierung/Restaurierung", "BKR" -> result = "BKR";
+            case "Architektur und Stadtplanung", "ASP" -> result = "ASP";
+            case "Angewandte Sozialwissenschaften", "ASW" -> result = "ASW";
             default -> result = "Others";
         }
         return result;
