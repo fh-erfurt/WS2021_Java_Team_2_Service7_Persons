@@ -21,6 +21,7 @@ import static java.util.stream.Collectors.toList;
  * The class SearchingSystem includes iterator search methode for a person (by personId or personinformation)
  * and a search methode for the Avatar of a certain Person
  */
-public class SearchingSystem {
+public class SearchingSystem
+{
 
 }
