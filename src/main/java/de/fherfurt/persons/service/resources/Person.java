@@ -1,11 +1,7 @@
 package de.fherfurt.persons.service.resources;
-import de.fherfurt.persons.service.resources.SearchingHistory;
-import de.fherfurt.persons.service.resources.SearchingSystem;
 
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 //TODO @Milena: Try it by yourself
 /**
