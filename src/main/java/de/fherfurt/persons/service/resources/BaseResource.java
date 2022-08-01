@@ -1,6 +1,6 @@
 package de.fherfurt.persons.service.resources;
 
-//TODO @Milena: Nachvollziehen und siehe Avemarks Repo JPA-Rest-Version
+//TODO @Milena: Nachvollziehen und siehe Avemarks Repo JPA-Rest-Version - Fertig
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
