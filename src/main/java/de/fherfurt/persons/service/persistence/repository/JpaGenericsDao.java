@@ -5,6 +5,7 @@ import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements GenericDao<T>{
@@ -18,15 +19,6 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
         this.entityManager = em;
     }
 
-    public Class<T> getEntityClass()
-    {
-        return persistentClass;
-    }
-
-    public EntityManager getEntityManager()
-    {
-        return entityManager;
-    }
 
 
     @Override
@@ -43,7 +35,7 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
     }
 
     @Override
-    public boolean create( T entity)
+    public boolean create( T entity )
     {
         getEntityManager().getTransaction().begin();
         getEntityManager().persist( entity );
@@ -66,7 +58,7 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
     }
 
     @Override
-    public Optional<T> update(long personId, T entity)
+    public Optional<T> update(T entity )
     {
         getEntityManager().getTransaction().begin();
         final T savedEntity = getEntityManager().merge( entity );
@@ -97,4 +89,19 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
         return false;
     }
 
+
+
+    /*
+        Getter & Setter
+     */
+
+    public Class<T> getEntityClass()
+    {
+        return persistentClass;
+    }
+
+    public EntityManager getEntityManager()
+    {
+        return entityManager;
+    }
 }

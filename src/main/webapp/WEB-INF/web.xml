@@ -4,6 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>Java Person Webpp with Docker</display-name>
+    <display-name>Java Person Web with Docker</display-name>
 
 </web-app>

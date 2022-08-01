@@ -43,22 +43,15 @@ public class Person extends AbstractDatabaseEntity {
     @ManyToOne( cascade = CascadeType.PERSIST )
     private Address address;
 
-    /*
     @OneToOne
     private PersonAvatar avatar;
 
     protected Person() {}
 
-
-    @OneToOne
-    private Faculty facultyName;
-
-
     /**
      * Function to create an employee with the needed parameters from person
      * @return a new person instance that only requires the specific parameters for an employee
      */
-    //only needed for other employees
     public static Person otherEmployee( String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
     }
@@ -67,7 +60,6 @@ public class Person extends AbstractDatabaseEntity {
      * Function to create a lecturer with the needed parameters from person
      * @return a new person instance that only requires the specific parameters for a lecturer
      */
-    //only needed for lecturers
     public static Person lecturer(int personId, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).
                 setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
