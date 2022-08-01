@@ -11,17 +11,17 @@ import java.util.Objects;
  * Repository to storage person objects. The PersonRepository has a Singleton Pattern, and it exists only one instance of this class!
  */
 public interface PersonRepository {
-
-
-
-
+    
     boolean createPerson( Person person );
+    
+    List<Person> getAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty);
 
-    /*
-    List<Person> getAllPersons();
-    Person getPerson( long personId );
-    boolean updatePerson( Person person );
-    boolean deletePerson( long personId );
+    Person getPersonBy(long personId );
+    
+    boolean updatePersonById(long personId, Person person );
+    
+    boolean deletePersonId( long personId );
+    
     List<Person> getPersonsWithAddress(long addressId );
-    */
+    
 }

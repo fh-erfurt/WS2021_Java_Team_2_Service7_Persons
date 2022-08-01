@@ -21,17 +21,40 @@ public class Faculty extends AbstractDatabaseEntity {
         this.facultyName = checkFacultyName(facultyName);
     }
 
+    public Faculty() {
+
+    }
+
     public String checkFacultyName(String facultyName){
         String result = facultyName;
-        switch (facultyName) {
-            case "Gebaeudetechnik und Informatik" -> result = "GTI";
-            case "Landschaftsarchitektur, Gartenbau und Forst" -> result = "LGF";
-            case "Wirtschaft-Logistik-Verkehr" -> result = "WLV";
-            case "Bauingenieurwesen und Konservierung/Restaurierung" -> result = "BKR";
-            case "Architektur und Stadtplanung" -> result = "ASP";
-            case "Angewandte Sozialwissenschaften" -> result = "ASW";
-            default -> result = "Others";
-        }
+            switch (facultyName) {
+                case "Gebaeudetechnik und Informatik":
+                    result = "GTI";
+                    break;
+                case "Landschaftsarchitektur, Gartenbau und Forst":
+                    result = "LGF";
+                    break;
+
+                case "Architektur und Stadtplanung":
+                    result = "ASP";
+                    break;
+
+                case "Wirtschaft-Logistik-Verkehr":
+                    result = "WLV";
+                    break;
+
+                case "Bauingenieurwesen und Konservierung/Restaurierung":
+                    result = "BKR";
+                    break;
+
+                case "Angewandte Sozialwissenschaften":
+                    result = "ASW";
+                    break;
+
+                default:
+                    result = "Others";
+                    break;
+            }
         return result;
     }
 

@@ -48,7 +48,7 @@ public class Person extends AbstractDatabaseEntity {
     private PersonAvatar avatar;
 
     protected Person() {}
-    */
+
 
     @OneToOne
     private Faculty facultyName;

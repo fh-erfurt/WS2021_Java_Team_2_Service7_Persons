@@ -9,11 +9,11 @@ public interface AddressRepository {
 
 
     boolean createAddress( Address address );
-    /*
+
     List<Address> getAllAddresses();
     Address getAddress(Long addressId );
-    boolean updateAddress( Address address );
+    boolean updateAddress( long addressId ,Address address );
     boolean deleteAddress(Long addressId );
 
-     */
+
 }
