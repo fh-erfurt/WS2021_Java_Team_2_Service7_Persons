@@ -1,8 +1,9 @@
 package de.fherfurt.persons.service.model;
 
+//TODO @Milena: Erweitere checkFacultyName Abkürzungen
+//TODO @Milena: Erstelle Repo Interfaces
+//TODO @Milena: Überschreibe Methoden für die Interfaces
 
-//TODO @Milena: Erstelle Repo Interfaces - Fertig
-//TODO @Milena: Überschreibe Methoden für die Interfaces - Fertig?
 
 import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import lombok.Getter;
@@ -20,17 +21,40 @@ public class Faculty extends AbstractDatabaseEntity {
         this.facultyName = checkFacultyName(facultyName);
     }
 
+    public Faculty() {
+
+    }
+
     public String checkFacultyName(String facultyName){
-        String result;
-        switch (facultyName) {
-            case "Gebaeudetechnik und Informatik", "GTI" -> result = "GTI";
-            case "Landschaftsarchitektur, Gartenbau und Forst", "LGF" -> result = "LGF";
-            case "Wirtschaft-Logistik-Verkehr", "WLV" -> result = "WLV";
-            case "Bauingenieurwesen und Konservierung/Restaurierung", "BKR" -> result = "BKR";
-            case "Architektur und Stadtplanung", "ASP" -> result = "ASP";
-            case "Angewandte Sozialwissenschaften", "ASW" -> result = "ASW";
-            default -> result = "Others";
-        }
+        String result = facultyName;
+            switch (facultyName) {
+                case "Gebaeudetechnik und Informatik":
+                    result = "GTI";
+                    break;
+                case "Landschaftsarchitektur, Gartenbau und Forst":
+                    result = "LGF";
+                    break;
+
+                case "Architektur und Stadtplanung":
+                    result = "ASP";
+                    break;
+
+                case "Wirtschaft-Logistik-Verkehr":
+                    result = "WLV";
+                    break;
+
+                case "Bauingenieurwesen und Konservierung/Restaurierung":
+                    result = "BKR";
+                    break;
+
+                case "Angewandte Sozialwissenschaften":
+                    result = "ASW";
+                    break;
+
+                default:
+                    result = "Others";
+                    break;
+            }
         return result;
     }
 

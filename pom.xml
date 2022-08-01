@@ -6,11 +6,14 @@
     <groupId>de.fherfurt</groupId>
     <artifactId>WS2021_Java_Team_2_Service_Persons</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
         <junit.version>5.4.0</junit.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <jersey.version>3.0.2</jersey.version>
@@ -166,7 +169,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>de.fhe.ai.addressbook.WebApplication</mainClass>
+                            <mainClass>de.fherfurt.persons.service.WebApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -195,4 +198,5 @@
 
         </plugins>
     </build>
+
 </project>
