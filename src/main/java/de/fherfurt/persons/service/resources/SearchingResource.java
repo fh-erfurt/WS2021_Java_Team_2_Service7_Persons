@@ -1,27 +1,40 @@
 package de.fherfurt.persons.service.resources;
 
 import de.fherfurt.persons.service.model.Person;
-import de.fherfurt.persons.service.persistence.repository.JpaGenericsDao;
-import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
-import de.fherfurt.persons.service.persistence.repository.PersonDao;
 import de.fherfurt.persons.service.persistence.repository.PersonRepository;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
-import static java.util.stream.Collectors.toList;
+import de.fherfurt.persons.service.persistence.repository.RepositoryFactory;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 /**
  * @author Tran Anh Hoang
- * The class SearchingSystem includes iterator search methode for a person (by personId or personinformation)
+ * The class SearchingResource includes iterator search methode for a person (by personId or personinformation)
  * and a search methode for the Avatar of a certain Person
  */
-public class SearchingSystem
-{
+public class SearchingResource {
 
+    final PersonRepository personRepository;
+
+
+    public SearchingResource() {
+        this.personRepository = RepositoryFactory.getInstance().getPersonRepository();
+    }
+
+
+    @GET
+    @Path("{personId:\\d+}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPerson(@PathParam("personId") long  personId ) {
+
+        Person p = this.personRepository.getPersonBy( personId );
+
+        if( p != null )
+            return Response.ok( p ).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
 }

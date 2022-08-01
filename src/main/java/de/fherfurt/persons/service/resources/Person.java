@@ -6,10 +6,10 @@ import java.util.ArrayList;
 //TODO @Milena: Try it by yourself
 /**
  * @author Milena Neumann
- * The InputField Class is the place where the input from the user gets
+ * The Person Class is the place where the input from the user gets
  * checked and put into a list for the following service
  */
-public class InputField
+public class Person
 {
 
     private String inFirstName;
@@ -18,7 +18,7 @@ public class InputField
     private String inFaculty;
     ArrayList<String> personInputData = new ArrayList<>();
 
-    public InputField(String inFirstName, String inLastName, String inMajor, String inFaculty)
+    public Person(String inFirstName, String inLastName, String inMajor, String inFaculty)
     {
         this.inFirstName = inFirstName;
         this.inLastName = inLastName;

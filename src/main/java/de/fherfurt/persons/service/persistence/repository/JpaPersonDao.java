@@ -8,14 +8,15 @@ import java.util.Optional;
 
 
 public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
+
     public JpaPersonDao( EntityManager em ){
         super( Person.class, em );
     }
 
 
     @Override
-    public Optional<Person> findPersonById(long personId) {
-        return Optional.empty();
+    public Person findPersonById(long personId) {
+        return null;
     }
 
     @Override

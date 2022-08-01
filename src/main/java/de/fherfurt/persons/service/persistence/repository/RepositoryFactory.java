@@ -26,8 +26,7 @@ public class RepositoryFactory
         return INSTANCE;
     }
 
-    private RepositoryFactory()
-    {
+    private RepositoryFactory() {
         LOGGER.info( "Init Repo Factory" );
 
         // Prepare Entity Manager Factory
@@ -43,8 +42,7 @@ public class RepositoryFactory
         DataProvider.createTestData().forEach( this.repository::createPerson );
     }
 
-    private EntityManagerFactory prepareEntityManagerFactory()
-    {
+    private EntityManagerFactory prepareEntityManagerFactory() {
         LOGGER.info( "Prepare Entity Manager Factory");
 
         String runMode = System.getenv("RUN_MODE");
@@ -55,12 +53,11 @@ public class RepositoryFactory
         else
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
     }
-    /*
-    public PersonRepository getPersonRepository()
-    {
+
+    public PersonRepository getPersonRepository() {
         return this.repository;
     }
-    */
+
 
     public RepositoryImp getAddressRepository() {
         return this.repository;
@@ -69,8 +66,6 @@ public class RepositoryFactory
     private PersonDao getPersonDao() {
         return new JpaPersonDao( this.entityManagerFactory.createEntityManager() );
     }
-
-
 
     private GenericDao<Address> getAddressDao() {
         return new JpaGenericsDao<>( Address.class, this.entityManagerFactory.createEntityManager() );
