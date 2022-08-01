@@ -1,6 +1,7 @@
 package de.fherfurt.persons.service.persistence.repository;
 
 import de.fherfurt.persons.service.model.Address;
+import de.fherfurt.persons.service.util.DataProvider;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,8 +26,7 @@ public class RepositoryFactory
         return INSTANCE;
     }
 
-    private RepositoryFactory()
-    {
+    private RepositoryFactory() {
         LOGGER.info( "Init Repo Factory" );
 
         // Prepare Entity Manager Factory
@@ -36,43 +36,38 @@ public class RepositoryFactory
         LOGGER.info( "Create RepositoryImpl" );
         this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() );
 
-        // Create Test Data
-        /*
+        // Create Test Data and Test Person
+        // Data is a list with Persons-Objects
         LOGGER.info( "Create Test Data" );
         DataProvider.createTestData().forEach( this.repository::createPerson );
-        */
     }
 
-    private EntityManagerFactory prepareEntityManagerFactory()
-    {
+    private EntityManagerFactory prepareEntityManagerFactory() {
         LOGGER.info( "Prepare Entity Manager Factory");
 
         String runMode = System.getenv("RUN_MODE");
         LOGGER.info( "RUN_MODE: " +  runMode );
 
-        if( runMode.equalsIgnoreCase( "production" ) )
+        if( runMode.equalsIgnoreCase( "develop" ) )
             return Persistence.createEntityManagerFactory( DEVELOP_PERSISTENCE_UNIT_NAME );
         else
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
     }
-    /*
-    public PersonRepository getPersonRepository()
-    {
-        return this.repository;
-    }
-    */
 
-    public RepositoryImp getAddressRepository()
-    {
+    public PersonRepository getPersonRepository() {
         return this.repository;
     }
 
-    private PersonDao getPersonDao()
-    {
+
+    public RepositoryImp getAddressRepository() {
+        return this.repository;
+    }
+
+    private PersonDao getPersonDao() {
         return new JpaPersonDao( this.entityManagerFactory.createEntityManager() );
     }
-    private GenericDao<Address> getAddressDao()
-    {
+
+    private GenericDao<Address> getAddressDao() {
         return new JpaGenericsDao<>( Address.class, this.entityManagerFactory.createEntityManager() );
     }
 

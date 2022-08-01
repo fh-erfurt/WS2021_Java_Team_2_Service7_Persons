@@ -1,5 +1,5 @@
 package de.fherfurt.persons.service.resources;
-
+import de.fherfurt.persons.client.PersonsClient;
 import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.persistence.repository.JpaGenericsDao;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
@@ -70,23 +70,3 @@ public class SearchingSystem
     public BufferedImage convertByteArrayIntoAvatarImage(int personId) throws IOException {
         return ImageIO.read(new ByteArrayInputStream(findPersonAvatarBy(personId)));
     }
-
-    /**
-     * The "findAllPersonWithDeleteFlag" will find all Person with a DeleteFlag add them into a list
-     * @return List of all persons with a deleted-Flag
-     */
-    public List<Person> findAllPersonWithDeletedFlag() {
-        return PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getDeletedFlag() ,true)).toList();
-    }
-
-    /**
-     * @author Milena Neumann
-     * finds all persons without deletedFlag
-     * @return List of persons without deleted Flag
-     */
-    public List<Person> findAllPersonsWithoutDeletedFlag() {
-        return PersonRepository.getInstance().getPersonList().stream().
-                filter(person -> Objects.equals(person.getDeletedFlag() ,false)).toList();
-    }
-}

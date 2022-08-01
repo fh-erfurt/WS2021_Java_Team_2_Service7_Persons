@@ -2,7 +2,6 @@ package de.fherfurt.persons.service.persistence.repository;
 import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -13,10 +12,10 @@ public interface GenericDao<T extends AbstractDatabaseEntity> {
     T findBy(long id);
     Collection<T> findAll();
 
-    boolean create( T entity );
+    boolean create( T entity);
     boolean createAll( Collection<T> newEntities );
 
-    Optional<T> update( T entity );
+    Optional<T> update(long Id, T entity);
 
     boolean delete( Long id );
     boolean delete( T entity );
