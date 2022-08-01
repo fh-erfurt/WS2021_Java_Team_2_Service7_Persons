@@ -10,51 +10,20 @@ import java.util.Objects;
  * @author Luisa Oswald, Tran Anh Hoang
  * Repository to storage person objects. The PersonRepository has a Singleton Pattern, and it exists only one instance of this class!
  */
-public class PersonRepository {
+public interface PersonRepository {
+    
+    boolean createPerson( Person person );
+    
+    List<Person> getAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty);
 
-    private static final PersonRepository personStorage = new PersonRepository();
+    Person getPersonBy(long personId );
+    
+    boolean updatePersonById(long personId, Person person );
+    
+    boolean deletePersonId( long personId );
+    
+    List<Person> getPersonsWithAddress(long addressId );
 
-    private final List<Person> storage = new ArrayList<>();
 
-    private PersonRepository(){
-    }
-
-    /**
-     * Save a person object with all his/her data structures and methods in an ArrayList
-     * @param person Person object from class Person
-     */
-    public void persist(Person person) {
-        if (!checkIfPersonIdAlreadyExistBy(person.getId())) {
-            storage.add(person);
-        }
-        else {
-            System.out.println("Person already Exist!");
-        }
-    }
-
-    /**
-     * @return storage Arraylist
-     */
-    public List<Person> getPersonList()
-    {
-        return storage;
-    }
-
-    /**
-     * Accessing point of the PersonRepository class
-     * @return Instance of PersonRepository
-     */
-    public static PersonRepository getInstance(){
-        return personStorage;
-    }
-
-    /**
-     * Check if a person with this personId already exist in the Arraylist
-     * @param personId unique key value for a person
-     * @return true -> personId exist, false -> personId don't exist
-     */
-    public boolean checkIfPersonIdAlreadyExistBy(long personId){
-        return PersonRepository.getInstance().getPersonList().stream().
-                anyMatch(personResult -> Objects.equals(personResult.getId(), personId));
-    }
+    
 }

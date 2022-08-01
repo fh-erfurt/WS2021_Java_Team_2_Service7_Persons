@@ -1,0 +1,10 @@
+## TODO: Milena Szenarien hinzufügen für verschieden Entpoints
+
+### Get Greeting from Server
+GET http://localhost:8080/api/getHello
+Accept: text/plain
+
+
+
+
+
