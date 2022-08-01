@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.Response;
 /**
  * @author Tran Anh Hoang
  * The class SearchingResource includes iterator search methode for a person (by personId or personinformation)
- * and a search methode for the Avatar of a certain Person
+ * and a search methode for the Avatar of a certain InputField
  */
 public class SearchingResource {
 

@@ -36,7 +36,7 @@ public class RepositoryFactory
         LOGGER.info( "Create RepositoryImpl" );
         this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() );
 
-        // Create Test Data and Test Person
+        // Create Test Data and Test InputField
         // Data is a list with Persons-Objects
         LOGGER.info( "Create Test Data" );
         DataProvider.createTestData().forEach( this.repository::createPerson );

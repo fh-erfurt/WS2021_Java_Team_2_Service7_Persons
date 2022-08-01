@@ -1,18 +1,15 @@
 package de.fherfurt.persons.service.resources;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
 
 
 import java.util.ArrayList;
 
+//TODO: @Milena: Klasse modifizieren, so dass die Endpoints von außen erreichbar sind: BaseRessource --> InputField
+//TODO: PersonRepository Interface auf die jeweilige Methoden anpassen und die dazugehörige Klasse RepositoryImp erweitern
 /**
  * @author Milena Neumann
  * The InputField Class is the place where the input from the user gets
  * checked and put into a list for the following service
  */
-@Path("inputfield")
 public class InputField
 {
 
@@ -28,14 +25,6 @@ public class InputField
         this.inLastName = inLastName;
         this.inMajor = inMajor;
         this.inFaculty = inFaculty;
-    }
-
-
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String info()
-    {
-        return "Insert Firstname, Lastname, Major and Faculty to search persons";
     }
 
 }

@@ -1,7 +1,8 @@
 package de.fherfurt.persons.service.resources;
 
-//TODO @Milena: Nachvollziehen und siehe Avemarks Repo JPA-Rest-Version - Fertig
+//TODO @Milena: Endpoint der Klasse Editing InputField und InputField (InputField)
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
@@ -32,11 +33,9 @@ public class BaseResource {
     }
 
     /*
-    @GET
-    @Path("/Person")
-    public Person getPerson (){
-        return new Person();
-    }
-    */
+    @PUT
+    @Path("/EditingPerson")
+    public ...
 
+     */
 }

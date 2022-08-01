@@ -14,14 +14,14 @@ public class PersonAvatarRepository {
     /**
      * Save the personId and avatarByteArray in a Hashmap.
      * @param personId is the key value of the HashMap, and it is equal to the personId of a person in the ArrayList of the class PersonRepository
-     * @param avatarByteArray Image of a Person as a byte array
+     * @param avatarByteArray Image of a InputField as a byte array
      */
     public void saveAvatarBy(int personId, byte [] avatarByteArray) {
         avatarStorage.put(personId, avatarByteArray);
     }
 
     /**
-     * Search and get a Person Avatar in the Hashmap by the personId.
+     * Search and get a InputField Avatar in the Hashmap by the personId.
      * @param personId is the key value of the HashMap, and it is equal to the personId of a person in the ArrayList of the class PersonRepository
      * @return byte array of a image
      */
