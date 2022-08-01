@@ -16,13 +16,6 @@ public interface PersonDao extends GenericDao<Person>{
 
     Collection<Person> findPersonBy(String firstname, String lastname, String major, String faculty );
 
-    /**
-     * This methode "findPersonAvatarBy" will find a InputField Avatar from a HashMap through a personId - Key.
-     * @param personId unique key of a person
-     * @return byte Code which return a byte Array of a InputField Avatar
-     */
-    byte[] findPersonAvatarBy(int personId);
-
 
 
     Collection<Person> findAllPersonWithDeletedFlag();

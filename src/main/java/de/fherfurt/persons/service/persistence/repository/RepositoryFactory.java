@@ -1,6 +1,7 @@
 package de.fherfurt.persons.service.persistence.repository;
 
 import de.fherfurt.persons.service.model.Address;
+import de.fherfurt.persons.service.model.PersonAvatar;
 import de.fherfurt.persons.service.util.DataProvider;
 
 import javax.persistence.EntityManagerFactory;
@@ -26,6 +27,8 @@ public class RepositoryFactory
         return INSTANCE;
     }
 
+
+
     private RepositoryFactory() {
         LOGGER.info( "Init Repo Factory" );
 
@@ -34,7 +37,7 @@ public class RepositoryFactory
 
         // Create Repo
         LOGGER.info( "Create RepositoryImpl" );
-        this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() );
+        this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() , this.getPersonAvataDao());
 
         // Create Test Data and Test InputField
         // Data is a list with Persons-Objects
@@ -54,21 +57,31 @@ public class RepositoryFactory
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
     }
 
-    public PersonRepository getPersonRepository() {
-        return this.repository;
-    }
 
 
-    public RepositoryImp getAddressRepository() {
-        return this.repository;
-    }
-
+    //Setzen der Person-EntityManager
     private PersonDao getPersonDao() {
         return new JpaPersonDao( this.entityManagerFactory.createEntityManager() );
     }
 
+    //Setzen der Adress-EntityManager
     private GenericDao<Address> getAddressDao() {
         return new JpaGenericsDao<>( Address.class, this.entityManagerFactory.createEntityManager() );
+    }
+
+    //Setzen der PersonAvatar-EntityManager
+    private PersonAvatarDao getPersonAvataDao(){
+        return new JpaPersonAvatarDao(PersonAvatar.class, this.entityManagerFactory.createEntityManager());
+    }
+
+    public PersonRepository getPersonRepository() {
+        return this.repository;
+    }
+
+    public PersonAvatarRepository getPersonAvatarRepository(){ return this.repository;}
+
+    public RepositoryImp getAddressRepository() {
+        return this.repository;
     }
 
 }

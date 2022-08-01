@@ -14,15 +14,20 @@ public interface PersonRepository {
     
     boolean createPerson( Person person );
     
-    List<Person> getAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty);
+    List<Person> findAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty);
 
-    Person getPersonBy(long personId );
-    
+    Person findPersonBy(long personId );
+
+
     boolean updatePersonById(long personId, Person person );
     
     boolean deletePersonId( long personId );
     
     List<Person> getPersonsWithAddress(long addressId );
+
+    List<Person> findAllPersonWithDeletedFlag();
+
+    List<Person> findAllPersonsWithoutDeletedFlag();
 
 
     

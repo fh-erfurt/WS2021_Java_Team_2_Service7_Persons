@@ -43,12 +43,8 @@ public class Person extends AbstractDatabaseEntity {
     @ManyToOne( cascade = CascadeType.PERSIST )
     private Address address;
 
-    /*
     @OneToOne
     private PersonAvatar avatar;
-
-    protected InputField() {}
-
 
     @OneToOne
     private Faculty facultyName;

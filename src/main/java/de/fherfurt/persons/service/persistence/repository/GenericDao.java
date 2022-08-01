@@ -12,6 +12,8 @@ public interface GenericDao<T extends AbstractDatabaseEntity> {
     T findBy(long id);
     Collection<T> findAll();
 
+
+
     boolean create( T entity);
     boolean createAll( Collection<T> newEntities );
 
@@ -19,6 +21,6 @@ public interface GenericDao<T extends AbstractDatabaseEntity> {
 
     boolean delete( Long id );
     boolean delete( T entity );
-    boolean delete( Collection<T> entries );
+
 
 }

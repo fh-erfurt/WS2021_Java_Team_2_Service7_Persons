@@ -1,22 +1,22 @@
 package de.fherfurt.persons.service.persistence.repository;
 
-
-
 import de.fherfurt.persons.service.model.Address;
 import de.fherfurt.persons.service.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryImp implements PersonRepository, AddressRepository{
+public class RepositoryImp implements PersonRepository, AddressRepository, PersonAvatarRepository{
 
     private final PersonDao personDao;
     private final GenericDao<Address> addressDao;
+    private final PersonAvatarDao personAvatarDao;
 
 
-    RepositoryImp(PersonDao personDao, GenericDao<Address> addressDao) {
+    RepositoryImp(PersonDao personDao, GenericDao<Address> addressDao, PersonAvatarDao personAvatarDao) {
         this.personDao = personDao;
         this.addressDao = addressDao;
+        this.personAvatarDao = personAvatarDao;
     }
 
 
@@ -26,23 +26,24 @@ public class RepositoryImp implements PersonRepository, AddressRepository{
     }
 
     @Override
-    public List<Address> getAllAddresses() {
+    public List<Address> findAllAddresses() {
         return new ArrayList<>(this.addressDao.findAll());
     }
 
     @Override
-    public Address getAddress(Long addressId) {
+    public Address findAddressBy(Long addressId) {
         return this.addressDao.findBy(addressId);
     }
 
     @Override
-    public boolean updateAddress(long addressId, Address address) {
+    public boolean updateAddressBy(long addressId, Address address) {
         this.addressDao.update(addressId, address);
-        return getAddress(addressId).equals(address);
+        return findAddressBy(addressId).equals(address);
     }
 
+
     @Override
-    public boolean deleteAddress(Long addressId) {
+    public boolean deleteAddressBy(long addressId) {
         return this.addressDao.delete(addressId);
     }
 
@@ -53,19 +54,29 @@ public class RepositoryImp implements PersonRepository, AddressRepository{
     }
 
     @Override
-    public List<Person> getAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty) {
+    public List<Person> findAllPersonsByUserInput(String inFirstName, String inLastName, String inMajor, String inFaculty) {
         return new ArrayList<>(this.personDao.findPersonBy(inFirstName, inLastName, inMajor, inFaculty));
     }
 
     @Override
-    public Person getPersonBy(long personId){
+    public Person findPersonBy(long personId){
         return this.personDao.findPersonById(personId);
     }
 
     @Override
+    public byte [] findPersonAvatarByPersonId(long personId){
+        return this.personAvatarDao.findPersonAvatarByPersonId(personId);
+    }
+    @Override
+    public byte [] findPersonAvatarById(long avatarId){
+        return this.personAvatarDao.findPersonAvatarById(avatarId);
+    }
+
+
+    @Override
     public boolean updatePersonById(long personId, Person person ){
         this.personDao.update(personId, person);
-        return getPersonBy(personId).getId() == personId;
+        return findPersonBy(personId).getId() == personId;
     }
 
     @Override
@@ -77,6 +88,16 @@ public class RepositoryImp implements PersonRepository, AddressRepository{
     public List<Person> getPersonsWithAddress(long addressId ){
         return new ArrayList<>(this.personDao.findAll());
     }
-    
+
+    @Override
+    public List<Person> findAllPersonWithDeletedFlag() {
+        return new ArrayList<>(this.personDao.findAllPersonWithDeletedFlag());
+    }
+
+    @Override
+    public List<Person> findAllPersonsWithoutDeletedFlag() {
+        return new ArrayList<>(this.personDao.findAllPersonsWithoutDeletedFlag());
+    }
+
 
 }

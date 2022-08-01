@@ -1,14 +1,10 @@
 package de.fherfurt.persons.service.model;
 
 import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
-import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -45,11 +41,4 @@ public class PersonAvatar extends AbstractDatabaseEntity {
         }
     }
 
-    /**
-     * Puts the personId and avatar into AvatarRepository
-     * @param personId identification of a person
-     */
-    public void setAvatarByteArrayIntoAvatarRepositoryBy(int personId) {
-        PersonAvatarRepository.getInstance().saveAvatarBy(personId, avatarByteArray);
-    }
 }
