@@ -12,8 +12,7 @@ public class BaseResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String info()
-    {
+    public String info() {
         return "Hello from Base Resource";
     }
 
@@ -26,11 +25,13 @@ public class BaseResource {
     }
 
 
-    @GET
-    @Path("/SearchingSystem")
+
+    @Path("/SearchingResource")
     public SearchingResource getSearchingResource(){
         return new SearchingResource();
     }
+
+
 
     /*
     @PUT

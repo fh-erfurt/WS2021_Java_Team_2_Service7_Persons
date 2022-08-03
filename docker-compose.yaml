@@ -1,4 +1,3 @@
-##TODO: Checking Later in Folders for specifics Dockerfile
 version: '3.8'
 volumes:
   db-data:
@@ -49,7 +48,7 @@ services:
 
    environment:
      # Environment parameter used by our application
-     - RUN_MODE=production
+     - RUN_MODE=develop
 
    # Port Mapping
    ports:

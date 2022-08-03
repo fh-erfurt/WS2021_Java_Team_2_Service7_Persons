@@ -32,14 +32,13 @@ public class SearchingResource {
     }
 
     @GET
-    @Path("Test")
     @Produces(MediaType.TEXT_PLAIN)
     public String printTest(){
         return "SearchingResource Endpoint is avaible!";
     }
 
     @GET
-    @Path("{personId:\\d+}")
+    @Path("/findPerson/{personId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findPersonBy(@PathParam("personId") long  personId ) {
 
@@ -109,7 +108,5 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
-
-
 
 }

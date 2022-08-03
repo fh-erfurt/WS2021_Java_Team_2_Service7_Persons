@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import de.fherfurt.persons.service.model.Address;
+import de.fherfurt.persons.service.model.Faculty;
 import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.model.PersonAvatar;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class DataProvider {
 
 
         Address address01 = new Address( "Altonaer Strasse 25",     "Erfurt", "99085" );
+        Faculty faculty01 = new Faculty("Gebaeudetechnik und Informatik");
 
 
         personTestList.add(Person.student("Max",    "Mustermann",   "m.m@m.com",

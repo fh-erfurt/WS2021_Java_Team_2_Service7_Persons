@@ -27,8 +27,6 @@ public class RepositoryFactory
         return INSTANCE;
     }
 
-
-
     private RepositoryFactory() {
         LOGGER.info( "Init Repo Factory" );
 
@@ -51,10 +49,11 @@ public class RepositoryFactory
         String runMode = System.getenv("RUN_MODE");
         LOGGER.info( "RUN_MODE: " +  runMode );
 
-        if( runMode.equalsIgnoreCase( "develop" ) )
+        if( runMode == null || runMode.equalsIgnoreCase( "develop" ) )
             return Persistence.createEntityManagerFactory( DEVELOP_PERSISTENCE_UNIT_NAME );
         else
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
+
     }
 
 
