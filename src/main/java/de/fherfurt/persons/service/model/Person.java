@@ -13,7 +13,7 @@ import javax.persistence.*;
  * @version  1.0.0.0
  * @since 1.0.0.0
  */
-
+//TODO Wie kann man das Mappen der Datenbank testen?
 @Entity
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @Builder(access = AccessLevel.PRIVATE, setterPrefix = "set")

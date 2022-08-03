@@ -1,6 +1,6 @@
 package de.fherfurt.persons.service.resources;
 
-//TODO @Milena: Endpoint der Klasse Editing InputField und InputField (InputField)
+//TODO @Milena: Endpoint der Klasse EditingPerson und InputField (InputField)
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;

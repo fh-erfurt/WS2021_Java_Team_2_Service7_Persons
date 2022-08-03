@@ -1,10 +1,4 @@
 package de.fherfurt.persons.service.model;
-
-//TODO @Milena: Erweitere checkFacultyName Abkürzungen
-//TODO @Milena: Erstelle Repo Interfaces
-//TODO @Milena: Überschreibe Methoden für die Interfaces
-
-
 import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import lombok.Getter;
 import lombok.Setter;

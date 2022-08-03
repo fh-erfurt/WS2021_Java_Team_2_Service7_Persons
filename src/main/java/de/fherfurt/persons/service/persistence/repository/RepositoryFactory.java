@@ -39,6 +39,7 @@ public class RepositoryFactory
 
         // Create Test Data and Test InputField
         // Data is a list with Persons-Objects
+        // TODO: Wie kann man die Datenbank schon davor füllen?
         LOGGER.info( "Create Test Data" );
         DataProvider.createTestData().forEach( this.repository::createPerson );
     }

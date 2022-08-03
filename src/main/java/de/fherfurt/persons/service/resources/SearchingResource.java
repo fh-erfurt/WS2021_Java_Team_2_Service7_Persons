@@ -37,6 +37,8 @@ public class SearchingResource {
         return "SearchingResource Endpoint is avaible!";
     }
 
+
+    //TODO: Einige Endpoints stehen zwar --> Gibt aber 500 Error zurück?
     @GET
     @Path("/findPerson/{personId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
