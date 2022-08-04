@@ -12,12 +12,21 @@ public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
         super( Person.class, em );
     }
 
-
+    /*
     @Override
     public Person findPersonById(long personId) {
-        return getEntityManager().find(persistentClass, personId);
+        return getEntityManager().find(Person.class, personId);
     }
+    */
 
+    /*
+    @Override
+    public Person findPersonById(long personId) {
+        Query query= getEntityManager().createNativeQuery("SELECT * from person p where p.id = ?");
+        query.setParameter(1, personId);
+        return  (Person) query.getSingleResult();
+    }
+    */
 
     //TODO: Mehrere Paramater kann das so machen?
     @Override
@@ -29,11 +38,15 @@ public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
     }
 
     //TODO: Warum sind manche "c" als syntaktisch falsch deklierert
+    // C ist das Object
     @Override
     public Collection<Person> findAllPersonWithDeletedFlag() {
         Query query = getEntityManager().createQuery("SELECT c FROM " + getEntityClass().getCanonicalName() +
                 "c where c.deletedFlag = 1");
 
+
+        //TODO: Mögliche Variante, jedoch schwierig, da man nicht weiß, wie JPA im Hintergrund die Tabellen mappt
+        //Query query = getEntityManager().createNativeQuery()
         return (Collection<Person>) query.getResultList();
     }
 

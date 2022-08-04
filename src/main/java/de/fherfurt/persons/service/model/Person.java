@@ -29,7 +29,6 @@ public class Person extends AbstractDatabaseEntity {
     private String phonenumber;
     private String title;
     private String hireDate;
-    private String faculty;
     private Boolean teachingFlag;
     private String room;
     private String major;
@@ -46,7 +45,7 @@ public class Person extends AbstractDatabaseEntity {
     @OneToOne
     private PersonAvatar avatar;
 
-    @OneToOne
+    @ManyToOne
     private Faculty facultyName;
 
 
@@ -55,7 +54,7 @@ public class Person extends AbstractDatabaseEntity {
      * @return a new person instance that only requires the specific parameters for an employee
      */
     //only needed for other employees
-    public static Person otherEmployee( String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
+    public static Person otherEmployee(String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
     }
 
@@ -64,9 +63,9 @@ public class Person extends AbstractDatabaseEntity {
      * @return a new person instance that only requires the specific parameters for a lecturer
      */
     //only needed for lecturers
-    public static Person lecturer(int personId, String firstname,String lastname,String email,String phonenumber, String title, String hireDate, String faculty, Boolean teachingFlag, String room, boolean deletedFlag){
+    public static Person lecturer(String firstname,String lastname,String email,String phonenumber, String title, String hireDate, Faculty faculty, Boolean teachingFlag, String room, boolean deletedFlag){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).
-                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFaculty(faculty).setRoom(room).
+                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFacultyName(faculty).setRoom(room).
                 setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
     }
 
@@ -74,9 +73,10 @@ public class Person extends AbstractDatabaseEntity {
      * Function to create a student with the needed parameters from person
      * @return a new person instance that only requires the specific parameter for a student
      */
-    //only needed for students
-    public static Person student(String firstname,String lastname,String email,String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address){
+    public static Person student(String firstname,String lastname,String email, String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).setAddress(address).build();
     }
+
+
 
 }

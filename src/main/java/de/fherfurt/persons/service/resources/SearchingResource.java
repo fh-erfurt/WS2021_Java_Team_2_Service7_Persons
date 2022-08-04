@@ -29,6 +29,7 @@ public class SearchingResource {
     public SearchingResource() {
         this.personRepository = RepositoryFactory.getInstance().getPersonRepository();
         this.personAvatarRepository = RepositoryFactory.getInstance().getPersonAvatarRepository();
+        System.out.println("ist drinne im Konstruktor");
     }
 
     @GET
@@ -38,7 +39,6 @@ public class SearchingResource {
     }
 
 
-    //TODO: Einige Endpoints stehen zwar --> Gibt aber 500 Error zurück?
     @GET
     @Path("/findPerson/{personId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,7 +52,19 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+    @GET
+    @Path("/findAllPerson")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAllPerson() {
 
+        List<Person> p = this.personRepository.findAll();
+
+        if( p != null )
+            return Response.ok( p ).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
+    /*
     @GET
     @Path("{deletedFlag:1}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -66,6 +78,7 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
+     */
 
 
     @GET
@@ -96,9 +109,9 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
-
+    /*
     @GET
-    @Path("{personId:\\d+}")
+    @Path("{/findAvatarByPersonId/personId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findPersonAvatarByPersonId(@PathParam("personId") long  personId ){
 
@@ -110,5 +123,6 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
+    */
 
 }

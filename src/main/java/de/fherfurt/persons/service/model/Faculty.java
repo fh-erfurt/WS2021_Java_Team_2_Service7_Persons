@@ -11,16 +11,15 @@ public class Faculty extends AbstractDatabaseEntity {
     @Getter
     private String facultyName;
 
+    public Faculty() {
+    }
+
     public Faculty(String facultyName) {
         this.facultyName = checkFacultyName(facultyName);
     }
 
-    public Faculty() {
-
-    }
-
     public String checkFacultyName(String facultyName){
-        String result = facultyName;
+        String result;
             switch (facultyName) {
                 case "Gebaeudetechnik und Informatik":
                     result = "GTI";

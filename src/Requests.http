@@ -1,4 +1,4 @@
-## TODO: Milena Szenarien hinzufügen für verschieden Entpoints
+## TODO: Milena Szenarien hinzufügen für verschieden Entpoints (GET und PUT Methoden)
 
 ### Get Greeting from Server
 GET http://localhost:8080/api/getHello

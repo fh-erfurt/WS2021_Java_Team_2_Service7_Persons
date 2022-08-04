@@ -18,6 +18,8 @@ public interface PersonRepository {
 
     Person findPersonBy(long personId );
 
+    List<Person> findAll();
+
 
     boolean updatePersonById(long personId, Person person );
     

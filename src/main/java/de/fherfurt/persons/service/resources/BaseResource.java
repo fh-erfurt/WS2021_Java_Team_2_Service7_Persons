@@ -29,6 +29,7 @@ public class BaseResource {
     @Path("/SearchingResource")
     public SearchingResource getSearchingResource(){
         return new SearchingResource();
+
     }
 
 
@@ -37,6 +38,5 @@ public class BaseResource {
     @PUT
     @Path("/EditingPerson")
     public ...
-
-     */
+    */
 }

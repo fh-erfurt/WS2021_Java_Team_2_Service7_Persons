@@ -31,8 +31,8 @@ public class DataProvider {
         Faculty faculty01 = new Faculty("Gebaeudetechnik und Informatik");
 
 
-        personTestList.add(Person.student("Max",    "Mustermann",   "m.m@m.com",
-               "AI", "21.10.2021", null, false,
+        personTestList.add(Person.student("Max", "Mustermann", "m.m@m.com",
+                "AI", "21.10.2021", null, false,
                 false, false, address01));
 
         return personTestList;

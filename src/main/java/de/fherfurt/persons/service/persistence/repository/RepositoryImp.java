@@ -60,7 +60,12 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
 
     @Override
     public Person findPersonBy(long personId){
-        return this.personDao.findPersonById(personId);
+        return this.personDao.findBy(personId);
+    }
+
+    @Override
+    public List<Person> findAll(){
+        return (List<Person>) this.personDao.findAll();
     }
 
     @Override

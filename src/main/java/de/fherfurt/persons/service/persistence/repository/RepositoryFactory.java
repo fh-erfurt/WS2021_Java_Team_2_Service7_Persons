@@ -12,7 +12,7 @@ public class RepositoryFactory
 {
     private static final Logger LOGGER = Logger.getLogger( RepositoryFactory.class.getSimpleName() );
 
-    private static final String DEVELOP_PERSISTENCE_UNIT_NAME = "dev-person-unit";
+    private static final String DEVELOP_PERSISTENCE_UNIT_NAME = "develop-person-unit";
     private static final String TEST_PERSISTENCE_UNIT_NAME = "test-person-unit";
 
     private final EntityManagerFactory entityManagerFactory;
