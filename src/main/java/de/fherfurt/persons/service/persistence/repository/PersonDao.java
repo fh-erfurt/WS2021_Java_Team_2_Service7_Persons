@@ -12,7 +12,7 @@ public interface PersonDao extends GenericDao<Person>{
      * @param //personId this Parameter is needed for the Searching
      * @return Optional (InputField) with all her/his values
      */
-    //Person findPersonById(long personId);
+    Person findPersonById(long personId);
 
     Collection<Person> findPersonBy(String firstname, String lastname, String major, String faculty );
 

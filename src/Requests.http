@@ -4,7 +4,7 @@
 GET http://localhost:8080/api/getHello
 Accept: text/plain
 
-
-
-
+### Get first Person in Persontable
+GET  http://localhost:8080/api/SearchingResource/findPerson/1
+Accept: application/json
 

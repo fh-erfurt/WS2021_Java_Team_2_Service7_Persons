@@ -30,13 +30,15 @@ public class AbstractDatabaseEntity {
     /**
      * @Temporal Für den Datentyp Date muss bei de Abbildung ein SQL Datentyp via festgelegt werden
      */
+    /*
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
-
+    */
     public AbstractDatabaseEntity() {}
 
+    /*
 
     @PrePersist
     void onCreate()
@@ -49,14 +51,5 @@ public class AbstractDatabaseEntity {
     {
         this.setModified( new Date() );
     }
-
-    @Override
-    public String toString() {
-        return "AbstractDatabaseEntity{" +
-                "id=" + id +
-                ", created=" + created +
-                ", version=" + version +
-                ", modified=" + modified +
-                '}';
-    }
+    */
 }

@@ -19,14 +19,14 @@ public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
     }
     */
 
-    /*
+
     @Override
     public Person findPersonById(long personId) {
-        Query query= getEntityManager().createNativeQuery("SELECT * from person p where p.id = ?");
-        query.setParameter(1, personId);
-        return  (Person) query.getSingleResult();
+        Person person = (Person) getEntityManager().createNativeQuery("SELECT p.firstname, p.lastname, p.email from person p where p.id = ?").setParameter("id", personId).getSingleResult();
+        return person;
     }
-    */
+
+
 
     //TODO: Mehrere Paramater kann das so machen?
     @Override
