@@ -146,29 +146,46 @@ public class SearchingResource {
     @GET
     @Path("/findAddressById/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAddressById(@PathParam("addressId") long addressId)
-                                                    {
+    public Response findAddressById(
+        @PathParam("addressId") long addressId
+    ) {
         if( this.addressRepository.findAddressBy(addressId) != null)
             return Response.ok(this.addressRepository.findAddressBy(addressId)).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
-
     //mit find all aus repositoryImp
-   /* @GET
-    @Path("{/findPersonByAddressId/{AddressId:\\d+}")
+    @GET
+    @Path("/findPersonByAddressId/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
-    {
+    public Response findPersonsByAddressId(
+        @PathParam("addressId") @DefaultValue("-1") long addressId
+    ) {
+        List<Person> foundPersons = this.personRepository.findPersonsByAddressId(addressId);
 
+        System.out.println(foundPersons.toString());
+
+        if (foundPersons.size() == 0 || addressId == -1)
+            return Response.status( Response.Status.NOT_FOUND ).build();
+        else
+            return Response.ok( foundPersons.toArray() ).build();
     }
 
     @GET //überall bei find all, über find all person(personrepo) alle perspm reinholen, über stram nach gesuchten attribut
-    @Path("{/findAllPersonByFaculty")
+    @Path("/findAllPersonByFaculty/{facultyName}")
     @Produces(MediaType.APPLICATION_JSON)
-    {
+    public Response findPersonsByAddressId(
+        @PathParam("facultyName") String facultyName
+    ) {
+        List<Person> foundPersons = this.personRepository.findPersonsByFacultyName(facultyName);
 
+        System.out.println(foundPersons.toString());
+
+        if (foundPersons.size() == 0 || facultyName == null)
+            return Response.status( Response.Status.NOT_FOUND ).build();
+        else
+            return Response.ok( foundPersons.toArray() ).build();
     }
-*/
 }
 

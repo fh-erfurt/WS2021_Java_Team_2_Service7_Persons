@@ -23,6 +23,10 @@ public interface PersonRepository {
 
     List<Person> findAll();
 
+    List<Person> findPersonsByAddressId(long addressId);
+
+    List<Person> findPersonsByFacultyName(String facultyName);
+
     boolean updatePersonById(Person person );
     
     boolean deletePersonById( long personId );

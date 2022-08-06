@@ -116,3 +116,11 @@ Accept: application/json
 ### Find an address by Id
 GET  http://localhost:8080/api/SearchingResource/findAddressById/2
 Accept: application/json
+
+### Find Person by AddressID
+GET  http://localhost:8080/api/SearchingResource/findPersonByAddressId/2
+Accept: application/json
+
+### Find persons by FacultyName
+GET  http://localhost:8080/api/SearchingResource/findAllPersonByFaculty/AI
+Accept: application/json

@@ -50,6 +50,26 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
     }
 
     @Override
+    public List<Person> findPersonsByAddressId(long addressId) {
+        List<Person> personsToFilter = this.findAll();
+
+        return personsToFilter
+                .stream()
+                .filter(c -> c.getAddress().getId() == addressId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Person> findPersonsByFacultyName(String facultyName) {
+        List<Person> personsToFilter = this.findAll();
+
+        return personsToFilter
+                .stream()
+                .filter(c -> c.getFacultyName().getFacultyName() == facultyName)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public byte [] findPersonAvatarByPersonId(long personId){
         return this.personAvatarDao.findPersonAvatarByPersonId(personId);
     }
