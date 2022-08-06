@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 
+/**
+ * @Author Prof. Dr. Steffen Avemarg
+ * @Version 2.0.0.0
+ * Main is to start and Log the information of the Jetty Server in the Docker
+ */
 public class WebApplication {
     public static final String BASE_URI = "http://localhost:8080/";
 
@@ -24,9 +29,7 @@ public class WebApplication {
         Logger LOG = LoggerFactory.getLogger( WebApplication.class );
 
         try {
-
             final Server server = startServer();
-
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
                     LOG.info("Shutting down the application...");

@@ -10,6 +10,12 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.io.IOException;
 
+
+/**
+ * @Author Tran Anh Hoang
+ * Endpoints for create, update and delete the data of a person
+ * @version  2.0.0.0
+ */
 public class EditingPersonResource {
 
     final PersonRepository personRepository;
@@ -21,6 +27,12 @@ public class EditingPersonResource {
 
     }
 
+
+    /**
+     * Endpoint to create a new person
+     * @param personToCreate need Json File with the right parameter to create a new Person Object
+     * @return Response Code/Number
+     */
     @POST
     @Path("/createPerson")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,7 +46,11 @@ public class EditingPersonResource {
             return Response.status( Response.Status.INTERNAL_SERVER_ERROR ).build();
     }
 
-
+    /**
+     * Endpoint to update a person
+     * @param personToUpdate need Json File with the right parameter to update a person
+     * @return Response Code/Number
+     */
     @POST
     @Path("/UpdatePerson/")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -48,6 +64,11 @@ public class EditingPersonResource {
             return Response.status( Response.Status.INTERNAL_SERVER_ERROR ).build();
     }
 
+    /**
+     * Endpoint to delete a person
+     * @param personId specific Id to find and delete all the data of the person
+     * @return Response Code/Number
+     */
     @DELETE
     @Path("/deletePerson/{personId:\\d+}")
     public Response deletePerson( @PathParam("personId") long  personId ) {

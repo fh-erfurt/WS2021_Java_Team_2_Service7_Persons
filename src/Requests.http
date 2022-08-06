@@ -1,33 +1,33 @@
-### Find Greeting from Server
+### Find Greeting from Server @Author: Tran Anh Hoang
 GET http://localhost:8080/api/getHello
 Accept: text/plain
 
-### Find all Data from person with personId = 1
+### Find all Data from person with personId = 1 @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findPerson/1
 Accept: application/json
 
-### Find all person in Database
+### Find all person in Database @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findAllPerson
 Accept: application/json
 
-### Find all person with UserInput
+### Find all person with UserInput @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findPersonBy/Max/Mustermann/AI/GTI
 Accept: application/json
 
-### Find all person with deleted Flag
+### Find all person with deleted Flag @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findAllPersonWithDeletedFlag
 Accept: application/json
 
-### Find all person without deleted Flag
+### Find all person without deleted Flag @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findAllPersonWithOutDeletedFlag
 Accept: application/json
 
 
-### Find all person without same Address
+### Find all person without same Address @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findAllPersonWithEqualAddressId/Altonaer Strasse 25/Erfurt/99085
 Accept: application/json
 
-### Update person
+### Update person @Author: Tran Anh Hoang
 POST http://localhost:8080/api/EditingPersonResource/UpdatePerson
 Content-Type: application/json
 Accept: application/json
@@ -70,7 +70,7 @@ Accept: application/json
 }
 
 
-### Create person
+### Create person @Author: Tran Anh Hoang
 POST http://localhost:8080/api/EditingPersonResource/createPerson
 Content-Type: application/json
 Accept: application/json
@@ -103,7 +103,7 @@ Accept: application/json
 }
 
 
-### Delete person
+### Delete person @Author: Tran Anh Hoang
 DELETE http://localhost:8080/api/EditingPersonResource/deletePerson/1
 Content-Type: application/json
 Accept: application/json
@@ -114,5 +114,5 @@ Content-Type: application/json
 Accept: application/json
 
 ### Find an address by Id
-GET  http://localhost:8080/api/SearchingResource/findAddressById/2
+GET  http://localhost:8080/api/SearchingResource/findAddressById/6
 Accept: application/json

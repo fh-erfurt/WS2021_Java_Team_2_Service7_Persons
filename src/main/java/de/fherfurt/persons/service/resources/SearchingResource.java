@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 
 /**
  * @author Tran Anh Hoang
- * The class SearchingResource includes iterator search methode for a person (by personId or personinformation)
- * and a search methode for the Avatar of a certain InputField
+ * @version  2.0.0.0
+ * The class SearchingResource includes search methode the find specifics Parameter of Person or all the data of a Person
  */
 public class SearchingResource {
 

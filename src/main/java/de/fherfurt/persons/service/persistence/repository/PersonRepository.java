@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Tran Anh Hoang
- * Repository to storage person objects. The PersonRepository has a Singleton Pattern, and it exists only one instance of this class!
+ * The interface PersonRepository represent the abstract layer between Resources-Layer and Repository-Layer.
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.0
  */
 public interface PersonRepository {
     

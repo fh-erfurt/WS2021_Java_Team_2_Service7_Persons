@@ -5,6 +5,12 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+
+/**
+ * The class AbstractDatabaseEntity is an entity-class. This class has the main goal as a parent class and entity and inheritance specific attribute to the other child entity-classes
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.
+ */
 @Setter
 @Getter
 @Entity
@@ -12,18 +18,10 @@ import java.util.Date;
 public class AbstractDatabaseEntity {
 
 
-    /**
-     * @Id Jede Tabelle braucht ID, somit wird das vererbt
-     * @GeneratedValue markiert den Primärschlüssel als automatisch vergeben
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-
-    /**
-     * @Id markiert eine Instanz-variable, welche von JPA automatisch zur Versionierung verwendet wird
-     */
     @Version
     private Long version;
 

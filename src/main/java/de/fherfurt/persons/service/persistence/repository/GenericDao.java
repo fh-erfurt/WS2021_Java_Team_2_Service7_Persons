@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.Optional;
 
 /**
- * DAO = Data Access Object
- * isolate the application/business layer from the persistence layer (
+ * The interface GenericDao represent the abstract layer between PersonAvatarDao,PersonDao,GenericDao and Repository-Layer. It has the goal to isolate the application/business layer from the persistence layer (
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.0
+ *
+ *
  */
 public interface GenericDao<T extends AbstractDatabaseEntity> {
     T findBy(long id);

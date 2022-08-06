@@ -6,6 +6,12 @@ import org.apache.commons.lang3.SerializationUtils;
 
 import javax.persistence.EntityManager;
 
+
+/**
+ * The class JpaPersonAvatarDao is the implementation class of the interface PersonAvatarDao.
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.0
+ */
 public class JpaPersonAvatarDao extends JpaGenericsDao<PersonAvatar> implements PersonAvatarDao{
 
     public JpaPersonAvatarDao(Class<PersonAvatar> type, EntityManager em) {

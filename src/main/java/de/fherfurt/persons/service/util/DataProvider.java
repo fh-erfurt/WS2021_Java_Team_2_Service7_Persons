@@ -38,6 +38,7 @@ public class DataProvider {
         PersonAvatar personAvatar02 = new PersonAvatar(testByteAsImage2);
 
 
+        Address address03 = new Address( "Altonaer Strasse 12", "Erfurt", "99085" );
         PersonAvatar personAvatar03 = new PersonAvatar(testByteAsImage3);
 
         personTestList.add(Person.student("Max", "Mustermann", "m.m@m.com",
@@ -50,8 +51,10 @@ public class DataProvider {
                 "22.02.2012", faculty02, address02,"2.02.E2",true,
                 false, personAvatar02 ));
 
-        personTestList.add(Person.otherEmployee("Hans", "Peter",
-                "H.P@fh-erfufrt.de","Hausmeister", true, personAvatar03));
+
+
+        personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
+                ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
 
 
         return personTestList;
