@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.imageio.ImageIO;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -26,6 +27,7 @@ import java.util.logging.Logger;
 @Getter
 public class PersonAvatar extends AbstractDatabaseEntity {
 
+    @Lob
     private byte [] avatarByteArray;
 
     @Transient
@@ -33,9 +35,12 @@ public class PersonAvatar extends AbstractDatabaseEntity {
 
     public PersonAvatar(){}
 
+    public PersonAvatar(byte[] avatarByteArray){
+        this.avatarByteArray = avatarByteArray;
+    }
+
     public PersonAvatar(String userImagePath) throws IOException {
-       this.avatarByteArray = convertImageToByteArray(userImagePath);
-       System.out.println(Arrays.toString(this.avatarByteArray));
+        this.avatarByteArray = convertImageToByteArray(userImagePath);
     }
 
 
@@ -46,13 +51,11 @@ public class PersonAvatar extends AbstractDatabaseEntity {
      */
     public byte[] convertImageToByteArray(String userImagePath) throws IOException {
         try{
-            File userAvatar = new File(userImagePath);
-            if(userAvatar.length() == 0){
-                throw new IOException();
-            }
-            else{
-                return this.avatarByteArray = Files.readAllBytes(userAvatar.toPath());
-            }
+            BufferedImage userAvatarImage = ImageIO.read(new File(userImagePath));
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(userAvatarImage, "png", byteArrayOutputStream);
+            return byteArrayOutputStream.toByteArray();
+
         }
         catch (IOException ioe){
             System.out.println("Image Error:" + ioe.getMessage());

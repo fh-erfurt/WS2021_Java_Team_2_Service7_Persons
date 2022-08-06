@@ -19,7 +19,7 @@ import javax.persistence.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @ToString
-@Data
+@Getter
 public class Person extends AbstractDatabaseEntity {
 
 
@@ -42,7 +42,7 @@ public class Person extends AbstractDatabaseEntity {
     @ManyToOne( cascade = CascadeType.PERSIST )
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private PersonAvatar avatar;
 
     @ManyToOne( cascade = CascadeType.PERSIST )
@@ -53,26 +53,37 @@ public class Person extends AbstractDatabaseEntity {
      * Function to create an employee with the needed parameters from person
      * @return a new person instance that only requires the specific parameters for an employee
      */
-    public static Person otherEmployee(String firstname,String lastname,String email,String jobTitle, boolean deletedFlag){
-        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setJobTitle(jobTitle).setDeletedFlag(deletedFlag).build();
+    public static Person otherEmployee(String firstname,String lastname,String email,String jobTitle, boolean deletedFlag, PersonAvatar personAvatar){
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).
+                setJobTitle(jobTitle).setDeletedFlag(deletedFlag).setAvatar(personAvatar).build();
     }
 
     /**
      * Function to create a lecturer with the needed parameters from person
      * @return a new person instance that only requires the specific parameters for a lecturer
      */
-    public static Person lecturer(String firstname,String lastname,String email,String phonenumber, String title, String hireDate, Faculty faculty, Boolean teachingFlag, String room, boolean deletedFlag){
+    public static Person lecturer(String firstname,String lastname,String email,String phonenumber,
+                                  String title, String hireDate, Faculty faculty, Address address, String room,Boolean teachingFlag,
+                                  boolean deletedFlag, PersonAvatar personAvatar){
         return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).
-                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFacultyName(faculty).setRoom(room).
-                setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).build();
+                setPhonenumber(phonenumber).setTitle(title).setHireDate(hireDate).setFacultyName(faculty).setAddress(address).setRoom(room).
+                setTeachingFlag(teachingFlag).setRoom(room).setDeletedFlag(deletedFlag).setAvatar(personAvatar).build();
     }
 
     /**
      * Function to create a student with the needed parameters from person
      * @return a new person instance that only requires the specific parameter for a student
      */
-    public static Person student(String firstname,String lastname,String email, String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address, Faculty facultyName ,PersonAvatar personAvatar ){
-        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).setAddress(address).setFacultyName(facultyName).setAvatar(personAvatar).build();
+    public static Person student(String firstname,String lastname,String email, String major,
+                                 String immatriculationDate, String exmatriculationDate,
+                                 Boolean tutorFlag, Boolean scientificWorkerFlag,
+                                 boolean deletedFlag, Address address,
+                                 Faculty facultyName ,PersonAvatar personAvatar ){
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email)
+                .setMajor(major).setImmatriculationDate(immatriculationDate).
+                setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).
+                setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).
+                setAddress(address).setFacultyName(facultyName).setAvatar(personAvatar).build();
         //.setAvatar(personAvatar).build();
     }
 
