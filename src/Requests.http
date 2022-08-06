@@ -108,7 +108,11 @@ DELETE http://localhost:8080/api/EditingPersonResource/deletePerson/1
 Content-Type: application/json
 Accept: application/json
 
+### Delete addressById
+DELETE http://localhost:8080/api/EditingAddressResource/deleteAddress/2
+Content-Type: application/json
+Accept: application/json
 
-
-
-
+### Find an address by Id
+GET  http://localhost:8080/api/SearchingResource/findAddressById/2
+Accept: application/json

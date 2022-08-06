@@ -34,10 +34,18 @@ public class EditingAddressResource {
     }
 
 
-    //TODO: @Milena Endpoint zum löschen einer Addresse erstellen
+    //TODO: @Milena Endpoint zum löschen einer Addresse erstellen - Fertig???
 
-    /*
+
     @DELETE
     @Path("/deleteAddress/{addressId:\\d+}")
-     */
+    public String deleteAddress(@PathParam("addressId") long addressId) {
+        boolean successDelete = this.addressRepository.deleteAddressBy(addressId);
+
+        if (successDelete)
+            return "Deleting successful";
+        else
+            return "Deleting unsuccessful";
+
+    }
 }

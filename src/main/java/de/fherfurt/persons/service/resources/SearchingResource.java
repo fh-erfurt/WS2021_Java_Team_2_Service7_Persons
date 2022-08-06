@@ -3,6 +3,7 @@ package de.fherfurt.persons.service.resources;
 import de.fherfurt.persons.service.model.Address;
 import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.model.PersonAvatar;
+import de.fherfurt.persons.service.persistence.repository.AddressRepository;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 import de.fherfurt.persons.service.persistence.repository.RepositoryFactory;
@@ -25,12 +26,13 @@ public class SearchingResource {
 
     final PersonRepository personRepository;
     final PersonAvatarRepository personAvatarRepository;
+    final AddressRepository addressRepository;
 
 
     public SearchingResource() throws IOException {
         this.personRepository = RepositoryFactory.getInstance().getPersonRepository();
         this.personAvatarRepository = RepositoryFactory.getInstance().getPersonAvatarRepository();
-        System.out.println("ist drinne im Konstruktor");
+        this.addressRepository = RepositoryFactory.getInstance().getAddressRepository();
     }
 
     @GET
@@ -139,22 +141,34 @@ public class SearchingResource {
 
     //TODO Milena Endpoints, Business Logic in Repository und Unit Test
 
-    /*
+
 
     @GET
-    @Path("{/findAddressById/{AddressId:\\d+}}")
+    @Path("/findAddressById/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
+    public Response findAddressById(@PathParam("addressId") long addressId)
+                                                    {
+        if( this.addressRepository.findAddressBy(addressId) != null)
+            return Response.ok(this.addressRepository.findAddressBy(addressId)).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
 
 
-    @GET
+    //mit find all aus repositoryImp
+   /* @GET
     @Path("{/findPersonByAddressId/{AddressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
+    {
 
+    }
 
-    @GET
+    @GET //überall bei find all, über find all person(personrepo) alle perspm reinholen, über stram nach gesuchten attribut
     @Path("{/findAllPersonByFaculty")
     @Produces(MediaType.APPLICATION_JSON)
+    {
 
-    */
-
+    }
+*/
 }
+

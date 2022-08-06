@@ -1,6 +1,5 @@
 package de.fherfurt.persons.service.resources;
 
-//TODO @Milena: Endpoint der Klasse EditingPerson und InputField (InputField)
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -35,12 +34,11 @@ public class BaseResource {
     }
 
 
-    @Path("/EditingPersonResource")
+    @Path("/EditingPersonResource")  // ist das nicht der Endpoint für editing person?
     public EditingPersonResource getEditingPersonResource() throws IOException {
         return new EditingPersonResource();
 
     }
-
 
     @Path("/EditingAddressResource")
     public EditingAddressResource getEditingAddressResource() throws IOException {
@@ -48,6 +46,11 @@ public class BaseResource {
 
     }
 
+    @Path("/DeleteAddressResource")
+    public EditingAddressResource getDeletedAddressResource() throws IOException {
+        return new EditingAddressResource();
+
+    }
 
 
 }
