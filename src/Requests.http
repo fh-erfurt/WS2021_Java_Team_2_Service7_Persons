@@ -85,7 +85,7 @@ Accept: application/json
   "teachingFlag": null,
   "room": null,
   "major": "Bauingenieur",
-  "immatriculationDate": "21.10.2021",
+  "immatriculationDate": "01.10.2021",
   "exmatriculationDate": null,
   "tutorFlag": false,
   "scientificWorkerFlag": false,
