@@ -1,20 +1,20 @@
 package de.fherfurt.persons.service.resources;
 
+import de.fherfurt.persons.service.model.Address;
 import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.model.PersonAvatar;
 import de.fherfurt.persons.service.persistence.repository.PersonAvatarRepository;
 import de.fherfurt.persons.service.persistence.repository.PersonRepository;
 import de.fherfurt.persons.service.persistence.repository.RepositoryFactory;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @author Tran Anh Hoang
@@ -66,37 +66,47 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+
     @GET
-    @Path("/getAllPersonWithDeletedFlag")
-    public Response findAllPersonWithoutDeletedFlag() {
-        List PersonList = new ArrayList<Person>();
+    @Path("/findPersonBy/{firstname}/{lastname}/{major}/{faculty}")
+    public Response findPersonByUserInput(@PathParam("firstname") String firstname, @PathParam("lastname") String lastname,
+                                          @PathParam("major") String major, @PathParam("faculty") String faculty ) {
 
-        PersonList = this.personRepository.findAll();
+        this.personRepository.findAllPersonsByUserInput(firstname, lastname, major, faculty);
 
-        if( PersonList != null )
-            return Response.ok( PersonList ).build();
+        if( this.personRepository.findAllPersonsByUserInput(firstname, lastname, major, faculty) != null )
+            return Response.ok( this.personRepository.findAllPersonsByUserInput(firstname, lastname, major, faculty) ).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
+
     }
 
     @GET
-    @Path("/getAllPersonWithDeletedFlag")
+    @Path("/findAllPersonWithDeletedFlag")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAllPersonWithDeletedFlag() {
-        List PersonList = new ArrayList<Person>();
-
-        PersonList = this.personRepository.findAll();
-
-        if( PersonList != null )
-            return Response.ok( PersonList ).build();
+        if( this.personRepository.findAllPersonWithDeletedFlag() != null )
+            return Response.ok(this.personRepository.findAllPersonWithDeletedFlag()).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
+
+    }
+
+    @GET
+    @Path("/findAllPersonWithOutDeletedFlag")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAllPersonWithOutDeletedFlag() {
+        if( this.personRepository.findAllPersonsWithoutDeletedFlag() != null )
+            return Response.ok(this.personRepository.findAllPersonsWithoutDeletedFlag()).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+
     }
 
 
     /*
     @GET
-    @Path("{personAvatarid:\\d+}")
+    @Path("{/findPersonAvatar:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findPersonAvatarById(@PathParam("personAvatarid") long  personAvatarid ) {
 
@@ -108,7 +118,43 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
+
     */
 
+    @GET
+    @Path("/findAllPersonWithEqualAddressId/{street}/{city}/{zipCode}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAllPersonWithEqualAddressId(@PathParam("street") String street,
+                                                    @PathParam("city") String city,
+                                                    @PathParam("zipCode") String zipCode) {
+
+
+        if( this.personRepository.findAllPersonWithEqualAddress(street, city, zipCode) != null )
+            return Response.ok(this.personRepository.findAllPersonWithEqualAddress(street, city, zipCode)).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
+
+
+
+    //TODO Milena Endpoints, Business Logic in Repository und Unit Test
+
+    /*
+
+    @GET
+    @Path("{/findAddressById/{AddressId:\\d+}}")
+    @Produces(MediaType.APPLICATION_JSON)
+
+
+    @GET
+    @Path("{/findPersonByAddressId/{AddressId:\\d+}")
+    @Produces(MediaType.APPLICATION_JSON)
+
+
+    @GET
+    @Path("{/findAllPersonByFaculty")
+    @Produces(MediaType.APPLICATION_JSON)
+
+    */
 
 }

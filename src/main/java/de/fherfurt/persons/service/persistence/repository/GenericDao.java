@@ -17,7 +17,7 @@ public interface GenericDao<T extends AbstractDatabaseEntity> {
     boolean create( T entity);
     boolean createAll( Collection<T> newEntities );
 
-    Optional<T> update(long Id, T entity);
+    T update(T entity);
 
     boolean delete( Long id );
     boolean delete( T entity );

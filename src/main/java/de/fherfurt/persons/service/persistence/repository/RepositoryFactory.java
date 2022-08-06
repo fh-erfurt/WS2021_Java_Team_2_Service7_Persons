@@ -1,6 +1,7 @@
 package de.fherfurt.persons.service.persistence.repository;
 
 import de.fherfurt.persons.service.model.Address;
+import de.fherfurt.persons.service.model.Faculty;
 import de.fherfurt.persons.service.model.PersonAvatar;
 import de.fherfurt.persons.service.util.DataProvider;
 
@@ -28,6 +29,10 @@ public class RepositoryFactory
         return INSTANCE;
     }
 
+    /**
+     * create entityManagerFactory, initialize RepositoryImp and create Testdata from Class Data Provider
+     * @throws IOException when imagebyte is null
+     */
     private RepositoryFactory() throws IOException {
         LOGGER.info( "Init Repo Factory" );
 
@@ -36,11 +41,9 @@ public class RepositoryFactory
 
         // Create Repo
         LOGGER.info( "Create RepositoryImpl" );
-        this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao() , this.getPersonAvataDao());
+        this.repository = new RepositoryImp( this.getPersonDao(), this.getAddressDao(),this.getFacultyDao() , this.getPersonAvataDao());
 
-        // Create Test Data and Test InputField
-        // Data is a list with Persons-Objects
-        // TODO: Wie kann man die Datenbank schon davor füllen?
+        // Create Test Data with Persons-Objects
         LOGGER.info( "Create Test Data" );
         DataProvider.createTestData().forEach( this.repository::createPerson );
     }
@@ -55,9 +58,7 @@ public class RepositoryFactory
             return Persistence.createEntityManagerFactory( DEVELOP_PERSISTENCE_UNIT_NAME );
         else
             return Persistence.createEntityManagerFactory( TEST_PERSISTENCE_UNIT_NAME );
-
     }
-
 
 
     //Setzen der Person-EntityManager
@@ -68,6 +69,10 @@ public class RepositoryFactory
     //Setzen der Adress-EntityManager
     private GenericDao<Address> getAddressDao() {
         return new JpaGenericsDao<>( Address.class, this.entityManagerFactory.createEntityManager() );
+    }
+
+    private GenericDao<Faculty> getFacultyDao() {
+        return new JpaGenericsDao<>( Faculty.class, this.entityManagerFactory.createEntityManager() );
     }
 
     //Setzen der PersonAvatar-EntityManager

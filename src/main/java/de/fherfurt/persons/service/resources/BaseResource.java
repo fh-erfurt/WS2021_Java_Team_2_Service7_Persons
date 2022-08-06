@@ -42,4 +42,12 @@ public class BaseResource {
     }
 
 
+    @Path("/EditingAddressResource")
+    public EditingAddressResource getEditingAddressResource() throws IOException {
+        return new EditingAddressResource();
+
+    }
+
+
+
 }

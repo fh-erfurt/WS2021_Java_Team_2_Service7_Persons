@@ -60,12 +60,12 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
     }
 
     @Override
-    public Optional<T> update(long personId, T entity) {
+    public T update( T entity) {
         getEntityManager().getTransaction().begin();
         final T savedEntity = getEntityManager().merge( entity );
         getEntityManager().getTransaction().commit();
 
-        return Optional.ofNullable(savedEntity);
+        return savedEntity;
     }
 
     @Override

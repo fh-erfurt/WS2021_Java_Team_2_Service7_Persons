@@ -17,9 +17,4 @@ public interface PersonDao extends GenericDao<Person>{
     Collection<Person> findPersonBy(String firstname, String lastname, String major, String faculty );
 
 
-
-    Collection<Person> findAllPersonWithDeletedFlag();
-
-    Collection<Person> findAllPersonsWithoutDeletedFlag();
-
 }
