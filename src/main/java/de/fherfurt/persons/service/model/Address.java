@@ -31,7 +31,4 @@ public class Address extends AbstractDatabaseEntity{
         this.city = city;
         this.zipCode = zipCode;
     }
-
-
-
 }

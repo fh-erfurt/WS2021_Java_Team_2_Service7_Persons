@@ -20,7 +20,6 @@ class DataProviderTest {
         //then
         Assertions.assertThat(personAvatar01.getAvatarByteArray()).isNotEmpty();
 
-
     }
 
 }

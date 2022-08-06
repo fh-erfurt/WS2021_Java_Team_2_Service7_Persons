@@ -139,10 +139,7 @@ public class SearchingResource {
 
 
 
-    //TODO Milena Endpoints, Business Logic in Repository und Unit Test
-
-
-
+    //TODO Milena: JavaDocs
     @GET
     @Path("/findAddressById/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -155,6 +152,11 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+
+    //TODO Milena: Bitte @DefaultValue("-1") entfernen, kann zu Fehlern führen
+    //TODO Milena: In der Database sind nur postive IDs
+    //TODO Milena: Systemoutprintln entfernen --> keinen Nutzen
+    //TODO Milena: foundPersons.toArray() --> foundPersons ist bereits eine Liste, wozu toArray. Bitte daran denken, was gebaut werden soll
     //mit find all aus repositoryImp
     @GET
     @Path("/findPersonByAddressId/{addressId:\\d+}")
@@ -171,6 +173,11 @@ public class SearchingResource {
         else
             return Response.ok( foundPersons.toArray() ).build();
     }
+
+
+    // TODO Milena: Signatur der Methode ist falsch --> bitte ändern
+    // TODO Milena: Systemoutprintln entfernen --> keinen Nutzen
+    // TODO Milena: foundPersons.toArray() --> foundPersons ist bereits eine Liste, wozu toArray. Bitte daran denken, was gebaut werden soll
 
     @GET //überall bei find all, über find all person(personrepo) alle perspm reinholen, über stram nach gesuchten attribut
     @Path("/findAllPersonByFaculty/{facultyName}")
