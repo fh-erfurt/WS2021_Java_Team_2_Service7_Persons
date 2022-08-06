@@ -6,6 +6,7 @@ import de.fherfurt.persons.service.util.DataProvider;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 public class RepositoryFactory
@@ -20,14 +21,14 @@ public class RepositoryFactory
 
     private static RepositoryFactory INSTANCE;
 
-    public static RepositoryFactory getInstance() {
+    public static RepositoryFactory getInstance() throws IOException {
         if( INSTANCE == null )
             INSTANCE = new RepositoryFactory();
 
         return INSTANCE;
     }
 
-    private RepositoryFactory() {
+    private RepositoryFactory() throws IOException {
         LOGGER.info( "Init Repo Factory" );
 
         // Prepare Entity Manager Factory

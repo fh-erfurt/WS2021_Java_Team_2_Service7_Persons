@@ -5,10 +5,11 @@ import lombok.Setter;
 import javax.persistence.Entity;
 
 @Entity
+@Setter
+@Getter
 public class Faculty extends AbstractDatabaseEntity {
 
-    @Setter
-    @Getter
+
     private String facultyName;
 
     public Faculty() {

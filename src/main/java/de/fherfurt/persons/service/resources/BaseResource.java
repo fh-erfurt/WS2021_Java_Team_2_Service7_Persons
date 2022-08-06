@@ -7,6 +7,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
+import java.io.IOException;
+
 @Path("/api")
 public class BaseResource {
 
@@ -27,16 +29,17 @@ public class BaseResource {
 
 
     @Path("/SearchingResource")
-    public SearchingResource getSearchingResource(){
+    public SearchingResource getSearchingResource() throws IOException {
         return new SearchingResource();
 
     }
 
 
+    @Path("/EditingPersonResource")
+    public EditingPersonResource getEditingPersonResource() throws IOException {
+        return new EditingPersonResource();
 
-    /*
-    @PUT
-    @Path("/EditingPerson")
-    public ...
-    */
+    }
+
+
 }

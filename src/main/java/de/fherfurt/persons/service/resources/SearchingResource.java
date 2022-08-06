@@ -12,6 +12,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class SearchingResource {
     final PersonAvatarRepository personAvatarRepository;
 
 
-    public SearchingResource() {
+    public SearchingResource() throws IOException {
         this.personRepository = RepositoryFactory.getInstance().getPersonRepository();
         this.personAvatarRepository = RepositoryFactory.getInstance().getPersonAvatarRepository();
         System.out.println("ist drinne im Konstruktor");
@@ -64,37 +65,36 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
-    /*
+
     @GET
-    @Path("{deletedFlag:1}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getAllPersonWithDeletedFlag")
     public Response findAllPersonWithoutDeletedFlag() {
-        List Person = new ArrayList<Person>();
+        List PersonList = new ArrayList<Person>();
 
-        Person = this.personRepository.findAllPersonsWithoutDeletedFlag();
+        PersonList = this.personRepository.findAll();
 
-        if( Person != null )
-            return Response.ok( Person ).build();
+        if( PersonList != null )
+            return Response.ok( PersonList ).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
-     */
-
 
     @GET
-    @Path("{deletedFlag:1}")
+    @Path("/getAllPersonWithDeletedFlag")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAllPersonWithDeletedFlag() {
-        List Person = new ArrayList<Person>();
+        List PersonList = new ArrayList<Person>();
 
-        Person = this.personRepository.findAllPersonWithDeletedFlag();
+        PersonList = this.personRepository.findAll();
 
-        if( Person != null )
-            return Response.ok( Person ).build();
+        if( PersonList != null )
+            return Response.ok( PersonList ).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+
+    /*
     @GET
     @Path("{personAvatarid:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,21 +108,7 @@ public class SearchingResource {
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
-
-    /*
-    @GET
-    @Path("{/findAvatarByPersonId/personId:\\d+}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findPersonAvatarByPersonId(@PathParam("personId") long  personId ){
-
-
-        byte[] PersonAvatar  = this.personAvatarRepository.findPersonAvatarById(personId);
-
-        if( PersonAvatar != null )
-            return Response.ok( PersonAvatar ).build();
-        else
-            return Response.status( Response.Status.NOT_FOUND ).build();
-    }
     */
+
 
 }

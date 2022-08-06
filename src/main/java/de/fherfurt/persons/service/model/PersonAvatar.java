@@ -4,10 +4,15 @@ import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import javax.imageio.ImageIO;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.logging.Logger;
 
 /**
  * @author Tran Anh Hoang
@@ -16,18 +21,29 @@ import java.nio.file.Files;
  */
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class PersonAvatar extends AbstractDatabaseEntity {
     private byte [] avatarByteArray;
 
+    @Transient
+    private static final Logger LOGGER = Logger.getLogger( "PersonAvatar" );
+
+    public PersonAvatar(){}
+
+    public PersonAvatar(String imageName) throws IOException {
+       this.avatarByteArray = convertImageToByteArray(imageName);
+    }
+
+
+
+
     /**
-     * @param imagePath absolute Path to the Image
+     * @param imageName absolute Path to the Image
      * @return Byte-Array of an Image
      * @throws IOException - throw an error if Image can't be converted.
      */
-    public byte[] convertImageToByteArray(String imagePath) throws IOException {
+    public byte[] convertImageToByteArray(String imageName) throws IOException {
         try{
-            File userAvatar = new File(imagePath);
+            File userAvatar = new File(imageName);
             if(userAvatar.length() == 0){
                 throw new IOException();
             }

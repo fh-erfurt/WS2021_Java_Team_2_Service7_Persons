@@ -4,7 +4,42 @@
 GET http://localhost:8080/api/getHello
 Accept: text/plain
 
-### Get first Person in Persontable
+### Get all Data from Person with personId = 1
 GET  http://localhost:8080/api/SearchingResource/findPerson/1
 Accept: application/json
 
+### Get all Person in Database
+GET  http://localhost:8080/api/SearchingResource/findAllPerson
+Accept: application/json
+
+### Create Person
+POST http://localhost:8080/api/EditingPersonResource/createPerson
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstname": "Hannah",
+  "lastname": "Mustermann",
+  "email": "h.h@h.com",
+  "phonenumber": null,
+  "title": null,
+  "hireDate": null,
+  "teachingFlag": null,
+  "room": null,
+  "major": "Bauingenieur",
+  "immatriculationDate": "21.10.2021",
+  "exmatriculationDate": null,
+  "tutorFlag": false,
+  "scientificWorkerFlag": false,
+  "jobTitle": null,
+  "deletedFlag": false,
+  "address": {
+    "street": "Altonaer Strasse 25",
+    "city": "Erfurt",
+    "zipCode": "99085"
+  },
+  "avatar": null,
+  "facultyName": {
+    "facultyName": "Gebaeudetechnik und Informatik"
+  }
+}
