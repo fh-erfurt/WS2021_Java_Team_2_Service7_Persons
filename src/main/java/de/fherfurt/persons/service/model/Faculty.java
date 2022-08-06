@@ -3,7 +3,7 @@ import de.fherfurt.persons.service.persistence.core.AbstractDatabaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.Entity;
-
+// TODO @Milena reingucken bei Find all....
 @Entity
 @Setter
 @Getter
