@@ -7,6 +7,12 @@ import javax.persistence.Query;
 import java.util.Collection;
 import java.util.Optional;
 
+
+/**
+ * The class JpaGenericsDao is the implementation class of the interface GenericDao.
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.0
+ */
 public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements GenericDao<T>{
     protected final Class<T> persistentClass;
     protected final EntityManager entityManager;
@@ -24,7 +30,6 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
     public EntityManager getEntityManager() {
         return entityManager;
     }
-
 
     @Override
     public T findBy(long id) {

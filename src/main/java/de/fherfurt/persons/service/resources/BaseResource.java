@@ -8,6 +8,11 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.io.IOException;
 
+/**
+ * @Author Tran Anh Hoang
+ * The class BaseResource is the the first Entrypoint the API
+ * @version  2.0.0.0
+ */
 @Path("/api")
 public class BaseResource {
 
@@ -26,26 +31,44 @@ public class BaseResource {
     }
 
 
-
+    /**
+     * @Author Tran Anh Hoang
+     * @return Instace of SearchingResource and the next Endpoint of the API
+     * @throws IOException when Avatar of a Person can't be read
+     */
     @Path("/SearchingResource")
     public SearchingResource getSearchingResource() throws IOException {
         return new SearchingResource();
 
     }
 
-
+    /**
+     * @Author Tran Anh Hoang
+     * @return Instace of EditingPersonResource and the next Endpoint of the API
+     * @throws IOException when Avatar of a Person can't be read
+     */
     @Path("/EditingPersonResource")  // ist das nicht der Endpoint für editing person?
     public EditingPersonResource getEditingPersonResource() throws IOException {
         return new EditingPersonResource();
 
     }
 
+    /**
+     * @Author Tran Anh Hoang
+     * @return Instace of EditingAddressResource and the next Endpoint of the API
+     * @throws IOException when Avatar of a Person can't be read
+     */
     @Path("/EditingAddressResource")
     public EditingAddressResource getEditingAddressResource() throws IOException {
         return new EditingAddressResource();
 
     }
 
+    /**
+     * @Author Tran Anh Hoang
+     * @return Instace of DeleteAddressResource and the next Endpoint of the API
+     * @throws IOException when Avatar of a Person can't be read
+     */
     @Path("/DeleteAddressResource")
     public EditingAddressResource getDeletedAddressResource() throws IOException {
         return new EditingAddressResource();

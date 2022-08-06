@@ -18,11 +18,10 @@ import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
- * @author Tran Anh Hoang
- * The Class PersonAvatar has the main goal to convert an image into an ByteArray
- * and save it into an Avatar-Repository
+ * The Class PersonAvatar has the main goal to convert an image into an ByteArray and safe it into the Database.
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.
  */
-
 @Entity
 @Getter
 public class PersonAvatar extends AbstractDatabaseEntity {

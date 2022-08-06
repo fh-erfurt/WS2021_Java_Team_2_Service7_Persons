@@ -33,10 +33,10 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
 
     @Override
     public List<Person> findAllPersonsByUserInput(String firstname, String lastname, String major, String faculty) {
-        return findAll().stream().filter(person -> Objects.equals(person.getFirstname(),firstname)
-                || Objects.equals(person.getLastname(),lastname)
-                || Objects.equals(person.getMajor(),major)
-                || Objects.equals(person.getFacultyName().getFacultyName(),faculty)).collect(Collectors.toList());
+        return findAll().stream().filter(Objects::nonNull).filter(person -> (Objects.equals(person.getFirstname(),firstname)
+                && Objects.equals(person.getLastname(),lastname))
+                || (Objects.equals(person.getMajor(),major)
+                && Objects.equals(person.getFacultyName().getFacultyName(),faculty))).collect(Collectors.toList());
     }
 
     @Override

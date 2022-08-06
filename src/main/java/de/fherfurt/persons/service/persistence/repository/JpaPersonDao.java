@@ -5,26 +5,29 @@ import javax.persistence.Query;
 import de.fherfurt.persons.service.model.Person;
 import java.util.Collection;
 
+
+/**
+ * The class JpaPersonDao is the implememtation class of the interface PersonDao.
+ * @author  Tran Anh Hoang
+ * @version  2.0.0.0
+ */
+
 public class JpaPersonDao extends JpaGenericsDao<Person> implements PersonDao {
 
     public JpaPersonDao( EntityManager em ){
         super( Person.class, em );
     }
 
+
+    /**
+     * find a certain Person by the specific personId
+     * @param personId unique key
+     * @return searched person and all their datas
+     */
     @Override
     public Person findPersonById(long personId) {
         return getEntityManager().find(Person.class, personId);
     }
 
-
-
-    @Override
-    public Collection<Person> findPersonBy(String firstname, String lastname, String major, String faculty) {
-        Query query = getEntityManager().createNativeQuery("SELECT * from person p inner join faculty f on p.id = f.id where p.firstname= ? " +
-                "and p.lastname = ? and p.major = ? and f.facultyname = ?" ).setParameter("firstname", firstname).setParameter("lastname", lastname)
-                .setParameter("major", major).setParameter("facultyname", faculty);
-
-        return (Collection<Person>) query.getResultList();
-    }
 
 }
