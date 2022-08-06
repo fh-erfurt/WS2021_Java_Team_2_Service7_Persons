@@ -71,8 +71,8 @@ public class Person extends AbstractDatabaseEntity {
      * Function to create a student with the needed parameters from person
      * @return a new person instance that only requires the specific parameter for a student
      */
-    public static Person student(String firstname,String lastname,String email, String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address, Faculty facultyName /* ,PersonAvatar personAvatar */){
-        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).setAddress(address).setFacultyName(facultyName).build();
+    public static Person student(String firstname,String lastname,String email, String major, String immatriculationDate, String exmatriculationDate, Boolean tutorFlag, Boolean scientificWorkerFlag, boolean deletedFlag, Address address, Faculty facultyName ,PersonAvatar personAvatar ){
+        return builder().setFirstname(firstname).setLastname(lastname).setEmail(email).setMajor(major).setImmatriculationDate(immatriculationDate).setExmatriculationDate(exmatriculationDate).setTutorFlag(tutorFlag).setScientificWorkerFlag(scientificWorkerFlag).setDeletedFlag(deletedFlag).setAddress(address).setFacultyName(facultyName).setAvatar(personAvatar).build();
         //.setAvatar(personAvatar).build();
     }
 
