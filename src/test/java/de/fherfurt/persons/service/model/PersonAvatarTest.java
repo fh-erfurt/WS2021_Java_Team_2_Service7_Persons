@@ -16,6 +16,6 @@ class PersonAvatarTest {
 
         //then
         Assertions.assertThat(personAvatar01.getAvatarByteArray()).isNotEmpty().contains(personAvatar01.
-                convertImageToByteArray((new File("src\\images\\Meme_Macron.png").getAbsoluteFile().toString())));
+                convertImageToByteArray(Paths.get("src\\images\\Meme_Macron.png").toAbsolutePath().toString()));
     }
 }
