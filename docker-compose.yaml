@@ -1,4 +1,4 @@
-##TODO: Checking Later in Folders for specifics Dockerfile
+#Author: Tran Anh Hoang
 version: '3.8'
 volumes:
   db-data:
@@ -35,7 +35,7 @@ services:
     ports:
       - "5050:80"
 
-    #um DB in container über den Host ohne IP zu verwenden
+    # um DB in container über den Host ohne IP zu verwenden
     links:
       - 'db_container:pgsql-server'
 
@@ -44,18 +44,15 @@ services:
 
 
   webapp:
-   # Will use the Dockerfile in current directory to build and run your app
    build: .
 
    environment:
      # Environment parameter used by our application
-     - RUN_MODE=production
+     - RUN_MODE=develop
 
-   # Port Mapping
    ports:
      - "8080:8080"
 
-   # Needs 'app_db' service above
    depends_on:
      - db_container
 

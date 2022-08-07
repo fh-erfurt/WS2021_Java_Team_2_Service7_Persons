@@ -2,10 +2,10 @@ package de.fherfurt.persons.service.persistence.repository;
 
 
 /**
- * The interface PersonAvatarRepository represent the abstract layer between PersonAvatarRepository and Resource-Layer.
+ * The interface PersonAvatarDao represent the abstract layer between PersonAvatarDao, GenericDao and Repository-Layer.
  * @author  Tran Anh Hoang
  * @version  2.0.0.0
  */
-public interface PersonAvatarRepository {
+public interface PersonAvatarDao {
     byte [] findPersonAvatarById(long avatarId);
 }
