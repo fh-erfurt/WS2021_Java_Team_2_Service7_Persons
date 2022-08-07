@@ -6,8 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FacultyTest {
 
-    //TODO: Milena Uniitest schreiben
     @Test
-    void checkFacultyName() {
+    void testCheckFacultyName() {
     }
 }

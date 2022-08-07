@@ -10,6 +10,10 @@ Accept: application/json
 GET  http://localhost:8080/api/SearchingResource/findAllPerson
 Accept: application/json
 
+### Find certain Avater in Database through personAvatarId @Author: Tran Anh Hoang
+GET  http://localhost:8080/api/SearchingResource/findPersonAvatar/3
+Accept: application/json
+
 ### Find all person with UserInput @Author: Tran Anh Hoang
 GET  http://localhost:8080/api/SearchingResource/findPersonBy/Max/Mustermann/AI/GTI
 Accept: application/json

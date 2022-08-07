@@ -27,7 +27,6 @@ public class DataProvider {
         byte [] testByteAsImage3 = {45, 42, 23 ,48 ,111 };
 
 
-
         Address address01 = new Address( "Altonaer Strasse 25", "Erfurt", "99085" );
         Faculty faculty01 = new Faculty("Gebaeudetechnik und Informatik");
         PersonAvatar personAvatar01 = new PersonAvatar(testByteAsImage1);
@@ -50,7 +49,6 @@ public class DataProvider {
                 "L.L@fh-erfufrt.de","0152485614", "Prof. Dr.",
                 "22.02.2012", faculty02, address02,"2.02.E2",true,
                 false, personAvatar02 ));
-
 
 
         personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
