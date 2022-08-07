@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-
 /**
  * @Author Milena Neumann
  */
@@ -23,5 +22,5 @@ class FacultyTest {
                 .isEqualTo(testFaculty)
                 .isNotNull()
                 .isNotEqualTo("Architektur und Stadtplanung");
-        }
+    }
 }

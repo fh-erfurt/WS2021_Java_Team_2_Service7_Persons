@@ -26,7 +26,7 @@ public class WebApplication {
 
     public static void main(String[] args) {
 
-        Logger LOG = LoggerFactory.getLogger( WebApplication.class );
+        Logger LOG = LoggerFactory.getLogger(WebApplication.class);
 
         try {
             final Server server = startServer();

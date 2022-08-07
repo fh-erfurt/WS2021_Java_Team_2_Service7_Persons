@@ -11,7 +11,8 @@ import java.io.IOException;
 
 /**
  * Endpoints for Update and delete address of a Person
- * @version  2.0.0.0
+ *
+ * @version 2.0.0.0
  */
 public class EditingAddressResource {
 
@@ -24,9 +25,9 @@ public class EditingAddressResource {
     }
 
     /**
-     * @author Tran Anh Hoang
      * @param addressToUpdate needed a json file with the right Parameter to create an Object to update the address of a Person
      * @return Response Code/Number
+     * @author Tran Anh Hoang
      */
     @POST
     @Path("/UpdateAdress")

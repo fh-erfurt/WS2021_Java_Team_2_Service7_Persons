@@ -19,22 +19,24 @@ import java.util.logging.Logger;
 
 /**
  * The Class PersonAvatar has the main goal to convert an image into an ByteArray and safe it into the Database.
- * @author  Tran Anh Hoang
- * @version  2.0.0.
+ *
+ * @author Tran Anh Hoang
+ * @version 2.0.0.
  */
 @Entity
 @Getter
 public class PersonAvatar extends AbstractDatabaseEntity {
 
     @Lob
-    private byte [] avatarByteArray;
+    private byte[] avatarByteArray;
 
     @Transient
-    private static final Logger LOGGER = Logger.getLogger( "Init PersonAvatar" );
+    private static final Logger LOGGER = Logger.getLogger("Init PersonAvatar");
 
-    public PersonAvatar(){}
+    public PersonAvatar() {
+    }
 
-    public PersonAvatar(byte[] avatarByteArray){
+    public PersonAvatar(byte[] avatarByteArray) {
         this.avatarByteArray = avatarByteArray;
     }
 
@@ -49,14 +51,13 @@ public class PersonAvatar extends AbstractDatabaseEntity {
      * @throws IOException - throw an error if Image can't be converted.
      */
     public byte[] convertImageToByteArray(String userImagePath) throws IOException {
-        try{
+        try {
             BufferedImage userAvatarImage = ImageIO.read(new File(userImagePath));
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(userAvatarImage, "png", byteArrayOutputStream);
             return byteArrayOutputStream.toByteArray();
 
-        }
-        catch (IOException ioe){
+        } catch (IOException ioe) {
             System.out.println("Image Error:" + ioe.getMessage());
             throw ioe;
         }

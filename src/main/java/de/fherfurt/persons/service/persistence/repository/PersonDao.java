@@ -8,10 +8,11 @@ import java.util.Optional;
 
 /**
  * The interface PersonDao represent the abstract layer between PersonDao, GenericDao and Repository-Layer.
- * @author  Tran Anh Hoang
- * @version  2.0.0.0
+ *
+ * @author Tran Anh Hoang
+ * @version 2.0.0.0
  */
-public interface PersonDao extends GenericDao<Person>{
+public interface PersonDao extends GenericDao<Person> {
 
     Person findPersonById(long personId);
 

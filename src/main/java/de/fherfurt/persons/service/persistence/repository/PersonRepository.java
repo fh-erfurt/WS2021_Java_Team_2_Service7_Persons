@@ -11,16 +11,17 @@ import java.util.Objects;
 
 /**
  * The interface PersonRepository represent the abstract layer between Resources-Layer and Repository-Layer.
- * @author  Tran Anh Hoang
- * @version  2.0.0.0
+ *
+ * @author Tran Anh Hoang
+ * @version 2.0.0.0
  */
 public interface PersonRepository {
-    
-    boolean createPerson( Person person );
-    
+
+    boolean createPerson(Person person);
+
     List<Person> findAllPersonsByUserInput(String firstname, String lastname, String major, String faculty);
 
-    Person findPersonBy(long personId );
+    Person findPersonBy(long personId);
 
     List<Person> findAll();
 
@@ -28,9 +29,9 @@ public interface PersonRepository {
 
     List<Person> findPersonsByFacultyName(String facultyName);
 
-    boolean updatePersonById(Person person );
-    
-    boolean deletePersonById( long personId );
+    boolean updatePersonById(Person person);
+
+    boolean deletePersonById(long personId);
 
     List<Person> findAllPersonWithDeletedFlag();
 

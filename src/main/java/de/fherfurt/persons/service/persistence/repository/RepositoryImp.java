@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class RepositoryImp implements PersonRepository, AddressRepository, PersonAvatarRepository, FacultyRepository{
+public class RepositoryImp implements PersonRepository, AddressRepository, PersonAvatarRepository, FacultyRepository {
 
     private final PersonDao personDao;
     private final GenericDao<Address> addressDao;
@@ -28,24 +28,24 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
 
     @Override
     public boolean createPerson(Person person) {
-        return this.personDao.create( person ) ;
+        return this.personDao.create(person);
     }
 
     @Override
     public List<Person> findAllPersonsByUserInput(String firstname, String lastname, String major, String faculty) {
-        return findAll().stream().filter(Objects::nonNull).filter(person -> (Objects.equals(person.getFirstname(),firstname)
-                && Objects.equals(person.getLastname(),lastname))
-                || (Objects.equals(person.getMajor(),major)
-                && Objects.equals(person.getFacultyName().getFacultyName(),faculty))).collect(Collectors.toList());
+        return findAll().stream().filter(Objects::nonNull).filter(person -> (Objects.equals(person.getFirstname(), firstname)
+                && Objects.equals(person.getLastname(), lastname))
+                || (Objects.equals(person.getMajor(), major)
+                && Objects.equals(person.getFacultyName().getFacultyName(), faculty))).collect(Collectors.toList());
     }
 
     @Override
-    public Person findPersonBy(long personId){
+    public Person findPersonBy(long personId) {
         return this.personDao.findBy(personId);
     }
 
     @Override
-    public List<Person> findAll(){
+    public List<Person> findAll() {
         return (List<Person>) this.personDao.findAll();
     }
 
@@ -63,50 +63,50 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
     public List<Person> findPersonsByFacultyName(String facultyName) {
 
         return findAll().stream().
-                filter(person -> person.getFacultyName().getFacultyName().toString().contains(facultyName)).collect(Collectors.toList());
+                filter(person -> person.getFacultyName().getFacultyName().contains(facultyName)).collect(Collectors.toList());
     }
 
     @Override
-    public byte [] findPersonAvatarById(long avatarId){
+    public byte[] findPersonAvatarById(long avatarId) {
         return this.personAvatarDao.findPersonAvatarById(avatarId);
     }
 
 
     @Override
-    public boolean updatePersonById(Person person ){
+    public boolean updatePersonById(Person person) {
         this.personDao.update(person);
         return findPersonBy(person.getId()).getId().equals(person.getId());
 
     }
 
     @Override
-    public boolean deletePersonById( long personId ){
+    public boolean deletePersonById(long personId) {
         return this.personDao.delete(personId);
     }
 
 
     @Override
     public List<Person> findAllPersonWithDeletedFlag() {
-        return findAll().stream().filter(p -> Objects.equals(p.getDeletedFlag() ,true)).collect(Collectors.toList());
+        return findAll().stream().filter(p -> Objects.equals(p.getDeletedFlag(), true)).collect(Collectors.toList());
 
     }
 
     @Override
     public List<Person> findAllPersonsWithoutDeletedFlag() {
-        return findAll().stream().filter(p -> Objects.equals(p.getDeletedFlag() ,false)).collect(Collectors.toList());
+        return findAll().stream().filter(p -> Objects.equals(p.getDeletedFlag(), false)).collect(Collectors.toList());
 
     }
 
     @Override
     public List<Person> findAllPersonWithEqualAddress(String street, String city, String zipCode) {
 
-        return findAll().stream().filter(person -> Objects.equals(person.getAddress().getStreet(),street) && Objects.equals(person.getAddress().getCity(), city)
+        return findAll().stream().filter(person -> Objects.equals(person.getAddress().getStreet(), street) && Objects.equals(person.getAddress().getCity(), city)
                 && Objects.equals(person.getAddress().getZipCode(), zipCode)).collect(Collectors.toList());
     }
 
     @Override
     public boolean createAddress(Address address) {
-        return this.addressDao.create( address);
+        return this.addressDao.create(address);
     }
 
     @Override
@@ -120,7 +120,7 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
     }
 
     @Override
-    public boolean updateAddressBy( Address address) {
+    public boolean updateAddressBy(Address address) {
         this.addressDao.update(address);
         return findAddressBy(address.getId()).getId().equals(address.getId());
 

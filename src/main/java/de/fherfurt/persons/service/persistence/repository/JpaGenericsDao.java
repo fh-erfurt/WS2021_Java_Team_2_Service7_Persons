@@ -10,15 +10,16 @@ import java.util.Optional;
 
 /**
  * The class JpaGenericsDao is the implementation class of the interface GenericDao.
- * @author  Tran Anh Hoang
- * @version  2.0.0.0
+ *
+ * @author Tran Anh Hoang
+ * @version 2.0.0.0
  */
-public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements GenericDao<T>{
+public class JpaGenericsDao<T extends AbstractDatabaseEntity> implements GenericDao<T> {
     protected final Class<T> persistentClass;
     protected final EntityManager entityManager;
 
 
-    public JpaGenericsDao( Class<T> type, EntityManager em ) {
+    public JpaGenericsDao(Class<T> type, EntityManager em) {
         this.persistentClass = type;
         this.entityManager = em;
     }
@@ -33,31 +34,31 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
 
     @Override
     public T findBy(long id) {
-        return getEntityManager().find( persistentClass, id );
+        return getEntityManager().find(persistentClass, id);
     }
 
     @Override
     public Collection<T> findAll() {
         Query query = getEntityManager().createQuery(
-                "SELECT e FROM " + getEntityClass().getCanonicalName() + " e" );
+                "SELECT e FROM " + getEntityClass().getCanonicalName() + " e");
         return (Collection<T>) query.getResultList();
     }
 
     @Override
-    public boolean create( T entity) {
+    public boolean create(T entity) {
         getEntityManager().getTransaction().begin();
-        getEntityManager().persist( entity );
+        getEntityManager().persist(entity);
         getEntityManager().getTransaction().commit();
 
         return true;
     }
 
     @Override
-    public boolean createAll( Collection<T> newEntities ) {
+    public boolean createAll(Collection<T> newEntities) {
         getEntityManager().getTransaction().begin();
 
-        for( T entry : newEntities )
-            getEntityManager().persist( entry );
+        for (T entry : newEntities)
+            getEntityManager().persist(entry);
 
         getEntityManager().getTransaction().commit();
 
@@ -65,24 +66,24 @@ public class JpaGenericsDao <T extends AbstractDatabaseEntity> implements Generi
     }
 
     @Override
-    public T update( T entity) {
+    public T update(T entity) {
         getEntityManager().getTransaction().begin();
-        final T savedEntity = getEntityManager().merge( entity );
+        final T savedEntity = getEntityManager().merge(entity);
         getEntityManager().getTransaction().commit();
 
         return savedEntity;
     }
 
     @Override
-    public boolean delete( Long id ) {
-        T entity = this.findBy( id );
-        return this.delete( entity );
+    public boolean delete(Long id) {
+        T entity = this.findBy(id);
+        return this.delete(entity);
     }
 
     @Override
-    public boolean delete( T entity ) {
+    public boolean delete(T entity) {
         getEntityManager().getTransaction().begin();
-        getEntityManager().remove( entity );
+        getEntityManager().remove(entity);
         getEntityManager().getTransaction().commit();
 
         return true;
