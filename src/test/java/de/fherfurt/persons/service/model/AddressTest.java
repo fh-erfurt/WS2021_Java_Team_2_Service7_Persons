@@ -4,10 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FacultyTest {
+class AddressTest {
 
-    //TODO: Milena Uniitest schreiben
+
+    //TODO: Milena Unittest schreiben
     @Test
-    void checkFacultyName() {
+    void checkStringValid() {
     }
 }
