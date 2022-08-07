@@ -13,15 +13,17 @@ import lombok.Getter;
 
 public class DataProvider {
 
-    public static ArrayList<Person> createTestData() {
-
+    public static ArrayList<Person> createTestData() throws IOException {
 
         final ArrayList <Person> personTestList = new ArrayList<>();
         final Logger LOGGER = Logger.getLogger( RepositoryFactory.class.getSimpleName() );
         LOGGER.info("Init Data Provider");
 
+        //out comment this code for the issue tracking and in comment the personAvatar01
         //PersonAvatar personAvatar01 = new PersonAvatar(new File("images\\Meme_Macron.png").getAbsoluteFile().toString());
 
+
+        //Random Byte Array which represent the converting byte array of a image
         byte [] testByteAsImage1 = {80, 61, 41 ,18 ,110 };
         byte [] testByteAsImage2 = {32, 45, 21 ,41 ,92 };
         byte [] testByteAsImage3 = {45, 42, 23 ,48 ,111 };
@@ -51,13 +53,11 @@ public class DataProvider {
                 false, personAvatar02 ));
 
 
-        personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
-                ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
+//       personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
+//               ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
 
 
         return personTestList;
-
-
 
     }
 
