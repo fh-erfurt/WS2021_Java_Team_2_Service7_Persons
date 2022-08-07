@@ -16,8 +16,6 @@ public class JpaPersonAvatarDao extends JpaGenericsDao<PersonAvatar> implements 
     public JpaPersonAvatarDao(Class<PersonAvatar> type, EntityManager em) {
         super(type, em);
     }
-
-    //TODO: Extend some stuff if necessary
     @Override
     public byte[] findPersonAvatarById(long personAvatarId) {
         //return SerializationUtils.serialize(getEntityManager().find(persistentClass, avatarId));
