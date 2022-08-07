@@ -109,11 +109,19 @@ DELETE http://localhost:8080/api/EditingPersonResource/deletePerson/1
 Content-Type: application/json
 Accept: application/json
 
-### Delete addressById
+### Delete addressById @Author: Mielna Neumann
 DELETE http://localhost:8080/api/EditingAddressResource/deleteAddress/2
 Content-Type: application/json
 Accept: application/json
 
-### Find an address by Id
+### Find an address by Id @Author: Mielna Neumann
 GET  http://localhost:8080/api/SearchingResource/findAddressById/6
+Accept: application/json
+
+### Find Person by AddressID @Author: Mielna Neumann
+GET  http://localhost:8080/api/SearchingResource/findPersonByAddressId/2
+Accept: application/json
+
+### Find persons by FacultyName @Author: Mielna Neumann
+GET  http://localhost:8080/api/SearchingResource/findAllPersonsByFaculty/GTI
 Accept: application/json

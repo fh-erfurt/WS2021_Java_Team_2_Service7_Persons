@@ -136,16 +136,58 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+
+    /**
+     * findAddressById returns an address of a person if you put in a addressID
+     * @author  Milena Neumann
+     * @version  2.0.0.0
+     */
     @GET
     @Path("/findAddressById/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAddressById(@PathParam("addressId") long addressId)
-                                                    {
+    public Response findAddressById(
+        @PathParam("addressId") long addressId
+    ) {
         if( this.addressRepository.findAddressBy(addressId) != null)
             return Response.ok(this.addressRepository.findAddressBy(addressId)).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
+
+
+    /**
+     * findPersonByAddressId returns an PersonDataSet if you put in a addressId of the person
+     * @author  Milena Neumann
+     * @version  2.0.0.0
+     */
+    @GET
+    @Path("/findPersonByAddressId/{addressId:\\d+}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findPersonsByAddressId(@PathParam("addressId") long addressId                                                 ) {
+
+
+        if( this.personRepository.findPersonsByAddressId(addressId) != null )
+            return Response.ok(this.personRepository.findPersonsByAddressId(addressId)).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
+
+    /**
+     * findAllPersonsByFaculty returns all persons with the input faculty
+     * @author  Milena Neumann
+     * @version  2.0.0.0
+     */
+    @GET //überall bei find all, über find all person(personrepo) alle perspm reinholen, über stram nach gesuchten attribut
+    @Path("/findAllPersonsByFaculty/{facultyName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAllPersonByFaculty(
+        @PathParam("facultyName") String facultyName)
+    {
+        if( this.personRepository.findPersonsByFacultyName(facultyName) != null )
+            return Response.ok(this.personRepository.findPersonsByFacultyName(facultyName)).build();
+        else
+            return Response.status( Response.Status.NOT_FOUND ).build();
+    }
 }
 
