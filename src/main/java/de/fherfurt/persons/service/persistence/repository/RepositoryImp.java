@@ -49,32 +49,21 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
         return (List<Person>) this.personDao.findAll();
     }
 
-
-    // TODO @Milena: " == " sind für logische Vergleiche gedacht, bei Objekten und deren Elemente handelt
-    //  es sich um komplexe Datensätze --> verwende stattdessen die Stream-Methode ".equals(addressId)"
-    //  Notiz: findAll liefert immer eine Liste zurück, es ist nicht nötig eine List<Person> personsToFilter anzulegen, man kann direkt mit findAll() weiterarbeiten und es zurückgeben
     @Override
     public List<Person> findPersonsByAddressId(long addressId) {
-        List<Person> personsToFilter = this.findAll();
 
-        return personsToFilter
+        return this.findAll()
                 .stream()
-                .filter(c -> c.getAddress().getId() == addressId)
+                .filter(c -> c.getAddress().getId().equals(addressId))
                 .collect(Collectors.toList());
     }
 
 
-    // TODO @Milena: " == " sind für logische Vergleiche gedacht, bei Objekten und deren Elemente handelt
-    //  es sich um komplexe Datensätze --> verwende stattdessen die Stream-Methode ".contains(facultyName)". Nei Strings ist contains "etwas" besser
-    //  Notiz: findAll liefert immer eine Liste zurück, es ist nicht nötig eine List<Person> personsToFilter anzulegen, man kann direkt mit findAll() weiterarbeiten und es zurückgeben
     @Override
     public List<Person> findPersonsByFacultyName(String facultyName) {
-        List<Person> personsToFilter = this.findAll();
 
-        return personsToFilter
-                .stream()
-                .filter(c -> c.getFacultyName().getFacultyName() == facultyName)
-                .collect(Collectors.toList());
+        return findAll().stream().
+                filter(person -> person.getFacultyName().getFacultyName().toString().contains(facultyName)).collect(Collectors.toList());
     }
 
     @Override
