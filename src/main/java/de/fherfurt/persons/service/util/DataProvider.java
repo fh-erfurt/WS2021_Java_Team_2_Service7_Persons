@@ -53,8 +53,8 @@ public class DataProvider {
                 false, personAvatar02 ));
 
 
-        personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
-                ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
+//       personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
+//               ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
 
 
         return personTestList;

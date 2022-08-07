@@ -7,7 +7,7 @@ import lombok.ToString;
 import javax.persistence.Entity;
 
 /**
- * The class Person includes all the Information about a Person. It has an
+ * The class Person includes all the Information about a Person. It has a
  * Kind of InputField: otherEmployee,lecturer,student
  * @author  Tran Anh Hoang
  * @version  2.0.0.0
