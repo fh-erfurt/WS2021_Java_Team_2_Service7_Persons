@@ -55,7 +55,7 @@ public class Address extends AbstractDatabaseEntity{
         }
 
         if (firstCharacterOfTheString == ' ') {
-            LOGGER.info("The String is has no value.");
+            LOGGER.info("First character cant be space");
             return false;
         }
 
@@ -64,14 +64,6 @@ public class Address extends AbstractDatabaseEntity{
             return false;
         }
 
-        //Pattern patternRules = Pattern.compile("[^A-Za-z -]");
-        //Matcher patternCheckResult = patternRules.matcher(stringToCheck);
-        //boolean bool = patternCheckResult.find();
-
-        //if (bool) {
-        //    LOGGER.info("The String include not permitted Character! ");
-        //    return false;
-        //}
         return true;
     }
 }
