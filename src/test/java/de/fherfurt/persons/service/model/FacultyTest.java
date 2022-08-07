@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 
 
-
+/**
+ * @Author Milena Neumann
+ */
 class FacultyTest {
 
     @Test
