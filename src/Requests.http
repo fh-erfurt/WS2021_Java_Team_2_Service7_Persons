@@ -36,7 +36,6 @@ POST http://localhost:8080/api/EditingPersonResource/UpdatePerson
 Content-Type: application/json
 Accept: application/json
 
-
 {
   "id": 1,
   "version": 0,
@@ -64,15 +63,13 @@ Accept: application/json
     "city": "Erfurt",
     "zipCode": "99085"
   },
-  "avatar": null,
   "facultyName": {
-    "id": 3,
+    "id": 4,
     "version": 0,
     "created": 1659783879424,
     "facultyName": "GTI"
   }
 }
-
 
 ### Create person @Author: Tran Anh Hoang
 POST http://localhost:8080/api/EditingPersonResource/createPerson
