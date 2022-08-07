@@ -18,7 +18,6 @@ public class JpaPersonAvatarDao extends JpaGenericsDao<PersonAvatar> implements 
     }
     @Override
     public byte[] findPersonAvatarById(long personAvatarId) {
-        //return SerializationUtils.serialize(getEntityManager().find(persistentClass, avatarId));
         return getEntityManager().find(PersonAvatar.class, personAvatarId).getAvatarByteArray();
     }
 }

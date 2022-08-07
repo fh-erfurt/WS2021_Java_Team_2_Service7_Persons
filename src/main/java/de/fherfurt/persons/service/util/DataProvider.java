@@ -40,6 +40,7 @@ public class DataProvider {
 
 
         Address address03 = new Address( "Altonaer Strasse 12", "Erfurt", "99085" );
+        Faculty faculty03 = new Faculty("Architektur und Stadtplanung");
         PersonAvatar personAvatar03 = new PersonAvatar(testByteAsImage3);
 
         personTestList.add(Person.student("Max", "Mustermann", "m.m@m.com",
@@ -53,8 +54,8 @@ public class DataProvider {
                 false, personAvatar02 ));
 
 
-//       personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
-//               ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03));
+       personTestList.add(Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
+               ,"H.P@fh-erfufrt.de","3.02.01", faculty03, address03 ,  true,personAvatar03));
 
 
         return personTestList;

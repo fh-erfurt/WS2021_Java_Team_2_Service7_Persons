@@ -25,19 +25,20 @@ class PersonTest {
         Faculty faculty01 = new Faculty("Gebaeudetechnik und Informatik");
         PersonAvatar personAvatar01 = new PersonAvatar(testByteAsImage1);
         Person person1 =  Person.otherEmployee("Hannah", "Ahrens","0154551751","Marketing"
-                ,"hannah.Ahnrens@fh-erfufrt.de","1.02.11",address01, false, personAvatar01);
+                ,"hannah.Ahnrens@fh-erfufrt.de","1.02.11",faculty01,address01, false, personAvatar01);
 
         Address address02 = new Address( "Altonaer Strasse 2", "Erfurt", "99085" );
         Faculty faculty02 = new Faculty("Gebaeudetechnik und Informatik");
         PersonAvatar personAvatar02 = new PersonAvatar(testByteAsImage2);
         Person person2 = Person.otherEmployee("Rudolf", "Meyer","015448561","Techniker"
-                ,"R.Meyer@fh-erfufrt.de","1.01.02",address02, false, personAvatar02);
+                ,"R.Meyer@fh-erfufrt.de","1.01.02",faculty02,address02, false, personAvatar02);
 
 
         Address address03 = new Address( "Altonaer Strasse 12", "Erfurt", "99085" );
+        Faculty faculty03 = new Faculty("Architektur und Stadtplanung");
         PersonAvatar personAvatar03 = new PersonAvatar(testByteAsImage3);
         Person person3 = Person.otherEmployee("Hans", "Peter","01547568458","Hausmeister"
-                ,"H.P@fh-erfufrt.de","3.02.01",address03, true, personAvatar03);
+                ,"H.P@fh-erfufrt.de","3.02.01",faculty03,address03, true, personAvatar03);
 
 
         //then

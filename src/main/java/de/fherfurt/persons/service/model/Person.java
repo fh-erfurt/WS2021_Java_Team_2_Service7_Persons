@@ -51,9 +51,9 @@ public class Person extends AbstractDatabaseEntity {
      * This methode will create a Person of the Instance of an otherEmployee and save it into the Database
      * @return a new person instance that only requires the specific parameters for an employee
      */
-    public static Person otherEmployee(String firstname,String lastname,String phonenumber, String email,String jobTitle,String room, Address address,  boolean deletedFlag, PersonAvatar personAvatar){
+    public static Person otherEmployee(String firstname,String lastname,String phonenumber, String email,String jobTitle,String room, Faculty faculty, Address address, boolean deletedFlag, PersonAvatar personAvatar){
         return builder().setFirstname(firstname).setLastname(lastname).setPhonenumber(phonenumber).setEmail(email).
-                setJobTitle(jobTitle).setRoom(room).setAddress(address).setDeletedFlag(deletedFlag).setAvatar(personAvatar).build();
+                setJobTitle(jobTitle).setRoom(room).setAddress(address).setFacultyName(faculty).setDeletedFlag(deletedFlag).setAvatar(personAvatar).build();
     }
 
     /**
