@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.Transient;
 import java.util.logging.Logger;
 
-
 /**
  * The class Address is an Entity in the Database.  The class Address includes the street, city and zipCode of a Person
  * @author  Tran Anh Hoang

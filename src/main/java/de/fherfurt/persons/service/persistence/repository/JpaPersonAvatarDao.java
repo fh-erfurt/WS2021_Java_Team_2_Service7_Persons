@@ -1,12 +1,11 @@
 package de.fherfurt.persons.service.persistence.repository;
 
 
+import de.fherfurt.persons.service.model.Person;
 import de.fherfurt.persons.service.model.PersonAvatar;
-import org.apache.commons.lang3.SerializationUtils;
+
 
 import javax.persistence.EntityManager;
-
-
 /**
  * The class JpaPersonAvatarDao is the implementation class of the interface PersonAvatarDao.
  * @author  Tran Anh Hoang
@@ -18,16 +17,10 @@ public class JpaPersonAvatarDao extends JpaGenericsDao<PersonAvatar> implements 
         super(type, em);
     }
 
-    //TODO: SQL-Querry bauen
+    //TODO: Extend some stuff if necessary
     @Override
-    public byte[] findPersonAvatarByPersonId(long personId) {
-        return new byte[0];
-    }
-
-    //TODO: Fix-ByteArray
-    @Override
-    public byte[] findPersonAvatarById(long avatarId) {
+    public byte[] findPersonAvatarById(long personAvatarId) {
         //return SerializationUtils.serialize(getEntityManager().find(persistentClass, avatarId));
-        return new byte[0];
+        return getEntityManager().find(PersonAvatar.class, personAvatarId).getAvatarByteArray();
     }
 }

@@ -12,6 +12,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -106,22 +107,20 @@ public class SearchingResource {
     }
 
 
-    /*
     @GET
-    @Path("{/findPersonAvatar:\\d+}")
+    @Path("/findPersonAvatar/{personAvatarid:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findPersonAvatarById(@PathParam("personAvatarid") long  personAvatarid ) {
 
 
-        byte[] PersonAvatar  = this.personAvatarRepository.findPersonAvatarById(personAvatarid);
 
-        if( PersonAvatar != null )
-            return Response.ok( PersonAvatar ).build();
+        if( this.personAvatarRepository.findPersonAvatarById(personAvatarid) != null )
+            return Response.ok( new BigInteger(this.personAvatarRepository.findPersonAvatarById(personAvatarid)).intValue() ).build();
         else
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
-    */
+
 
     @GET
     @Path("/findAllPersonWithEqualAddressId/{street}/{city}/{zipCode}")
@@ -137,12 +136,6 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
-
-
-    //TODO Milena Endpoints, Business Logic in Repository und Unit Test
-
-
-
     @GET
     @Path("/findAddressById/{addressId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -154,21 +147,5 @@ public class SearchingResource {
             return Response.status( Response.Status.NOT_FOUND ).build();
     }
 
-
-    //mit find all aus repositoryImp
-   /* @GET
-    @Path("{/findPersonByAddressId/{AddressId:\\d+}")
-    @Produces(MediaType.APPLICATION_JSON)
-    {
-
-    }
-
-    @GET //überall bei find all, über find all person(personrepo) alle perspm reinholen, über stram nach gesuchten attribut
-    @Path("{/findAllPersonByFaculty")
-    @Produces(MediaType.APPLICATION_JSON)
-    {
-
-    }
-*/
 }
 

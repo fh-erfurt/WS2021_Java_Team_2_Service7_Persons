@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AddressTest {
 
 
-    //TODO: Milena Unittest schreiben
     @Test
-    void checkStringValid() {
+    void testCheckStringValid() {
     }
 }

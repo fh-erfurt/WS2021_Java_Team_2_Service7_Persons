@@ -13,7 +13,6 @@ import javax.persistence.Entity;
  * @version  2.0.0.0
  */
 
-// TODO @Milena reingucken bei Find all....
 @Entity
 @Setter
 @Getter
