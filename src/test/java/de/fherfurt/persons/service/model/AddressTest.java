@@ -25,9 +25,6 @@ class AddressTest {
         Assertions.assertThat(Address.checkStringValid(" ahnhofStraße"))
                 .isFalse();
 
-//       Assertions.assertThat(Address.checkStringValid(""))
-//               .isFalse();
-
        Assertions.assertThat(Address.checkStringValid("Die Straße die einen ganz ganz langen Namen hat, damit wir über die 120 Zeichen kommen, weil das verboten ist. Alles für den Test"))
                .isFalse();
 

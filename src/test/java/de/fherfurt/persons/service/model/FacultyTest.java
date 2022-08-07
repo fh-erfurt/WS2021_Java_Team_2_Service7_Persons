@@ -23,8 +23,5 @@ class FacultyTest {
                 .isEqualTo(testFaculty)
                 .isNotNull()
                 .isNotEqualTo("Architektur und Stadtplanung");
-
-        Assertions.assertThat(testInstance.checkFacultyName("Architektur und Stadtplanung "))
-                .isNotEqualTo("ASP");
-    }
+        }
 }
