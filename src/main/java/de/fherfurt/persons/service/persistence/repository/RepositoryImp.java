@@ -78,10 +78,6 @@ public class RepositoryImp implements PersonRepository, AddressRepository, Perso
     }
 
     @Override
-    public byte [] findPersonAvatarByPersonId(long personId){
-        return this.personAvatarDao.findPersonAvatarByPersonId(personId);
-    }
-    @Override
     public byte [] findPersonAvatarById(long avatarId){
         return this.personAvatarDao.findPersonAvatarById(avatarId);
     }
